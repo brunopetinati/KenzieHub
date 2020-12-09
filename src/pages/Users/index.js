@@ -1,5 +1,14 @@
-const Users = () => {
-    return <h1>Users</h1>
-}
+import backgroundUser from "../../assets/images/users.svg";
 
-export default Users; 
+// STYLES
+import { NoResult } from "./styles";
+
+const Users = () => {
+  return (
+    <NoResult>
+      <img src={backgroundUser} alt="" />
+    </NoResult>
+  );
+};
+
+export default Users;

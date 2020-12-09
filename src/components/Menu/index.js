@@ -19,7 +19,7 @@ const Menu = ({ isAuthenticated }) => {
   return isAuthenticated ? (
     <Navigation>
       {matches ? (
-        <MenuToggle />
+        <MenuToggle isAuthenticated={isAuthenticated} />
       ) : (
         <MenuList isAuthenticated={isAuthenticated} />
       )}
@@ -28,7 +28,7 @@ const Menu = ({ isAuthenticated }) => {
   ) : (
     <Navigation>
       {matches ? (
-        <MenuToggle />
+        <MenuToggle isAuthenticated={isAuthenticated} />
       ) : (
         <MenuList isAuthenticated={isAuthenticated} />
       )}

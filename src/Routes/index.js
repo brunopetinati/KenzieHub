@@ -16,11 +16,9 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Header isAuthenticated={isAuthenticated} />
         <Login />
       </Route>
       <Route exact path="/register">
-        <Header isAuthenticated={isAuthenticated} />
         <Register />
       </Route>
       <Route exact path="/users">

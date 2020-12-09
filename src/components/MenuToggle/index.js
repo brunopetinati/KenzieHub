@@ -1,15 +1,19 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import MenuIcon from "@material-ui/icons/Menu";
+// STYLES
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
+import { MenuHamburguer } from "./styles";
 
-const MenuToggle = () => {
+const MenuToggle = ({ isAuthenticated }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = !!anchorEl;
 
   const handleMenu = (event) => setAnchorEl(event.currentTarget);
 
   const handleClose = () => setAnchorEl(null);
+
+  const history = useHistory();
 
   return (
     <>
@@ -19,21 +23,45 @@ const MenuToggle = () => {
         onClick={handleMenu}
         color="inherit"
       >
-        <MenuIcon />
+        <MenuHamburguer />
       </IconButton>
-      <Menu
-        id="menu-appbar"
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        open={open}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-      </Menu>
+
+      {isAuthenticated ? (
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={() => history.push("/users")}>
+            Conheça nossos Devs
+          </MenuItem>
+        </Menu>
+      ) : (
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={() => history.push("/")}>Login</MenuItem>
+          <MenuItem onClick={() => history.push("/register")}>
+            Register
+          </MenuItem>
+          <MenuItem onClick={() => history.push("/users")}>
+            Conheça nossos Devs
+          </MenuItem>
+        </Menu>
+      )}
     </>
   );
 };
