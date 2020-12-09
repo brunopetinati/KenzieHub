@@ -1,14 +1,14 @@
 import Cover from "../../components/Cover";
-import { MainArea } from "./styles";
+import { Container } from "./styles";
 
 const Works = () => {
   return (
     <>
       <Cover />
-      <MainArea>
+      <Container>
         <div>alguma coisa</div>
         <div>alguma coisa</div>
-      </MainArea>
+      </Container>
     </>
   );
 };
