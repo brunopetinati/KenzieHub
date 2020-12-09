@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100vw;
   max-width: 100%;
 
+border: 1px solid black;
   background-color: #0009;
 
   display: flex;
