@@ -1,8 +1,9 @@
 import React from 'react'
-import { CoverStyled } from './style'
+import { Container } from './style'
 
-function Cover() {
-  return (<CoverStyled/>
+const Cover = () => {
+  return (
+  <Container/>
   )
 }
 

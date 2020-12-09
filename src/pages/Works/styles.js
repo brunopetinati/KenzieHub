@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DivStyled = styled.div`
+export const MainArea = styled.div`
   height: 60vh;
   width: 100vw;
   max-width: 100%;
