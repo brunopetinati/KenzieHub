@@ -1,8 +1,11 @@
+// STYLES
+import { Search } from "./styles";
+
 const SearchBar = () => {
   return (
-    <form>
+    <Search>
       <input type="text" placeholder="Encontre seu Dev favorito" />
-    </form>
+    </Search>
   );
 };
 
