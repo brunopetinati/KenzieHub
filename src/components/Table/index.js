@@ -1,6 +1,6 @@
 import TableDataTech from "../TableDataTech";
 import TableDataWork from "../TableDataWork";
-import { TableContainer } from "./style";
+import { TableContainer } from "./styles";
 
 const Table = ({tech=false}) => {
   return (
