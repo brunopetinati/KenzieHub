@@ -7,7 +7,7 @@ import axios from "axios";
 import Button from "../Button";
 
 //STYLES
-import { Form } from "./styles";
+import { Container } from "./styles";
 
 const RegisterForm = () => {
   const schema = yup.object().shape({
@@ -53,45 +53,47 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(handleForm)}>
-      <div>
-        <input placeholder="Nome" name="name" ref={register}></input>
-        <span>{errors.name?.message}</span>
-      </div>
-      <div>
-        <input
-          placeholder="Módulo do curso"
-          name="course_module"
-          ref={register}
-        ></input>
-        <span>{errors.course_module?.message}</span>
-      </div>
-      <div>
-        <input placeholder="Biografia" name="bio" ref={register}></input>
-        <span>{errors.bio?.message}</span>
-      </div>
-      <div>
-        <input placeholder="Contato" name="contact" ref={register}></input>
-        <span>{errors.contact?.message}</span>
-      </div>
-      <div>
-        <input placeholder="Email" name="email" ref={register}></input>
-        <span>{errors.email?.message}</span>
-      </div>
-      <div>
-        <input placeholder="Senha" name="password" ref={register}></input>
-        <span>{errors.password?.message}</span>
-      </div>
-      <div>
-        <input
-          placeholder="Confirmar senha"
-          name="password_confirmation"
-          ref={register}
-        ></input>
-        <div>{errors.password_confirmation?.message}</div>
-      </div>
-      <Button>Submit</Button>
-    </Form>
+    <Container>
+      <form onSubmit={handleSubmit(handleForm)}>
+        <div>
+          <input placeholder="Nome" name="name" ref={register}></input>
+          <span>{errors.name?.message}</span>
+        </div>
+        <div>
+          <input
+            placeholder="Módulo do curso"
+            name="course_module"
+            ref={register}
+          ></input>
+          <span>{errors.course_module?.message}</span>
+        </div>
+        <div>
+          <input placeholder="Biografia" name="bio" ref={register}></input>
+          <span>{errors.bio?.message}</span>
+        </div>
+        <div>
+          <input placeholder="Contato" name="contact" ref={register}></input>
+          <span>{errors.contact?.message}</span>
+        </div>
+        <div>
+          <input placeholder="Email" name="email" ref={register}></input>
+          <span>{errors.email?.message}</span>
+        </div>
+        <div>
+          <input placeholder="Senha" name="password" ref={register}></input>
+          <span>{errors.password?.message}</span>
+        </div>
+        <div>
+          <input
+            placeholder="Confirmar senha"
+            name="password_confirmation"
+            ref={register}
+          ></input>
+          <div>{errors.password_confirmation?.message}</div>
+        </div>
+        <Button>Submit</Button>
+      </form>
+    </Container>
   );
 };
 
