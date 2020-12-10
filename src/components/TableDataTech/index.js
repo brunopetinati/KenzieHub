@@ -1,5 +1,9 @@
-const TableDataTech = () => {
+import {useParams} from 'react-router-dom'
 
+
+const TableDataTech = () => {
+  const { id } = useParams()
+  
   const data = {}
   return (
     <tr>

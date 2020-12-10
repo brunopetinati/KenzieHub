@@ -1,10 +1,7 @@
-
-import { Container } from './style'
+import { Container } from "./styles";
 
 const Cover = () => {
-  return (
-  <Container/>
-  )
-}
+  return <Container />;
+};
 
-export default Cover
+export default Cover;

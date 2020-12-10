@@ -1,8 +1,7 @@
-import TableDataTech from "../TableDataTech";
-import TableDataWork from "../TableDataWork";
+import TableData from "../TableData";
 import { TableContainer } from "./styles";
 
-const Table = ({tech=false}) => {
+const Table = ({tech=false, data}) => {
   return (
     <TableContainer>
       <thead>
@@ -15,10 +14,7 @@ const Table = ({tech=false}) => {
         <th id="actions">Actions</th>
       </thead>
       <tbody>
-        {tech?
-          <TableDataTech/>:
-          <TableDataWork/>
-}        
+        <TableData tech={tech} data={data}/>
       </tbody>
     </TableContainer>
   );
