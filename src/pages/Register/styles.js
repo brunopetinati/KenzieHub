@@ -17,7 +17,7 @@ export const RotateDiv = styled.div`
   transform: rotate(25deg);
 `;
 
-export const HeaderButton1 = styled.button`
+export const HeaderButton1 = styled.div`
   background: #fff0;
   border: none;
   cursor: pointer;
@@ -25,9 +25,16 @@ export const HeaderButton1 = styled.button`
   left: 1060px;
   outline: none;
   top: 0px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   border-bottom: solid black 2px;
+  padding: 1px 0px;
+  margin: 1px 6px;
+  :hover {
+    padding: 1px 6px;
+    margin: 1px 0px;
+    border-bottom: solid black 2px;
+    transition: 0.4s;
+  }
 `;
 export const HeaderButton2 = styled.button`
   background: #fff0;
@@ -37,9 +44,16 @@ export const HeaderButton2 = styled.button`
   left: 1120px;
   outline: none;
   top: 0px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   border-bottom: solid black 2px;
+  padding: 1px 0px;
+  margin: 1px 6px;
+  :hover {
+    padding: 1px 6px;
+    margin: 1px 0px;
+    border-bottom: solid black 2px;
+    transition: 0.4s;
+  }
 `;
 
 export const Title = styled.div`
@@ -64,51 +78,21 @@ export const Form = styled.div`
   color: red;
   font-size: 12px;
   font-style: italic;
-`;
-
-/* export const FormFlex = styled.div`
-  display: flex;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-`;
- */
-
-export const SmallMargin = styled.div`
-  margin-top: 5px;
-`;
-
-export const Button = styled.button`
-  width: 190px;
-  height: 25px;
-  margin: 0 auto;
-  background: #1172d7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top 50px;
-  color: white;
-  padding: 10px;
-  cursor:pointer;
-  transition: 0.8s;
-  border-radius: 3px;
-  font-size 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  letter-spacing: 2px;
-  color: #ffffff;
-  font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-transform: uppercase;
-  :hover {
-    background-color:#F3F7F7;
-    color:#1172d7;
+  input {
+    margin: 3px;
+    padding: 2px;
   }
 `;
 
-export const SeeImage = styled.div`
+export const SmallMargin = styled.div`
+  margin-top: 1px;
+  margin-bottom: 1px;
+`;
+
+export const SeeImage = styled.img`
   position: absolute;
-  left: 1060px;
-  top: 700px;
+  right: 130px;
+  top: 350px;
+  width: 450px;
+  transform: rotate(-25deg);
 `;
