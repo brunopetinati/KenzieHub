@@ -1,6 +1,14 @@
+import Menu from "../Menu";
 
-const Header = () => {
-    return <div></div>
-}
+// STYLES
+import { Container } from "./styles";
+
+const Header = ({ isAuthenticated }) => {
+  return (
+    <Container>
+      <Menu isAuthenticated={isAuthenticated} />
+    </Container>
+  );
+};
 
 export default Header;
