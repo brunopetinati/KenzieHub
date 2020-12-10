@@ -16,7 +16,6 @@ import Works from "../pages/Works";
 
 // COMPONENTS
 import Header from "../components/Header";
-import MenuPrimary from "../components/MenuPrimary";
 
 const Routes = () => {
   const isAuthenticated = false;
@@ -31,11 +30,9 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <MenuPrimary />
         <Login />
       </Route>
       <Route exact path="/register">
-        <MenuPrimary />
         <Register />
       </Route>
       <Route exact path="/users">
