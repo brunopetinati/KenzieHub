@@ -1,4 +1,10 @@
+import { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+
+// ACTIONS
+import { addData } from "../store/Modules/Data/actions";
 
 // PAGES
 import Login from "../pages/Login";
@@ -13,6 +19,14 @@ import Header from "../components/Header";
 
 const Routes = () => {
   const isAuthenticated = false;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("https://kenziehub.me/users")
+      .then((res) => dispatch(addData(res.data)));
+  }, [dispatch]);
+
   return (
     <Switch>
       <Route exact path="/">
@@ -31,11 +45,11 @@ const Routes = () => {
         <Header isAuthenticated={isAuthenticated} />
         <Profile />
       </Route>
-      <Route exact path="/users/techs">
+      <Route exact path="/users/techs/:id">
         <Header isAuthenticated={isAuthenticated} />
         <Techs />
       </Route>
-      <Route exact path="/users/works">
+      <Route exact path="/users/works/:id">
         <Header isAuthenticated={isAuthenticated} />
         <Works />
       </Route>
