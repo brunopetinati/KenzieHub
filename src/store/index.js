@@ -1,6 +1,6 @@
-import {combineReducers, createStore, applyMiddleware} from 'redux';
+import { combineReducers, createStore, applyMiddleware } from "redux";
 
-import thunk from 'redux-thunk'
+import thunk from "redux-thunk";
 
 // REDUCERS
 import techsReducer from './Modules/Techs/reducer'
@@ -15,6 +15,6 @@ const reducers = combineReducers({
     data: dataReducer,
 })
 
-const store = createStore(reducers, applyMiddleware(thunk))
+const store = createStore(reducers, applyMiddleware(thunk));
 
 export default store;

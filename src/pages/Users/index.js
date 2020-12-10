@@ -1,5 +1,14 @@
+import backgroundUser from "../../assets/images/users.svg";
+
+// STYLES
+import { NoResult } from "./styles";
+
 const Users = () => {
-    return <h1>Users</h1>
-}
+  return (
+    <NoResult>
+      <img src={backgroundUser} alt="" />
+    </NoResult>
+  );
+};
 
 export default Users;
