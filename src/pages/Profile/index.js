@@ -1,8 +1,9 @@
+//ICONS
 import { VscMail } from "react-icons/vsc";
-import { FaGraduationCap } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaGraduationCap, FaLinkedinIn } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
 
+//STYLES
 import {
   Container,
   Breadcrumb,
@@ -10,12 +11,13 @@ import {
   StyledButton,
   StyledRating,
 } from "./styles";
+
+//COMPONENTS
 import ProfileMenu from "../../components/ProfileMenu/index";
 
 const Profile = () => {
   return (
     <>
-      <header></header>
       <Breadcrumb />
       <Container elevation={3}>
         <div className="ProfileImageContainer">
