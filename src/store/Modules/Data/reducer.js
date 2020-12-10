@@ -1,5 +1,12 @@
-const dataReducer =(state=[], action) => {
-  return state
-}
+import { ADD_TO_DATA } from "./actionsType";
 
-export default dataReducer
+const dataReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TO_DATA:
+      return action.data;
+    default:
+      return state;
+  }
+};
+
+export default dataReducer;
