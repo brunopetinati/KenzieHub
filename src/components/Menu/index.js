@@ -8,7 +8,7 @@ import MenuList from "../MenuList";
 // STYLES
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { Navigation } from "./styles";
+import { Navigation, Container } from "./styles";
 
 const Menu = ({ isAuthenticated }) => {
   const theme = useTheme();
@@ -16,24 +16,28 @@ const Menu = ({ isAuthenticated }) => {
 
   const { pathname } = useLocation();
 
-  return isAuthenticated ? (
-    <Navigation>
-      {matches ? (
-        <MenuToggle isAuthenticated={isAuthenticated} />
+  return (
+    <Container>
+      {isAuthenticated ? (
+        <Navigation>
+          {matches ? (
+            <MenuToggle isAuthenticated={isAuthenticated} />
+          ) : (
+            <MenuList isAuthenticated={isAuthenticated} />
+          )}
+          {pathname === "/users" && <MenuSearchBar />}
+        </Navigation>
       ) : (
-        <MenuList isAuthenticated={isAuthenticated} />
+        <Navigation>
+          {matches ? (
+            <MenuToggle isAuthenticated={isAuthenticated} />
+          ) : (
+            <MenuList isAuthenticated={isAuthenticated} />
+          )}
+          {pathname === "/users" && <MenuSearchBar />}
+        </Navigation>
       )}
-      {pathname === "/users" && <MenuSearchBar />}
-    </Navigation>
-  ) : (
-    <Navigation>
-      {matches ? (
-        <MenuToggle isAuthenticated={isAuthenticated} />
-      ) : (
-        <MenuList isAuthenticated={isAuthenticated} />
-      )}
-      {pathname === "/users" && <MenuSearchBar />}
-    </Navigation>
+    </Container>
   );
 };
 
