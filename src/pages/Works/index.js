@@ -1,5 +1,18 @@
+import Cover from "../../components/Cover";
+import Table from "../../components/Table";
+import { Container } from "./styles";
+
 const Works = () => {
-    return <h1>Works</h1>
-}
+  return (
+    <>
+      <Cover />
+      <Container>
+      <Table />
+        <div>alguma coisa</div>
+        <div>alguma coisa</div>
+      </Container>
+    </>
+  );
+};
 
 export default Works;
