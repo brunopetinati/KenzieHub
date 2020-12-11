@@ -5,9 +5,8 @@ import { addUser } from "../../store/Modules/User/actions";
 import { Search } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const SearchBar = () => {
+const MenuSearchBar = () => {
   const dispatch = useDispatch();
-
   return (
     <Search>
       <input
@@ -20,4 +19,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default MenuSearchBar;
