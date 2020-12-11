@@ -2,7 +2,7 @@
 import { Search } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const SearchBar = () => {
+const MenuSearchBar = () => {
   return (
     <Search>
       <input type="text" placeholder="Encontre seu Dev favorito" />
@@ -11,4 +11,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default MenuSearchBar;
