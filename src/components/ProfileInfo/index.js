@@ -9,7 +9,7 @@ import { Container } from "./style";
 const ProfileInfo = ({ list }) => {
   return (
     <Container>
-      {list.map(({ email, name, course_module, contact }, index) => (
+      {list.map(({ email, bio, course_module, contact }, index) => (
         <ul key={index}>
           <li>
             <VscMail />
@@ -17,11 +17,11 @@ const ProfileInfo = ({ list }) => {
           </li>
           <li>
             <FaGraduationCap />
-            {name}
+            {course_module}
           </li>
           <li>
             <CgNotes />
-            {course_module}
+            {bio}
           </li>
           <li>
             <FaLinkedinIn />

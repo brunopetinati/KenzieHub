@@ -9,16 +9,18 @@ import styled from "styled-components";
 export const Container = styled(Paper)`
   margin: 0 auto;
   width: 90%;
-  margin-top: 10px;
-  padding: 20px;
+  margin-top: 80px;
+  padding: 60px;
+  margin-bottom: 100px;
   text-align: justify;
 
   @media (max-width: 945px) {
-    padding: 10px;
+    padding: 40px;
   }
 
   @media (max-width: 455px) {
-    padding: 5px;
+    padding: 20px;
+    margin-top: 40px;
   }
 `;
 

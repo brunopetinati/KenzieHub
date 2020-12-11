@@ -5,10 +5,10 @@ import ProfileMenu from "../../components/ProfileMenu/index";
 //STYLE
 import { Container } from "./style";
 
-const ProfileHeader = ({ avatar_url, name }) => {
+const ProfileHeader = ({ avatar, name }) => {
   return (
     <Container>
-      <ProfileImage avatar_url={avatar_url} name={name} />
+      <ProfileImage avatar={avatar} name={name} />
       <ProfileMenu />
     </Container>
   );

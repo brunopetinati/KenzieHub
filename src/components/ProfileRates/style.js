@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.ul`
-  padding: 0;
+export const Container = styled.div`
+  margin-top: 10px;
+  li {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
 `;

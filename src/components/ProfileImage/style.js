@@ -20,4 +20,12 @@ export const StyledAvatar = styled(Avatar)`
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  font-size: 25px;
+
+  @media (max-width: 945px) {
+    font-size: 20px;
+  }
+  @media (max-width: 455px) {
+    font-size: 10px;
+  }
 `;

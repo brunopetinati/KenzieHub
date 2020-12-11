@@ -1,11 +1,11 @@
 //STYLE
 import { StyledAvatar, Container } from "./style";
 
-const ProfileImage = ({ avatar_url, name }) => {
+const ProfileImage = ({ avatar, name }) => {
   return (
     <Container>
-      <StyledAvatar src={avatar_url} />
-      <h3>{name}</h3>
+      <StyledAvatar src={avatar} />
+      <h1>{name}</h1>
     </Container>
   );
 };
