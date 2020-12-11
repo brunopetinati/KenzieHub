@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ButtonStyled } from "../Delete/styles";
+import { ButtonStyled } from "./styles";
 import ModalHeader from "../ModalHeader";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
