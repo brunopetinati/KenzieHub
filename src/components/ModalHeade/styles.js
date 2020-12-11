@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   color: #fff;
   padding: 10px;
 
+  border-radius: 7px 7px 0 0;
   font-weight: 700;
   letter-spacing: 2px;
 `;

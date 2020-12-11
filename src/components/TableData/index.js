@@ -1,14 +1,14 @@
 import Modal from "../Modal";
 
 const TableData = ({ stack, data }) => {
-  console.log(data);
   return (
     <>
       {data.length >= 1 ? (
-        data.map((work) => {
+        data.map((work, index) => {
+          const trueId = index + 1;
           return (
             <tr key={work.id}>
-              <td>{work.id}</td>
+              <td>{trueId}</td>
               <td>{work.title}</td>
               <td>{work[stack]}</td>
               <td id="buttons">
