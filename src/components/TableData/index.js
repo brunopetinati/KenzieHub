@@ -1,3 +1,5 @@
+import Modal from "../Modal";
+
 const TableData = ({ stack, data }) => {
   console.log(data);
   return (
@@ -10,8 +12,12 @@ const TableData = ({ stack, data }) => {
               <td>{work.title}</td>
               <td>{work[stack]}</td>
               <td id="buttons">
-                <button id="edit">EDIT</button>
-                <button id="delete">DELETE</button>
+                <Modal id="edit" type="edit">
+                  EDIT
+                </Modal>
+                <Modal id="delete" type="delete">
+                  DELETE
+                </Modal>
               </td>
             </tr>
           );

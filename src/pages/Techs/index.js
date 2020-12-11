@@ -2,6 +2,7 @@ import Table from "../../components/Table";
 import { Container, Banner } from "./styles";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Modal from "../../components/Modal";
 
 const Techs = () => {
   // const { id } = useParams();
@@ -32,8 +33,8 @@ const Techs = () => {
       <Banner></Banner>
       <Container>
         <h2>Techs</h2>
-
         <Table data={userTech} title="status" />
+        <Modal type="add">Add</Modal>
       </Container>
     </>
   );
