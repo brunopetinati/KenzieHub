@@ -1,8 +1,14 @@
-import React from "react";
+//STYLES
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+
+//STATE
+import { useState } from "react";
+
+//HOOKS
+import { useHistory } from "react-router-dom";
 
 const options = [
   "Update Profile Picture",
@@ -13,7 +19,9 @@ const options = [
 const ITEM_HEIGHT = 48;
 
 const LongMenu = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const history = useHistory();
+
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -22,6 +30,18 @@ const LongMenu = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleUrl = (element) => {
+    //PRECISO RECEBER O ID
+    const id = "any";
+    if (element === "Update Profile Works") {
+      history.push(`/users/works/${id}`);
+    }
+    if (element === "Update Techs") {
+      history.push(`/users/techs/${id}`);
+    }
+    return; //Modal
   };
 
   return (
@@ -48,11 +68,7 @@ const LongMenu = () => {
         }}
       >
         {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
-          >
+          <MenuItem key={option} onClick={() => handleUrl(option)}>
             {option}
           </MenuItem>
         ))}

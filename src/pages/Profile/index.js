@@ -1,81 +1,36 @@
-//ICONS
-import { VscMail } from "react-icons/vsc";
-import { FaGraduationCap, FaLinkedinIn } from "react-icons/fa";
-import { CgNotes } from "react-icons/cg";
+//COMPONENTS
+import ProfileHeader from "../../components/ProfileHeader/index";
+import ProfileInfo from "../../components/ProfileInfo/index";
+import ProfielGoals from "../../components/ProfileGoals/index";
+import ProfileRating from "../../components/ProfileRates/index";
+import ProfileGoals from "../../components/ProfileGoals/index";
+
+//DATA
+import { dados } from "../../helpers/index";
 
 //STYLES
-import {
-  Container,
-  Breadcrumb,
-  ProfileImage,
-  StyledButton,
-  StyledRating,
-} from "./styles";
+import { Container, Breadcrumb } from "./styles";
 
-//COMPONENTS
-import ProfileMenu from "../../components/ProfileMenu/index";
+//PRECISO RECEBER O ID VIA URL
+const filteredData = dados.filter(
+  (element) => element.id === "8b8e50a6-50c2-4718-b817-2d38cad0c8f4"
+);
+
+const { bio, techs, name, avatar_url } = filteredData[0];
 
 const Profile = () => {
   return (
     <>
       <Breadcrumb />
       <Container elevation={3}>
-        <div className="ProfileImageContainer">
-          <div className="ImageAndNameContainer">
-            <ProfileImage />
-            <p>Uzumaki Naruro</p>
-          </div>
-          <ProfileMenu />
-        </div>
-        <div className="ProfileInfoContainer">
-          <ul>
-            <li>
-              <VscMail />
-              naruto@seventails.com
-            </li>
-            <li>
-              <FaGraduationCap />
-              module: Ninja
-            </li>
-            <li>
-              <CgNotes />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.
-              Morbi a bibendum metus. Donec scelerisque sollicitudin enim eu
-              venenatis.
-            </li>
-            <li>
-              <FaLinkedinIn />
-              linkedin.com/queroserumninja
-            </li>
-          </ul>
-        </div>
-        <div className="WorksAndSkillsContainer">
-          <div>
-            <StyledButton variant="outlined">Works</StyledButton>
-            <ul>
-              Alguma coisa
-              <li>
-                Utilizamos cookies para fornecer uma melhor experiência para
-                nossos usuários. Para saber mais sobre o uso de cookies,
-              </li>
-            </ul>
-          </div>
-          <div>
-            <StyledButton variant="outlined">Skills</StyledButton>
-            <ul>
-              <li>
-                React - <StyledRating readOnly />
-              </li>
-              <li>
-                Typescript - <StyledRating readOnly />
-              </li>
-              <li>
-                Redux - <StyledRating readOnly />
-              </li>
-            </ul>
-          </div>
-        </div>
+        <ProfileHeader name={name} avatar_url={avatar_url} />
+        <ProfileInfo list={filteredData} />
+        <ProfileGoals buttonName="Works">
+          <p>{bio}</p>
+        </ProfileGoals>
+        <ProfielGoals buttonName="skills">
+          <ProfileRating list={techs} />
+        </ProfielGoals>
       </Container>
     </>
   );
