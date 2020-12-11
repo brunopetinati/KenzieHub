@@ -8,6 +8,7 @@ import usersReducer from "./Modules/Users/reducer";
 import worksReducer from "./Modules/Works/reducer";
 import dataReducer from "./Modules/Data/reducer";
 import userReducer from "./Modules/User/reducer";
+import authenticateReducer from "./Modules/Authenticated/reducer";
 
 const reducers = combineReducers({
   techs: techsReducer,
@@ -15,6 +16,7 @@ const reducers = combineReducers({
   user: userReducer,
   works: worksReducer,
   data: dataReducer,
+  authenticated: authenticateReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));
