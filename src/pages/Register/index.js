@@ -4,7 +4,7 @@ import image from "../../assets/images/register.svg";
 import RegisterForm from "../../components/RegisterForm";
 
 //STYLES
-import { Container, BoxPrimary, BoxSecondary } from "./styles";
+import { Container, BoxPrimary, BoxSecondary, Title } from "./styles";
 
 const Register = () => {
   return (
@@ -14,7 +14,7 @@ const Register = () => {
           <img src={image} alt="Register Now!" width="400px" />
         </BoxPrimary>
         <BoxSecondary>
-          <h1>Register</h1>
+          <Title>Register</Title>
           <RegisterForm />
         </BoxSecondary>
       </Container>

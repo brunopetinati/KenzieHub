@@ -1,19 +1,11 @@
 import styled from "styled-components";
 import { Btn } from "../../components/Button/styles";
 
-export const Form = styled.form`
-  display: flex;
-  height: 300px;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 20px;
-`;
-
-export const ButtonRegister = styled(Btn)`
+export const ButtonLogin = styled(Btn)`
   background-color: #4469e0 !important;
   color: white !important;
-  height: 8%;
+  height: 23px !important;
+  width: 187px;
   letter-spacing: 2px !important;
   font-size: 13px !important;
   &:hover {

@@ -3,11 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 
-//COMPONENTS
-import Button from "../Button";
-
 //STYLES
-import { Form } from "./styles";
+import { Form, ButtonRegister } from "./styles";
+import { TextField } from "@material-ui/core";
 
 const RegisterForm = () => {
   const schema = yup.object().shape({
@@ -47,50 +45,78 @@ const RegisterForm = () => {
 
   const handleForm = (data) => {
     console.log(data);
-    /* axios
-      .post("https://kenziehub.me/users", user)
-      .then((res) => console.log(res)); */
+    axios
+      .post("https://kenziehub.me/users", data)
+      .then((res) => console.log(res));
   };
 
   return (
     <Form onSubmit={handleSubmit(handleForm)}>
       <div>
-        <input placeholder="Nome" name="name" ref={register}></input>
+        <TextField
+          label="Nome"
+          name="name"
+          inputRef={register}
+          variant="outlined"
+        />
         <span>{errors.name?.message}</span>
       </div>
       <div>
-        <input
-          placeholder="Módulo do curso"
+        <TextField
+          label="Módulo do curso"
           name="course_module"
-          ref={register}
-        ></input>
+          inputRef={register}
+          variant="outlined"
+        />
         <span>{errors.course_module?.message}</span>
       </div>
       <div>
-        <input placeholder="Biografia" name="bio" ref={register}></input>
+        <TextField
+          label="Biografia"
+          name="bio"
+          inputRef={register}
+          variant="outlined"
+        />
         <span>{errors.bio?.message}</span>
       </div>
       <div>
-        <input placeholder="Contato" name="contact" ref={register}></input>
+        <TextField
+          label="Contato"
+          name="contact"
+          inputRef={register}
+          variant="outlined"
+        />
         <span>{errors.contact?.message}</span>
       </div>
       <div>
-        <input placeholder="Email" name="email" ref={register}></input>
+        <TextField
+          label="Email"
+          name="email"
+          inputRef={register}
+          variant="outlined"
+        />
         <span>{errors.email?.message}</span>
       </div>
       <div>
-        <input placeholder="Senha" name="password" ref={register}></input>
+        <TextField
+          label="Senha"
+          name="password"
+          inputRef={register}
+          variant="outlined"
+        />
         <span>{errors.password?.message}</span>
       </div>
       <div>
-        <input
-          placeholder="Confirmar senha"
+        <TextField
+          label="Confirmar senha"
           name="password_confirmation"
-          ref={register}
-        ></input>
+          inputRef={register}
+          variant="outlined"
+        />
         <div>{errors.password_confirmation?.message}</div>
       </div>
-      <Button>Submit</Button>
+      <br />
+      <ButtonRegister type="submit">submit</ButtonRegister>
     </Form>
   );
 };
