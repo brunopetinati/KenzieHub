@@ -1,10 +1,4 @@
-import { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import axios from "axios";
-
-// ACTIONS
-import { addData } from "../store/Modules/Data/actions";
 
 // PAGES
 import Login from "../pages/Login";
@@ -18,15 +12,6 @@ import Works from "../pages/Works";
 import Header from "../components/Header";
 
 const Routes = () => {
-  const isAuthenticated = false;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    axios
-      .get("https://kenziehub.me/users")
-      .then((res) => dispatch(addData(res.data)));
-  }, [dispatch]);
-
   return (
     <Switch>
       <Route exact path="/">
@@ -36,21 +21,21 @@ const Routes = () => {
         <Register />
       </Route>
       <Route exact path="/users">
-        <Header isAuthenticated={isAuthenticated} />
+        <Header />
         <Users />
       </Route>
 
       {/* LOGGED */}
       <Route exact path="/users/profile">
-        <Header isAuthenticated={isAuthenticated} />
+        <Header />
         <Profile />
       </Route>
       <Route exact path="/users/techs/:id">
-        <Header isAuthenticated={isAuthenticated} />
+        <Header />
         <Techs />
       </Route>
       <Route exact path="/users/works/:id">
-        <Header isAuthenticated={isAuthenticated} />
+        <Header />
         <Works />
       </Route>
     </Switch>

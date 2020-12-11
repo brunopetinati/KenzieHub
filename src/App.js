@@ -1,14 +1,13 @@
-import Routes from './Routes'
+import Routes from "./Routes";
 
 // STYLES
-import GlobalStyle from './global'
+import GlobalStyle from "./global";
 
-const App = () => ( 
-    <>
-        <GlobalStyle />
-        <Routes />
-    </>
-)
-
+const App = () => (
+  <>
+    <GlobalStyle />
+    <Routes />
+  </>
+);
 
 export default App;
