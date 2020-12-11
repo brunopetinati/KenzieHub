@@ -1,16 +1,25 @@
 import { useSelector } from "react-redux";
+
+// IMAGES
 import backgroundUser from "../../assets/images/users.svg";
 
+//COMPONENTS
+import FindUser from "../../components/FindUser";
+
 // STYLES
-import { NoResult } from "./styles";
+import { ContainerPrimay, ContainerSecondary } from "./styles";
 
 const Users = () => {
-  const data = useSelector(({ data }) => data);
+  const user = useSelector(({ user }) => user);
 
-  return (
-    <NoResult>
+  return user.length === 0 ? (
+    <ContainerPrimay>
       <img src={backgroundUser} alt="" />
-    </NoResult>
+    </ContainerPrimay>
+  ) : (
+    <ContainerSecondary>
+      <FindUser user={user} />
+    </ContainerSecondary>
   );
 };
 
