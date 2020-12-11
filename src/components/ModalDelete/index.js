@@ -1,4 +1,4 @@
-import ModalHeader from "../ModalHeade";
+import ModalHeader from "../ModalHeader";
 import { ButtonStyled } from "./styles";
 
 const Delete = () => {

@@ -1,5 +1,5 @@
 import { ButtonStyled } from "../Delete/styles";
-import ModalHeader from "../ModalHeade";
+import ModalHeader from "../ModalHeader";
 
 const Edit = () => {
   return (

@@ -2,9 +2,9 @@ import React from "react";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { ModalContainer, PaperContainer } from "./styles";
-import Delete from "../Delete";
-import Add from "../Add";
-import Edit from "../Edit";
+import Delete from "../ModalDelete";
+import Add from "../ModalAdd";
+import Edit from "../ModalEdit";
 
 const TransitionsModal = ({ children, type }) => {
   const [open, setOpen] = React.useState(false);
@@ -35,9 +35,9 @@ const TransitionsModal = ({ children, type }) => {
       >
         <Fade in={open}>
           <PaperContainer>
-          {type === "delete" && <Delete />}
-          {type === "edit" && <Edit />}
-          {type === "add" && <Add />}
+            {type === "delete" && <Delete />}
+            {type === "edit" && <Edit />}
+            {type === "add" && <Add />}
           </PaperContainer>
         </Fade>
       </ModalContainer>

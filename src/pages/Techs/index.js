@@ -34,7 +34,6 @@ const Techs = () => {
       <Banner></Banner>
       <Container>
         <h2>Techs</h2>
-        <Rating />
         <Table data={userTech} title="status" />
         <Modal type="add">Add</Modal>
       </Container>
