@@ -44,7 +44,7 @@ const Routes = () => {
       </Route>
 
       {/* LOGGED */}
-      <Route exact path="/users/profile">
+      <Route exact path="/users/profile/:id">
         <Header isAuthenticated={isAuthenticated} />
         <Profile />
       </Route>

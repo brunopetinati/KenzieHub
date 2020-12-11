@@ -16,7 +16,7 @@ const Add = () => {
     rating: yup.string(),
   });
 
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
   const handleSend = (data) => {

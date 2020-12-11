@@ -1,13 +1,12 @@
-import React from "react";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
+import { useState } from "react";
+import { Backdrop, Fade } from "@material-ui/core";
 import { ModalContainer, PaperContainer } from "./styles";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
 
 const TransitionsModal = ({ children, type }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
