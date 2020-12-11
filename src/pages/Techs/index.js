@@ -1,15 +1,31 @@
 import Table from "../../components/Table";
 import { Container, Banner } from "./styles";
-import { dados } from "../../helpers";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Techs = () => {
   // const { id } = useParams();
-  const id = "8b8e50a6-50c2-4718-b817-2d38cad0c8f4";
-  const getUser = dados.filter((user) => user.id === id);
-  console.log(getUser);
-  // const userObject = { ...getUser };
-  // console.log(userObject[0]);
+
+  const data = useSelector((state) => state.data);
+
+  const id = "047e5718-07ae-45e0-a256-1fa9a0186985";
+  const getUser = data.find((user) => user.id === id);
+  let userTech = [
+    {
+      id: "55126701-18ac-40df-aab9-3a88657db446",
+      title: "React",
+      status: "Avançado",
+      created_at: "2020-11-30T16:26:53.953Z",
+      updated_at: "2020-11-30T16:26:53.953Z",
+    },
+    {
+      id: "af06a853-c1fb-4a94-960d-1c6caa8d2b5c",
+      title: "Typescript",
+      status: "Avançado",
+      created_at: "2020-11-30T18:40:08.316Z",
+      updated_at: "2020-11-30T18:40:08.316Z",
+    },
+  ];
 
   return (
     <>
@@ -17,8 +33,7 @@ const Techs = () => {
       <Container>
         <h2>Techs</h2>
 
-        <Table data={userObject[0].techs} tech />
-        <Table />
+        <Table data={userTech} title="status" />
       </Container>
     </>
   );

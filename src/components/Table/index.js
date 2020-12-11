@@ -1,20 +1,20 @@
 import TableData from "../TableData";
 import { TableContainer } from "./styles";
 
-const Table = ({tech=false, data}) => {
+const Table = ({title, data}) => {
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   return (
     <TableContainer>
       <thead>
         <th id="ID">ID</th>
         <th id="title">Title</th>
-        <th id="Status">{tech? 
-        "Status":
-        "Description"
-        }</th>
+        <th id="Status">{capitalizeFirstLetter(title)}</th>
         <th id="actions">Actions</th>
       </thead>
       <tbody>
-        <TableData tech={tech} data={data}/>
+        <TableData stack={title} data={data}/>
       </tbody>
     </TableContainer>
   );
