@@ -34,8 +34,8 @@ const TransitionsModal = ({ children, type, page }) => {
       >
         <Fade in={open}>
           <PaperContainer>
-            {type === "delete" && <Delete />}
-            {type === "edit" && <Edit />}
+            {type === "delete" && <Delete page={page} />}
+            {type === "edit" && <Edit page={page} />}
             {type === "add" && <Add page={page} />}
           </PaperContainer>
         </Fade>
