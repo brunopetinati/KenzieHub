@@ -6,17 +6,17 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Rating from "../Rating";
-import { ErrorSharp } from "@material-ui/icons";
+import TextField from "@material-ui/core/TextField";
 
 const Add = ({ page }) => {
   const [value, setValue] = useState(1);
 
   const schema = yup.object().shape({
-    title: yup.string().required("Campo obrigatório"),
-    status: yup.string().required("Campo obrigatório"),
+    title: yup.string(),
+    status: yup.string(),
     rating: yup.string(),
-    description: yup.string().required("Campo obrigatório"),
-    url: yup.string().url().required("Campo obrigatório"),
+    description: yup.string(),
+    deploy_url: yup.string(),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -25,24 +25,36 @@ const Add = ({ page }) => {
 
   const handleSend = (data) => {
     console.log(data);
+
     const key =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc3ODg5MzcsImV4cCI6MTYwODA0ODEzNywic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.OzvYFEvabPb-eyFtFnCZToLcy1ZXJ6BoIdlHGTrUrxE";
     const token = localStorage.getItem("authToken");
 
     const infoDecide = (data) => {
-      const statusType =
-        data.status <= 1
-          ? "Iniciante"
-          : data.status <= 2
-          ? "Intermediário"
-          : "Avançado";
+      let statusType = " default";
 
+      switch (data.status) {
+        case "1":
+          statusType = "Iniciante";
+          break;
+        case "2":
+          statusType = "Intermediario";
+          break;
+        case "3":
+          statusType = "Avançado";
+          break;
+        default:
+          statusType = "final";
+          break;
+      }
       return page === "techs"
         ? { title: data.title, status: statusType }
         : data;
     };
 
     const addInfo = infoDecide(data);
+
+    console.log("dado add Info", addInfo);
 
     try {
       axios.post(`https://kenziehub.me/users/${page}`, addInfo, {
@@ -62,49 +74,46 @@ const Add = ({ page }) => {
   return (
     <>
       <ModalHeader>Adicionar novo</ModalHeader>
-      <form onSubmit={handleSubmit(teste)}>
+      <form onSubmit={handleSubmit(handleSend)}>
         <label htmlFor="title">Tecnologia</label>
-        <input
+        <TextField
           type="text"
-          placeholder="Insira a tecnologia"
           name="title"
           id="title"
-          ref={register}
-          error={errors.title}
-          helperText={errors.title?.message}
+          inputRef={register}
+          // error={errors.title}
+          // helperText={errors.title?.message}
         />
         {page === "techs" ? (
           <>
-            <input
-              placeholder=""
+            <TextField
               name="status"
               id="status"
-              ref={register}
+              inputRef={register}
               value={value}
               type="hidden"
-              error={errors.status}
+              error={!!errors.status}
               helperText={errors.status?.message}
             />
-            <Rating readOnly value={value} setValue={setValue} />{" "}
+            <Rating value={value} setValue={setValue} />{" "}
           </>
         ) : (
           <>
             <label htmlFor="description">Descrição</label>
-            <textarea
-              placeholder="Insira sua descrição"
+            <TextField
               name="description"
               id="description"
-              ref={register}
-              error={errors.description}
+              inputRef={register}
+              multiline
+              error={!!errors.description}
               helperText={errors.description?.message}
             />
             <label htmlFor="url">Url Projeto</label>
-            <input
-              placeholder="Informe a Url do Projeto"
-              name="url"
+            <TextField
+              name="deploy_url"
               id="url"
-              ref={register}
-              error={errors.url}
+              inputRef={register}
+              error={!!errors.url}
               helperText={errors.url?.message}
             />
           </>
