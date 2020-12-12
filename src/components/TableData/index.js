@@ -12,10 +12,10 @@ const TableData = ({ stack, data }) => {
               <td>{work.title}</td>
               <td>{work[stack]}</td>
               <td id="buttons">
-                <Modal id="edit" type="edit">
+                <Modal type="edit" page={stack} id={work.id}>
                   EDIT
                 </Modal>
-                <Modal id="delete" type="delete">
+                <Modal type="delete" page={stack} id={work.id}>
                   DELETE
                 </Modal>
               </td>

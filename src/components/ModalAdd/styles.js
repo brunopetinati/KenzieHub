@@ -12,4 +12,7 @@ export const ButtonStyled = styled.button`
   font-size: 15px;
   letter-spacing: 2px;
   box-shadow: 5px 5px 5px #0009;
+  :active {
+    background-color: green;
+  }
 `;

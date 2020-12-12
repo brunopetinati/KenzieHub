@@ -5,7 +5,7 @@ import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
 
-const TransitionsModal = ({ children, type }) => {
+const TransitionsModal = ({ children, type, page }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -36,7 +36,7 @@ const TransitionsModal = ({ children, type }) => {
           <PaperContainer>
             {type === "delete" && <Delete />}
             {type === "edit" && <Edit />}
-            {type === "add" && <Add />}
+            {type === "add" && <Add page={page} />}
           </PaperContainer>
         </Fade>
       </ModalContainer>

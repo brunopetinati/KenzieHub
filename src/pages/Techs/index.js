@@ -35,7 +35,9 @@ const Techs = () => {
       <Container>
         <h2>Techs</h2>
         <Table data={userTech} title="status" />
-        <Modal type="add">Add</Modal>
+        <Modal type="add" page="techs">
+          Add
+        </Modal>
       </Container>
     </>
   );
