@@ -62,7 +62,7 @@ const Add = ({ page }) => {
   return (
     <>
       <ModalHeader>Adicionar novo</ModalHeader>
-      <form onSubmit={handleSubmit(teste)}>
+      <form onSubmit={handleSubmit(handleSend)}>
         <label htmlFor="title">Tecnologia</label>
         <input
           type="text"
@@ -70,8 +70,6 @@ const Add = ({ page }) => {
           name="title"
           id="title"
           ref={register}
-          error={errors.title}
-          helperText={errors.title?.message}
         />
         {page === "techs" ? (
           <>
@@ -82,8 +80,6 @@ const Add = ({ page }) => {
               ref={register}
               value={value}
               type="hidden"
-              error={errors.status}
-              helperText={errors.status?.message}
             />
             <Rating readOnly value={value} setValue={setValue} />{" "}
           </>
@@ -95,8 +91,6 @@ const Add = ({ page }) => {
               name="description"
               id="description"
               ref={register}
-              error={errors.description}
-              helperText={errors.description?.message}
             />
             <label htmlFor="url">Url Projeto</label>
             <input
@@ -104,8 +98,6 @@ const Add = ({ page }) => {
               name="url"
               id="url"
               ref={register}
-              error={errors.url}
-              helperText={errors.url?.message}
             />
           </>
         )}
