@@ -8,11 +8,12 @@ export const Container = styled.div`
     padding: 0px;
   }
   svg {
-    margin-right: 15px;
-    vertical-align: bottom;
+    margin-right: 10px;
   }
   li {
-    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
   }
 
   @media (max-width: 945px) {

@@ -6,7 +6,13 @@ import breadcrumb from "../../assets/images/breadcrumb.jpg";
 
 import styled from "styled-components";
 
-export const Container = styled(Paper)`
+export const PrimaryContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+`;
+
+export const SecondaryContainer = styled(Paper)`
   margin: 0 auto;
   width: 90%;
   margin-top: 80px;

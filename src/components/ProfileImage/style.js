@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const StyledAvatar = styled(Avatar)`
   width: 100px !important;
   height: 100px !important;
-  margin-right: 15px;
+  margin-right: 25px;
 
   @media (max-width: 945px) {
     width: 80px !important;
@@ -26,6 +26,6 @@ export const Container = styled.div`
     font-size: 20px;
   }
   @media (max-width: 455px) {
-    font-size: 10px;
+    font-size: 9.5px;
   }
 `;

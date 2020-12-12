@@ -18,7 +18,7 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-const LongMenu = () => {
+const LongMenu = ({ id }) => {
   const history = useHistory();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,8 +33,6 @@ const LongMenu = () => {
   };
 
   const handleUrl = (element) => {
-    //PRECISO RECEBER O ID
-    const id = "any";
     if (element === "Update Profile Works") {
       history.push(`/users/works/${id}`);
     }

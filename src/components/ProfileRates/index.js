@@ -1,6 +1,5 @@
 //STYLE
 import { Container } from "./style";
-
 import Rating from "@material-ui/lab/Rating";
 
 const ProfileRates = ({ list }) => {
@@ -16,8 +15,8 @@ const ProfileRates = ({ list }) => {
   return (
     <Container>
       {list.map(({ title, status }, index) => (
-        <ul>
-          <li key={index}>
+        <ul key={index}>
+          <li>
             {title} - {rate(status)}
           </li>
         </ul>

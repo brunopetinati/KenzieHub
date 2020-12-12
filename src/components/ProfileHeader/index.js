@@ -5,11 +5,14 @@ import ProfileMenu from "../../components/ProfileMenu/index";
 //STYLE
 import { Container } from "./style";
 
-const ProfileHeader = ({ avatar, name }) => {
+const ProfileHeader = ({ data }) => {
+  const token = localStorage.getItem("authToken");
+
+  const { name, avatar_url, id } = data;
   return (
     <Container>
-      <ProfileImage avatar={avatar} name={name} />
-      <ProfileMenu />
+      <ProfileImage avatar={avatar_url} name={name} />
+      {token && <ProfileMenu id={id} />}
     </Container>
   );
 };
