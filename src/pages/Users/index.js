@@ -18,7 +18,7 @@ const Users = () => {
     </ContainerPrimay>
   ) : (
     <ContainerSecondary>
-      <FindUser user={user} />
+      <FindUser />
     </ContainerSecondary>
   );
 };
