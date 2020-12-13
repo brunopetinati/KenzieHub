@@ -1,25 +1,24 @@
-import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const FindUser = ({ user }) => {
+// COMPONENTS
+import CardUser from "../CardUser";
+import SearchBarResults from "../SearchBarResults";
+
+const FindUser = ({ title }) => {
   const data = useSelector(({ data }) => data);
-  const history = useHistory();
+  const user = useSelector(({ user }) => user);
 
   const findUser = data.filter((item) =>
     item.name.toLowerCase().includes(user)
   );
 
   return (
-    <ul>
-      {findUser.map((item, index) => (
-        <li key={index}>
-          <span>{item.name}</span>
-          <button onClick={() => history.push(`/users/profile/${item.id}`)}>
-            See More
-          </button>
-        </li>
-      ))}
-    </ul>
+    user.length !== 0 &&
+    (title === "header" ? (
+      <SearchBarResults findUser={findUser} />
+    ) : (
+      <CardUser findUser={findUser} />
+    ))
   );
 };
 
