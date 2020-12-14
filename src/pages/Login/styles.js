@@ -9,11 +9,11 @@ export const BoxPrimary = styled.div`
   @media (max-width: 1115px) {
     display: none;
   }
-
   img {
     @media (min-width: 1919px) {
       width: 600px;
     }
+  }
 `;
 
 export const BoxSecondary = styled(BoxPrimary)`
