@@ -22,7 +22,7 @@ const Routes = () => {
 
   useEffect(() => {
     axios
-      .get("https://kenziehub.me/users")
+      .get("https://kenziehub.me/users?perPage=9999999")
       .then((res) => dispatch(addData(res.data)));
   }, [dispatch]);
 
