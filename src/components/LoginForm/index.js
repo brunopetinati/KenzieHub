@@ -10,8 +10,6 @@ import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
 import { TextField } from "@material-ui/core";
 import { Form, ButtonLogin, Display } from "./styles";
 
-//COMPONENTS
-
 const LoginComponent = () => {
   const dispatch = useDispatch();
 
@@ -33,11 +31,15 @@ const LoginComponent = () => {
 
   const history = useHistory();
 
-  const handleForm = (data) => {
+  const handleForm = (result) => {
     axios
-      .post("https://kenziehub.me/sessions", data)
+      .post("https://kenziehub.me/sessions", result)
       .then((res) => {
         window.localStorage.setItem("authToken", res.data.token);
+        window.localStorage.setItem(
+          "userLogged",
+          JSON.stringify(res.data.user)
+        );
         dispatch(setAuthenticate(true));
         history.push("/users");
       })
