@@ -4,6 +4,7 @@ import { ModalContainer, PaperContainer } from "./styles";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
+import Upload from "../ModalPhotoUpdate";
 
 const TransitionsModal = ({ children, type }) => {
   const [open, setOpen] = useState(false);
@@ -18,9 +19,13 @@ const TransitionsModal = ({ children, type }) => {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        {children}
-      </button>
+      {type === "upload" ? (
+        <label onClick={handleOpen}>{children}</label>
+      ) : (
+        <button type="button" onClick={handleOpen}>
+          {children}
+        </button>
+      )}
       <ModalContainer
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -37,6 +42,7 @@ const TransitionsModal = ({ children, type }) => {
             {type === "delete" && <Delete />}
             {type === "edit" && <Edit />}
             {type === "add" && <Add />}
+            {type === "upload" && <Upload />}
           </PaperContainer>
         </Fade>
       </ModalContainer>

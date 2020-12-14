@@ -1,3 +1,6 @@
+//COMPONENT
+import Modal from "../../components/Modal";
+
 //STYLES
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
@@ -9,12 +12,6 @@ import { useState } from "react";
 
 //HOOKS
 import { useHistory } from "react-router-dom";
-
-const options = [
-  "Update Profile Picture",
-  "Update Profile Works",
-  "Update Techs",
-];
 
 const ITEM_HEIGHT = 48;
 
@@ -30,16 +27,6 @@ const LongMenu = ({ id }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleUrl = (element) => {
-    if (element === "Update Profile Works") {
-      history.push(`/users/works/${id}`);
-    }
-    if (element === "Update Techs") {
-      history.push(`/users/techs/${id}`);
-    }
-    return; //Modal
   };
 
   return (
@@ -65,11 +52,15 @@ const LongMenu = ({ id }) => {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem key={option} onClick={() => handleUrl(option)}>
-            {option}
-          </MenuItem>
-        ))}
+        <MenuItem onClick={() => history.push(`/users/works/${id}`)}>
+          Update Works
+        </MenuItem>
+        <MenuItem onClick={() => history.push(`/users/techs/${id}`)}>
+          Update Techs
+        </MenuItem>
+        <MenuItem>
+          <Modal type="upload">Update Profile</Modal>
+        </MenuItem>
       </Menu>
     </div>
   );

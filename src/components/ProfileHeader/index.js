@@ -3,7 +3,7 @@ import ProfileImage from "../../components/ProfileImage/index";
 import ProfileMenu from "../../components/ProfileMenu/index";
 
 //STYLE
-import { Container } from "./style";
+import { Container, Box } from "./style";
 
 const ProfileHeader = ({ data }) => {
   const token = localStorage.getItem("authToken");
@@ -11,7 +11,10 @@ const ProfileHeader = ({ data }) => {
   const { name, avatar_url, id } = data;
   return (
     <Container>
-      <ProfileImage avatar={avatar_url} name={name} />
+      <Box>
+        <ProfileImage avatar={avatar_url} />
+        <h1>{name}</h1>
+      </Box>
       {token && <ProfileMenu id={id} />}
     </Container>
   );

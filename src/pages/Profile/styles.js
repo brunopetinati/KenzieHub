@@ -13,12 +13,17 @@ export const PrimaryContainer = styled.div`
 `;
 
 export const SecondaryContainer = styled(Paper)`
+  word-break: break-word;
   margin: 0 auto;
-  width: 90%;
+  width: 70%;
   margin-top: 80px;
   padding: 60px;
   margin-bottom: 100px;
   text-align: justify;
+
+  @media (max-width: 1023px) {
+    width: 80%;
+  }
 
   @media (max-width: 945px) {
     padding: 40px;

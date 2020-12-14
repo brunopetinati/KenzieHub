@@ -1,11 +1,10 @@
 //STYLE
-import { StyledAvatar, Container } from "./style";
+import { Image, Container } from "./style";
 
-const ProfileImage = ({ avatar, name }) => {
+const ProfileImage = ({ avatar }) => {
   return (
     <Container>
-      <StyledAvatar src={avatar} />
-      <h1>{name}</h1>
+      <Image src={avatar} />
     </Container>
   );
 };
