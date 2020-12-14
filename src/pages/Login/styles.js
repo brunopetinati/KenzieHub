@@ -6,6 +6,9 @@ export const BoxPrimary = styled.div`
   justify-content: flex-start;
   margin-bottom: 10%;
   margin-left: 5%;
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
 
 export const BoxSecondary = styled(BoxPrimary)`
@@ -19,12 +22,21 @@ export const BoxSecondary = styled(BoxPrimary)`
   color: red;
   margin-top: 6%;
   margin-right: 16%;
+  @media (max-width: 400px) {
+    width: 170px;
+    margin-left: 15%;
+    margin-left: 20%;
+  }
 `;
 
 export const Title = styled.div`
   font-size: 25px;
   color: black;
   font-style: normal;
-  margin-bottom: 10%;
-  margin-right: 70%;
+  margin-top: 15%;
+  margin-right: 110%;
+  @media (max-width: 400px) {
+    width: 200px;
+    margin-right: 10%;
+  }
 `;

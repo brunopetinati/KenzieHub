@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // COMPONENTS
 import MenuToggle from "../MenuToggle";
@@ -10,29 +11,31 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Navigation, Container } from "./styles";
 
-const Menu = ({ isAuthenticated }) => {
+const MenuSecondary = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const { pathname } = useLocation();
 
+  const authenticated = useSelector(({ authenticated }) => authenticated);
+
   return (
     <Container>
-      {isAuthenticated ? (
+      {authenticated ? (
         <Navigation>
           {matches ? (
-            <MenuToggle isAuthenticated={isAuthenticated} />
+            <MenuToggle isAuthenticated={authenticated} />
           ) : (
-            <MenuList isAuthenticated={isAuthenticated} />
+            <MenuList isAuthenticated={authenticated} />
           )}
           {pathname === "/users" && <MenuSearchBar />}
         </Navigation>
       ) : (
         <Navigation>
           {matches ? (
-            <MenuToggle isAuthenticated={isAuthenticated} />
+            <MenuToggle isAuthenticated={authenticated} />
           ) : (
-            <MenuList isAuthenticated={isAuthenticated} />
+            <MenuList isAuthenticated={authenticated} />
           )}
           {pathname === "/users" && <MenuSearchBar />}
         </Navigation>
@@ -41,4 +44,4 @@ const Menu = ({ isAuthenticated }) => {
   );
 };
 
-export default Menu;
+export default MenuSecondary;

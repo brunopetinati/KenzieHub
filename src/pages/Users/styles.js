@@ -7,7 +7,7 @@ export const ContainerPrimay = styled.div`
 
   img {
     height: auto;
-    width: 250px;
+    width: 270px;
 
     @media (max-width: 400px) {
       width: 200px;
@@ -16,8 +16,8 @@ export const ContainerPrimay = styled.div`
 `;
 
 export const ContainerSecondary = styled.div`
-  padding-top: 55px;
+  padding: 100px 0;
   width: 90%;
   margin: 0 auto;
-  height: 100vh;
+  height: auto;
 `;
