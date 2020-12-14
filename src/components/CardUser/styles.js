@@ -62,6 +62,10 @@ export const CardHeader = styled.div`
     border-radius: 50%;
     object-fit: cover;
   }
+
+  span {
+    font-size: 1rem;
+  }
 `;
 
 export const CardBody = styled.div`

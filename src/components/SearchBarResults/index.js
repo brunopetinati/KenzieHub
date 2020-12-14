@@ -1,17 +1,32 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../store/Modules/User/actions";
+// ACTIONS
 
 // STYLES
-import { List } from "./styles";
+import { List, ListNotFound } from "./styles";
 
 const SearchBarResults = ({ findUser }) => {
-  return (
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const chosenUser = (user) => {
+    dispatch(addUser(""));
+    history.push(`/users/profile/${user.id}`);
+  };
+
+  return findUser.length !== 0 ? (
     <List>
-      {findUser.map((item, index) => (
+      {findUser.map((user, index) => (
         <li key={index}>
-          <Link to={`/users/profile/${item.id}`}>{item.name}</Link>
+          <button onClick={() => chosenUser(user)}>{user.name}</button>
         </li>
       ))}
     </List>
+  ) : (
+    <ListNotFound>
+      <li>Nenhum resultado encontrado</li>
+    </ListNotFound>
   );
 };
 

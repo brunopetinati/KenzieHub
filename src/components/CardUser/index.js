@@ -1,4 +1,8 @@
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+// ACTIONS
+import { addUser } from "../../store/Modules/User/actions";
 
 //IMAGE
 import imageNotFound from "../../assets/images/image-not-found.jpg";
@@ -16,6 +20,7 @@ import {
 
 const CardUser = ({ findUser }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const hasImage = (image) =>
     image ? (
@@ -24,26 +29,29 @@ const CardUser = ({ findUser }) => {
       <CardImage src={imageNotFound} alt="avatar not found" />
     );
 
+  const chosenUser = (user) => {
+    dispatch(addUser(""));
+    window.localStorage.removeItem("chosenUser");
+    window.localStorage.setItem("chosenUser", JSON.stringify(user));
+    history.push(`/users/profile/${user.id}`);
+  };
+
   return (
     <List>
-      {findUser.map((item, index) => (
+      {findUser.map((user, index) => (
         <li key={index}>
           <Card>
             <CardHeader>
-              {hasImage(item.avatar_url)}
-              <span>{item.name}</span>
+              {hasImage(user.avatar_url)}
+              <span>{user.name}</span>
             </CardHeader>
 
             <CardBody>
-              {hasImage(item.avatar_url)}
+              {hasImage(user.avatar_url)}
 
               <CardDescription>
-                <p>{item.course_module}</p>
-                <Button
-                  onClick={() => history.push(`/users/profile/${item.id}`)}
-                >
-                  See More
-                </Button>
+                <p>{user.course_module}</p>
+                <Button onClick={() => chosenUser(user)}>See More</Button>
               </CardDescription>
             </CardBody>
           </Card>

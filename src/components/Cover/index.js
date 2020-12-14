@@ -1,7 +1,7 @@
-import { Container } from "./styles";
+import { BreadCrumb } from "./styles";
 
 const Cover = () => {
-  return <Container />;
+  return <BreadCrumb />;
 };
 
 export default Cover;
