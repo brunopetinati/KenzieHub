@@ -16,10 +16,8 @@ import Works from "../pages/Works";
 
 // COMPONENTS
 import Header from "../components/Header";
-import MenuPrimary from "../components/MenuPrimary";
 
 const Routes = () => {
-  const isAuthenticated = false;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,34 +27,19 @@ const Routes = () => {
   }, [dispatch]);
 
   return (
-    <Switch>
-      <Route exact path="/">
-        <MenuPrimary />
-        <Login />
-      </Route>
-      <Route exact path="/register">
-        <MenuPrimary />
-        <Register />
-      </Route>
-      <Route exact path="/users">
-        <Header isAuthenticated={isAuthenticated} />
-        <Users />
-      </Route>
+    <>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/users" component={Users} />
 
-      {/* LOGGED */}
-      <Route exact path="/users/profile">
-        <Header isAuthenticated={isAuthenticated} />
-        <Profile />
-      </Route>
-      <Route exact path="/users/techs/:id">
-        <Header isAuthenticated={isAuthenticated} />
-        <Techs />
-      </Route>
-      <Route exact path="/users/works/:id">
-        <Header isAuthenticated={isAuthenticated} />
-        <Works />
-      </Route>
-    </Switch>
+        {/* LOGGED */}
+        <Route exact path="/users/profile/:id" component={Profile} />
+        <Route exact path="/users/techs/:id" component={Techs} />
+        <Route exact path="/users/works/:id" component={Works} />
+      </Switch>
+    </>
   );
 };
 

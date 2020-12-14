@@ -1,14 +1,21 @@
-import Routes from './Routes'
+import Routes from "./Routes";
+import { useLocation } from "react-router-dom";
 
 // STYLES
-import GlobalStyle from './global'
+import GlobalStyle from "./global";
 
-const App = () => ( 
+const App = () => {
+  const { pathname } = useLocation();
+  return (
     <>
-        <GlobalStyle />
-        <Routes />
+      <GlobalStyle
+        overflow={
+          pathname === "/" || pathname === "/register" ? "hidden" : "auto"
+        }
+      />
+      <Routes />
     </>
-)
-
+  );
+};
 
 export default App;
