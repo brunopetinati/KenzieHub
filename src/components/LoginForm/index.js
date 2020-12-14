@@ -8,7 +8,7 @@ import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
 
 //STYLES
 import { TextField } from "@material-ui/core";
-import { ButtonLogin } from "./styles";
+import { Form, ButtonLogin, Display } from "./styles";
 
 //COMPONENTS
 
@@ -18,12 +18,12 @@ const LoginComponent = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .min(6, "É necessário digitar ao menos 6 dígitos.")
+      .min(6, "É necessário ao menos 6 dígitos.")
       .required("Campo obrigatório"),
 
     password: yup
       .string()
-      .min(6, "É necessário digitar ao menos 6 dígitos.")
+      .min(6, "É necessário ao menos 6 dígitos.")
       .required("Campo obrigatório"),
   });
 
@@ -44,28 +44,32 @@ const LoginComponent = () => {
       .catch(dispatch(setAuthenticate(false)));
   };
 
-  /*  <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */
-
   return (
-    <form onSubmit={handleSubmit(handleForm)}>
-      <TextField
-        name="email"
-        label="Email"
-        variant="outlined"
-        inputRef={register}
-      />
-      <span>{errors.email?.message}</span>
-
-      <TextField
-        name="password"
-        label="Senha"
-        variant="outlined"
-        inputRef={register}
-      />
-      <span>{errors.password?.message}</span>
-      <br />
-      <ButtonLogin type="submit">Entrar</ButtonLogin>
-    </form>
+    <Form onSubmit={handleSubmit(handleForm)}>
+      <Display>
+        <TextField
+          name="email"
+          label="Email"
+          variant="outlined"
+          inputRef={register}
+          size="small"
+        />
+        <span>{errors.email?.message}</span>
+      </Display>
+      <Display>
+        <TextField
+          name="password"
+          label="Senha"
+          variant="outlined"
+          inputRef={register}
+          size="small"
+        />
+        <span>{errors.password?.message}</span>
+      </Display>
+      <Display>
+        <ButtonLogin type="submit">Entrar</ButtonLogin>
+      </Display>
+    </Form>
   );
 };
 
