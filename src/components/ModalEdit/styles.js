@@ -13,3 +13,17 @@ export const ButtonStyled = styled.button`
   letter-spacing: 2px;
   box-shadow: 5px 5px 5px #0009;
 `;
+
+export const FormContainer = styled.form`
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  span {
+    margin-bottom: 15px;
+    width: 80%;
+  }
+`;

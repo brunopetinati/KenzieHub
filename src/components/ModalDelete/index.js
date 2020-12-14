@@ -31,7 +31,10 @@ const Delete = ({ page, id }) => {
   return (
     <>
       <ModalHeader>Remover </ModalHeader>
-
+      <h4>
+        Tem certeza que deseja deletar{" "}
+        {page === "techs" ? "a Tecnologia" : " o Trabalho"}?
+      </h4>
       <ButtonStyled onClick={handleDelete}>Delete</ButtonStyled>
     </>
   );

@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 
 const Cover = () => {
-  return <Container />;
+  return <Container>{/* <img src={Breadcrumb} /> */}</Container>;
 };
 
 export default Cover;

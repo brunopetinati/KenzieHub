@@ -12,7 +12,7 @@ export const PaperContainer = styled.div`
   flex-direction: column;
 
   width: 50vw;
-  height: 200px;
+  height: auto;
   max-width: 500px;
   /* padding: 15px; */
   border-radius: 8px;

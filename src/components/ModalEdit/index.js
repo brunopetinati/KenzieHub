@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ButtonStyled } from "./styles";
+import { ButtonStyled, FormContainer } from "./styles";
 import ModalHeader from "../ModalHeader";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -77,53 +77,85 @@ const Edit = ({ page, id }) => {
 
   return (
     <>
-      <ModalHeader>Adicionar novo</ModalHeader>
-      <form onSubmit={handleSubmit(handleSend)}>
-        <label htmlFor="title">Tecnologia</label>
-        <TextField
-          type="text"
-          name="title"
-          id="title"
-          inputRef={register}
-          // error={errors.title}
-          // helperText={errors.title?.message}
-        />
+      <ModalHeader>
+        Editar {page === "techs" ? "Tecnlogia" : "Trabalho"}{" "}
+      </ModalHeader>
+      <FormContainer onSubmit={handleSubmit(handleSend)}>
         {page === "techs" ? (
           <>
+            <span>
+              <TextField
+                id="outlined-basic"
+                type="text"
+                variant="outlined"
+                name="title"
+                fullWidth
+                label="Tecnologia"
+                inputRef={register}
+                // error={errors.title}
+                // helperText={errors.title?.message}
+              />
+            </span>
             <TextField
+              id="outlined-basic"
               name="status"
-              id="status"
               inputRef={register}
               value={value}
               type="hidden"
               error={!!errors.status}
               helperText={errors.status?.message}
             />
-            <Rating value={value} setValue={setValue} />{" "}
+
+            <span>
+              <Rating value={value} width={100} setValue={setValue} />
+            </span>
           </>
         ) : (
           <>
-            <label htmlFor="description">Descrição</label>
-            <TextField
-              name="description"
-              id="description"
-              inputRef={register}
-              multiline
-              error={!!errors.description}
-              helperText={errors.description?.message}
-            />
-            <label htmlFor="url">Url Projeto</label>
-            <TextField
-              name="deploy_url"
-              id="url"
-              inputRef={register}
-              error={!!errors.url}
-              helperText={errors.url?.message}
-            />
+            <span>
+              <TextField
+                id="outlined-basic"
+                type="text"
+                variant="outlined"
+                name="title"
+                fullWidth
+                label="Trabalho"
+                inputRef={register}
+                error={errors.title}
+                helperText={errors.title?.message}
+              />
+            </span>
+
+            <span>
+              <TextField
+                id="outlined-basic"
+                label="Url do Projeto"
+                variant="outlined"
+                name="deploy_url"
+                fullWidth
+                inputRef={register}
+                error={!!errors.url}
+                helperText={errors.url?.message}
+              />
+            </span>
+            <span>
+              <TextField
+                name="description"
+                id="outlined-basic"
+                label="Descrição"
+                variant="outlined"
+                fullWidth
+                inputRef={register}
+                multiline
+                rows={4}
+                error={!!errors.description}
+                helperText={errors.description?.message}
+              />
+            </span>
           </>
         )}
         <ButtonStyled type="submit">Atualizar</ButtonStyled>
-      </form>
+      </FormContainer>
     </>
   );
 };
