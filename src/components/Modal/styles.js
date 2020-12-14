@@ -15,7 +15,6 @@ export const PaperContainer = styled.div`
   flex-direction: column;
 
   width: 50vw;
-  height: 200px;
   max-width: 500px;
   /* padding: 15px; */
   border-radius: 8px;

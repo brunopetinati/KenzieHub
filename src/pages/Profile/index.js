@@ -1,30 +1,40 @@
 //COMPONENTS
+import Cover from "../../components/Cover";
 import ProfileHeader from "../../components/ProfileHeader/index";
 import ProfileInfo from "../../components/ProfileInfo/index";
 import ProfileGoals from "../../components/ProfileGoals/index";
 
 //STYLES
-import { PrimaryContainer, SecondaryContainer, Breadcrumb } from "./styles";
+import { PrimaryContainer, SecondaryContainer } from "./styles";
 
 //HOOKS
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Profile = () => {
-  const params = useParams();
+  const [user1, setUser] = useState({ works: [], techs: [] });
 
-  const usersData = useSelector(({ data }) => data);
+  const { id } = useParams();
 
-  const userData = usersData.find((element) => element.id === params.id);
+  const usersData = useSelector((state) => state.data);
+
+  useEffect(() => {
+    const user = usersData.find((element) => element.id === id);
+    if (user !== undefined) {
+      setUser(user);
+    }
+  }, [usersData, id]);
 
   return (
     <>
       <PrimaryContainer>
-        <Breadcrumb />
+        <Cover />
         <SecondaryContainer elevation={3}>
-          <ProfileHeader data={userData} />
-          <ProfileInfo data={userData} />
-          <ProfileGoals data={userData} />
+          <ProfileHeader data={user1} />
+          <ProfileInfo data={user1} />
+          <ProfileGoals data={user1} />
         </SecondaryContainer>
       </PrimaryContainer>
     </>

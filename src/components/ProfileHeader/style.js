@@ -14,3 +14,15 @@ export const Container = styled.div`
     font-size: 20px;
   }
 `;
+
+export const Box = styled.div`
+  display: flex;
+  font-size: 20px;
+
+  @media (max-width: 945px) {
+    font-size: 15px;
+  }
+  @media (max-width: 455px) {
+    font-size: 9.5px;
+  } ;
+`;
