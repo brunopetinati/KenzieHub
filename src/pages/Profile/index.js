@@ -14,16 +14,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Profile = () => {
-  const [user1, setUser] = useState({ works: [], techs: [] });
+  const [user, setUser] = useState({ works: [], techs: [] });
 
   const { id } = useParams();
+
+  const userLogged = JSON.parse(localStorage.getItem("userLogged"));
 
   const usersData = useSelector((state) => state.data);
 
   useEffect(() => {
-    const user = usersData.find((element) => element.id === id);
-    if (user !== undefined) {
-      setUser(user);
+    const findUser = usersData.find((element) => element.id === id);
+    if (findUser !== undefined) {
+      setUser(findUser);
     }
   }, [usersData, id]);
 
@@ -32,9 +34,9 @@ const Profile = () => {
       <PrimaryContainer>
         <Cover />
         <SecondaryContainer elevation={3}>
-          <ProfileHeader data={user1} />
-          <ProfileInfo data={user1} />
-          <ProfileGoals data={user1} />
+          <ProfileHeader data={user} />
+          <ProfileInfo data={user} />
+          {id !== userLogged.id && <ProfileGoals data={user} />}
         </SecondaryContainer>
       </PrimaryContainer>
     </>

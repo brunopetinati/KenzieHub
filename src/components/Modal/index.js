@@ -4,9 +4,9 @@ import { ModalContainer, PaperContainer } from "./styles";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
-import Upload from "../ModalPhotoUpdate";
+import ProfileUpdate from "../ProfileUpdate";
 
-const TransitionsModal = ({ children, type }) => {
+const TransitionsModal = ({ children, type, setAnchorEl }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -19,8 +19,15 @@ const TransitionsModal = ({ children, type }) => {
 
   return (
     <div>
-      {type === "upload" ? (
-        <label onClick={handleOpen}>{children}</label>
+      {type === "update" ? (
+        <label
+          onClick={() => {
+            handleOpen();
+            setAnchorEl(null);
+          }}
+        >
+          {children}
+        </label>
       ) : (
         <button type="button" onClick={handleOpen}>
           {children}
@@ -42,7 +49,7 @@ const TransitionsModal = ({ children, type }) => {
             {type === "delete" && <Delete />}
             {type === "edit" && <Edit />}
             {type === "add" && <Add />}
-            {type === "upload" && <Upload />}
+            {type === "update" && <ProfileUpdate setOpen={setOpen} />}
           </PaperContainer>
         </Fade>
       </ModalContainer>

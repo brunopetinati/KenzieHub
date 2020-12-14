@@ -1,3 +1,4 @@
+//COMPONENT
 import Rating from "@material-ui/lab/Rating";
 import { Typography, Box } from "@material-ui/core";
 

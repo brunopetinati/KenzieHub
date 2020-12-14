@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { TextField } from "@material-ui/core";
-import DefaultButton from "../../components/Button";
 
 export const Container = styled.form`
   display: flex;
@@ -8,6 +7,13 @@ export const Container = styled.form`
   width: 60%;
   padding: 10px;
   margin-top: 2vh;
+
+  button {
+    background-color: #4469e0;
+    border: none;
+    color: white;
+  }
+
   @media (max-width: 945px) {
     width: 90%;
   }
@@ -32,7 +38,8 @@ export const StyledTextField = styled(TextField)`
   }
 `;
 
-export const Button = styled(DefaultButton)`
-  background-color: #4469e0 !important;
-  color: white !important;
+export const ButtonClose = styled.button`
+  background-color: inherit;
+  border: none;
+  color: white;
 `;
