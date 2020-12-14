@@ -7,6 +7,9 @@ import { Container, Box } from "./style";
 
 const ProfileHeader = ({ data }) => {
   const token = localStorage.getItem("authToken");
+  const userLogged = localStorage.getItem("userLogged");
+
+  console.log(userLogged);
 
   const { name, avatar_url, id } = data;
   return (

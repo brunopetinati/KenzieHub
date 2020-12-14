@@ -5,43 +5,51 @@ import ModalHeader from "../../components/ModalHeader";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
 //STYLE
 import { CgClose } from "react-icons/cg";
 import { Container, StyledTextField, Button } from "./style";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+
+/* const schema = yup.object().shape({
+  name: yup.string(),
+  email: yup.string().email(),
+  course_module: yup.string(),
+  contact: yup.string(),
+  bio: yup.string(),
+  password: yup.string(),
+  old_password: yup.string(),
+  avatar_url: yup.mixed().required(),
+}); */
+
+const SignupSchema = yup.object().shape({
+  name: yup.string().required(),
+  age: yup.number().required(),
+});
 
 const ModalPhotoUpdate = () => {
   const history = useHistory();
 
   const token = localStorage.getItem("authToken");
 
-  const schema = yup.object().shape({
-    name: yup.string(),
-    email: yup.string().email(),
-    course_module: yup.string(),
-    contact: yup.string(),
-    bio: yup.string(),
-    password: yup.string(),
-    old_password: yup.string(),
-    avatar_url: yup.mixed().required(),
-  });
-
-  const { register, handleSubmit, errors } = useForm({
+  /* const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const handleUpdate = (data) => {
-    const { name } = data;
+  const handleUpdate = (data, e) => {
+    e.preventDefault();
+    console.log(data);
     axios
-      .put(
-        `https://kenziehub.me/profile`,
-        { user: name },
-        { headers: { Bearer: token } }
-      )
-      .then(history.push("/users"));
-  };
+      .put(`https://kenziehub.me/profile`, data, { headers: { Bearer: token } })
+      .then(() => history.push("/users"));
+  }; */
+
+  const { register, handleSubmit, errors } = useForm({
+    validationSchema: SignupSchema,
+  });
+  const onSubmit = (data) => console.log(data);
+  console.log(errors);
 
   return (
     <>
@@ -52,13 +60,20 @@ const ModalPhotoUpdate = () => {
         </div>
       </ModalHeader>
 
-      <Container onSubmit={() => handleSubmit(handleUpdate)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input name="name" ref={register} />
+        <input type="number" name="age" ref={register} />
+        <input type="submit" />
+      </form>
+
+      {/* <Container onSubmit={handleSubmit(handleUpdate)}>
         <StyledTextField
           name="name"
           label="Name"
           variant="outlined"
           inputRef={register}
         />
+        {errors.message && <span>{errors.message.name}</span>}
         <StyledTextField
           name="email"
           label="Email"
@@ -96,7 +111,7 @@ const ModalPhotoUpdate = () => {
           inputRef={register}
         />
         <Button type="submit">Update</Button>
-      </Container>
+      </Container> */}
     </>
   );
 };

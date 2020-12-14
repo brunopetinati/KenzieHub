@@ -10,23 +10,31 @@ import { PrimaryContainer, SecondaryContainer } from "./styles";
 //HOOKS
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Profile = () => {
+  const [user1, setUser] = useState({ works: [], techs: [] });
+
   const { id } = useParams();
 
   const usersData = useSelector((state) => state.data);
-  console.log(usersData);
 
-  const user = usersData.find((element) => element.id === id);
+  useEffect(() => {
+    const user = usersData.find((element) => element.id === id);
+    if (user !== undefined) {
+      setUser(user);
+    }
+  }, [usersData, id]);
 
   return (
     <>
       <PrimaryContainer>
         <Cover />
         <SecondaryContainer elevation={3}>
-          <ProfileHeader data={user} />
-          <ProfileInfo data={user} />
-          <ProfileGoals data={user} />
+          <ProfileHeader data={user1} />
+          <ProfileInfo data={user1} />
+          <ProfileGoals data={user1} />
         </SecondaryContainer>
       </PrimaryContainer>
     </>
