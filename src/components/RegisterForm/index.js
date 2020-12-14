@@ -4,7 +4,7 @@ import * as yup from "yup";
 import axios from "axios";
 
 //STYLES
-import { Form, ButtonRegister } from "./styles";
+import { Form, ButtonRegister, Display } from "./styles";
 import { TextField } from "@material-ui/core";
 
 const RegisterForm = () => {
@@ -52,71 +52,79 @@ const RegisterForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(handleForm)}>
-      <div>
+      <Display>
         <TextField
           label="Nome"
           name="name"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
         <span>{errors.name?.message}</span>
-      </div>
-      <div>
+      </Display>
+      <Display>
         <TextField
           label="Módulo do curso"
           name="course_module"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
         <span>{errors.course_module?.message}</span>
-      </div>
-      <div>
+      </Display>
+      <Display>
         <TextField
           label="Biografia"
           name="bio"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
         <span>{errors.bio?.message}</span>
-      </div>
-      <div>
+      </Display>
+      <Display>
         <TextField
           label="Contato"
           name="contact"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
         <span>{errors.contact?.message}</span>
-      </div>
-      <div>
+      </Display>
+      <Display>
         <TextField
           label="Email"
           name="email"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
         <span>{errors.email?.message}</span>
-      </div>
-      <div>
+      </Display>
+      <Display>
         <TextField
           label="Senha"
           name="password"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
         <span>{errors.password?.message}</span>
-      </div>
-      <div>
+      </Display>
+      <Display>
         <TextField
           label="Confirmar senha"
           name="password_confirmation"
           inputRef={register}
           variant="outlined"
+          size="small"
         />
-        <div>{errors.password_confirmation?.message}</div>
-      </div>
-      <br />
-      <ButtonRegister type="submit">submit</ButtonRegister>
+        {errors.password_confirmation?.message}
+      </Display>
+      <Display>
+        <ButtonRegister type="submit">submit</ButtonRegister>
+      </Display>
     </Form>
   );
 };

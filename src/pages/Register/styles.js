@@ -48,5 +48,5 @@ export const Title = styled.div`
   color: black;
   font-style: normal;
   margin-bottom: 3%;
-  margin-right: 50%;
+  margin-right: 95%;
 `;
