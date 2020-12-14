@@ -1,9 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const Container = styled.div `
-  width: 100vw;
-  max-width: 100%;
-  height:26vh;
+export const BreadCrumb = styled.div`
+  width: 100%;
+  height: 270px;
 
   background-color: #999;
-`
+`;
