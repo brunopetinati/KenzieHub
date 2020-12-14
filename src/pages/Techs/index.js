@@ -4,6 +4,7 @@ import { Container, Banner } from "./styles";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Modal from "../../components/Modal";
+import Cover from "../../components/Cover";
 
 const Techs = () => {
   // const { id } = useParams();
@@ -31,13 +32,15 @@ const Techs = () => {
 
   return (
     <>
-      <Banner></Banner>
+      <Cover />
       <Container>
-        <h2>Techs</h2>
+        <h1>Tecnologias</h1>
         <Table data={userTech} title="status" />
-        <Modal type="add" page="techs">
-          Add
-        </Modal>
+        <span>
+          <Modal type="add" page="techs">
+            Add
+          </Modal>
+        </span>
       </Container>
     </>
   );

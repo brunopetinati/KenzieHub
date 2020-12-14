@@ -5,17 +5,16 @@ export const Container = styled.div`
   width: 100vw;
   max-width: 100%;
 
-border: 1px solid black;
-  background-color: #0009;
+  background-color: #fff;
 
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
 
-  div {
+  span {
     width: 80vw;
-  
-    background-color: #0009;
+    display: flex;
+    justify-content: flex-end;
   }
 `;

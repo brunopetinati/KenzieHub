@@ -73,7 +73,7 @@ const Add = ({ page }) => {
   };
   return (
     <>
-      <ModalHeader>Adicionar novo</ModalHeader>
+      <ModalHeader>Adicionar Tecnologia </ModalHeader>
       <form onSubmit={handleSubmit(handleSend)}>
         <label htmlFor="title">Tecnologia</label>
         <TextField

@@ -8,13 +8,12 @@ const TableData = ({ stack, data }) => {
       {data.length >= 1 ? (
         data.map((work, index) => {
           const trueId = index + 1;
-
           return (
             <tr key={work.id}>
               <td>{trueId}</td>
               <td>{work.title}</td>
               <td>{work[stack]}</td>
-              <td id="buttons">
+              <td className="buttons">
                 <Modal type="edit" page={targetPage} id={work.id}>
                   EDIT
                 </Modal>

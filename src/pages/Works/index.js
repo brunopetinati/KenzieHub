@@ -30,12 +30,15 @@ const Works = () => {
   return (
     <>
       <Cover />
-      <Container>
-        <Table data={userWorks} title="description" />
 
-        <Modal type="add" page="works">
-          Add
-        </Modal>
+      <Container>
+        <h1>Trabalhos</h1>
+        <Table data={userWorks} title="description" />
+        <span>
+          <Modal type="add" page="works">
+            Add
+          </Modal>
+        </span>
       </Container>
     </>
   );

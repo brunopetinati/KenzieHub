@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Backdrop, Fade } from "@material-ui/core";
-import { ModalContainer, PaperContainer } from "./styles";
+import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
+import { BsPlusCircleFill } from "react-icons/bs";
+import Button from "../../components/Button";
 
-const TransitionsModal = ({ children, type, page }) => {
+const TransitionsModal = ({ children, type, page, color }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -18,9 +20,16 @@ const TransitionsModal = ({ children, type, page }) => {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        {children}
-      </button>
+      <ButtonContainer>
+        {type === "add" ? (
+          <BsPlusCircleFill onClick={handleOpen} />
+        ) : (
+          <button className={type} type="button" onClick={handleOpen}>
+            {children}
+          </button>
+        )}
+      </ButtonContainer>
+
       <ModalContainer
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
