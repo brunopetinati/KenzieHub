@@ -11,8 +11,12 @@ const ProfileGoals = ({ data }) => {
       <Title>Works</Title>
       {works.map(({ title, description }, index) => (
         <ul key={index}>
-          <h3>{title}</h3>
-          <li>{description}</li>
+          <li>
+            <h3>{title}</h3>
+          </li>
+          <li>
+            <p>{description}</p>
+          </li>
         </ul>
       ))}
       <Title>Techs</Title>

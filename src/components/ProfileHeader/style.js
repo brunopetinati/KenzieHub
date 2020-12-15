@@ -5,6 +5,9 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   font-size: 30px;
+  h1 {
+    display: flex;
+  }
 
   @media (max-width: 945px) {
     font-size: 25px;

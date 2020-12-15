@@ -16,13 +16,13 @@ const ProfileRates = ({ list }) => {
   };
   return (
     <Container>
-      {list.map(({ title, status }, index) => (
-        <ul key={index}>
-          <li>
+      <ul>
+        {list.map(({ title, status }, index) => (
+          <li key={index}>
             {title} - {rate(status)}
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </Container>
   );
 };

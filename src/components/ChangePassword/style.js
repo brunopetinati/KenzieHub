@@ -13,19 +13,18 @@ export const Btn = styled(Button)`
 `;
 
 export const Container = styled.form`
+  padding: 30px;
   display: flex;
   width: 50%;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 20px;
 
   @media (max-width: 945px) {
-    width: 90%;
+    width: 60%;
   }
 
-  @media (max-width: 455px) {
-    padding: 5px;
-    width: 100%;
+  @media (max-width: 705px) {
+    width: 80%;
   }
 `;
 

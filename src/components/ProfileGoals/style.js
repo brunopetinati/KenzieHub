@@ -32,14 +32,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  font-size: 25px;
   h3 {
     margin-bottom: 5px;
     margin-top: 0px;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
   ul {
     padding-left: 60px;
-    margin-top: 0px;
+    margin: 0;
+  }
+
+  p {
+    margin-top: 5px;
   }
 
   @media (max-width: 945px) {

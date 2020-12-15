@@ -6,16 +6,16 @@ export const Box = styled.div`
     flex-direction: column;
     display: flex;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     @media (max-width: 945px) {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
     }
 
     @media (max-width: 455px) {
-      width: 80px;
-      height: 80px;
+      width: 50px;
+      height: 50px;
     }
     margin-right: 30px;
     border-radius: 50%;

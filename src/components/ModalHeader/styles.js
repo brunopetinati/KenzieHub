@@ -17,8 +17,6 @@ export const HeaderContainer = styled.header`
     font-weight: 100;
   }
 
-  
-
   @media (max-width: 700px) {
     h2 {
       font-size: 25px;
@@ -35,8 +33,5 @@ export const HeaderContainer = styled.header`
     h2 {
       font-size: 15px;
     }
-  }
-
-
   }
 `;
