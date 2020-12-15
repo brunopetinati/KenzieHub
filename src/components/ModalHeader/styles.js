@@ -8,7 +8,6 @@ export const HeaderContainer = styled.header`
   background-color: #4469e0;
   color: #fff;
   padding: 20px;
-
   border-radius: 7px 7px 0 0;
   letter-spacing: 2px;
 
@@ -32,6 +31,17 @@ export const HeaderContainer = styled.header`
   @media (max-width: 455px) {
     h2 {
       font-size: 15px;
+    }
+  }
+
+  > svg {
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+    transition: all 0.35s;
+
+    &:hover {
+      transform: rotate(90deg);
     }
   }
 `;
