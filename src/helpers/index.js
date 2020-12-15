@@ -66,3 +66,10 @@ export const dados = [
     avatar_url: null,
   },
 ];
+
+export const verifyUser = (authenticated, verifyUserLogged) => {
+  if (authenticated && verifyUserLogged) {
+    return true;
+  }
+  return false;
+};

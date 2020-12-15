@@ -1,7 +1,12 @@
+//IMAGES
 import image from "../../assets/images/login.svg";
+
+//COMPONENTS
+import LoginComponent from "../../components/LoginForm";
+
+//STYLES
 import { Container } from "../Register/styles";
 import { BoxPrimary, BoxSecondary, Title } from "./styles";
-import LoginComponent from "../../components/LoginForm";
 
 const Login = () => {
   return (

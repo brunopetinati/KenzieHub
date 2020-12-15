@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Backdrop, Fade } from "@material-ui/core";
 import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
+import ModalChangePhoto from "../ModalChangePhoto";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
 import { BsPlusCircleFill } from "react-icons/bs";
-import Button from "../../components/Button";
+import ProfileUpdate from "../ProfileUpdate";
+import ChangePassword from "../ChangePassword";
 
-const TransitionsModal = ({ children, type, page, id }) => {
+const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -18,18 +20,73 @@ const TransitionsModal = ({ children, type, page, id }) => {
     setOpen(false);
   };
 
-  return (
-    <div>
-      <ButtonContainer>
-        {type === "add" ? (
-          <BsPlusCircleFill onClick={handleOpen} />
-        ) : (
-          <button className={type} type="button" onClick={handleOpen}>
+  const elementCaller = (type) => {
+    switch (type) {
+      case "add":
+        return (
+          <ButtonContainer>
+            <BsPlusCircleFill onClick={handleOpen} />
+          </ButtonContainer>
+        );
+      case "edit":
+        return (
+          <ButtonContainer>
+            <button className="edit" type="button" onClick={handleOpen}>
+              {children}
+            </button>
+          </ButtonContainer>
+        );
+      case "delete":
+        return (
+          <ButtonContainer>
+            <button className="delete" type="button" onClick={handleOpen}>
+              {children}
+            </button>
+          </ButtonContainer>
+        );
+      case "update":
+      case "changePassword":
+        return (
+          <label
+            onClick={() => {
+              handleOpen();
+              setAnchorEl(null);
+            }}
+          >
+            {children}
+          </label>
+        );
+      case "changePhoto":
+        return <div onClick={handleOpen}>{children}</div>;
+      default:
+        return (
+          <button type="button" onClick={handleOpen}>
             {children}
           </button>
-        )}
-      </ButtonContainer>
+        );
+    }
+  };
 
+  const componentRender = (type) => {
+    switch (type) {
+      case "delete":
+        return <Delete id={id} page={page} close={handleClose} />;
+      case "edit":
+        return <Edit id={id} page={page} close={handleClose} />;
+      case "add":
+        return <Add page={page} close={handleClose} />;
+      case "changePhoto":
+        return <ModalChangePhoto />;
+      case "update":
+        return <ProfileUpdate setOpen={setOpen} />;
+      default:
+        return <ChangePassword setOpen={setOpen} />;
+    }
+  };
+
+  return (
+    <div>
+      {elementCaller(type)}
       <ModalContainer
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -42,15 +99,7 @@ const TransitionsModal = ({ children, type, page, id }) => {
         }}
       >
         <Fade in={open}>
-          <PaperContainer>
-            {type === "delete" && (
-              <Delete id={id} page={page} close={handleClose} />
-            )}
-            {type === "edit" && (
-              <Edit id={id} page={page} close={handleClose} />
-            )}
-            {type === "add" && <Add page={page} close={handleClose} />}
-          </PaperContainer>
+          <PaperContainer>{componentRender(type)}</PaperContainer>
         </Fade>
       </ModalContainer>
     </div>

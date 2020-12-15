@@ -10,15 +10,20 @@ import FindUser from "../../components/FindUser";
 import { ContainerPrimay, ContainerSecondary } from "./styles";
 
 const Users = () => {
+  const data = useSelector(({ data }) => data);
   const user = useSelector(({ user }) => user);
 
-  return user.length === 0 ? (
+  const findUser = data.filter((item) =>
+    item.name.toLowerCase().includes(user)
+  );
+
+  return user.length === 0 || findUser.length === 0 ? (
     <ContainerPrimay>
-      <img src={backgroundUser} alt="" />
+      <img src={backgroundUser} alt="Search your favorite Developer" />
     </ContainerPrimay>
   ) : (
     <ContainerSecondary>
-      <FindUser user={user} />
+      <FindUser />
     </ContainerSecondary>
   );
 };

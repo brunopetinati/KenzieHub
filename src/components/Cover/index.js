@@ -1,7 +1,7 @@
-import { Container } from "./styles";
+import { BreadCrumb } from "./styles";
 
 const Cover = () => {
-  return <Container>{/* <img src={Breadcrumb} /> */}</Container>;
+  return <BreadCrumb />;
 };
 
 export default Cover;
