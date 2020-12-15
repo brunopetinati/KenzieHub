@@ -29,8 +29,18 @@ export const ButtonContainer = styled.div`
     color: #4469e0;
     background-color: #fff;
     border-radius: 50%;
+    font-weight: 500;
+    line-height: 1.75;
     width: 50px;
     height: 50px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    :hover {
+      color: #1c82e8;
+    }
+    :active {
+      color: #0b335c;
+    }
   }
   button {
     border: none;
@@ -40,18 +50,18 @@ export const ButtonContainer = styled.div`
     margin: 0 10px 10px 0;
 
     color: #fff;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 8px;
     font-weight: 700;
-    box-shadow: 5px 5px 5px #0009;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
   .edit {
     background-color: #feca57;
     :hover {
-      background-color: #ffca6f;
+      background-color: #e8b84f;
     }
     :active {
-      background-color: #614d21;
+      background-color: #5c491f;
       box-shadow: 0 0 0;
     }
   }
@@ -60,10 +70,10 @@ export const ButtonContainer = styled.div`
     background-color: #d63031;
 
     :hover {
-      background-color: #eb5656;
+      background-color: #e83333;
     }
     :active {
-      background-color: #890101;
+      background-color: #5c1414;
       box-shadow: 0 0 0;
     }
   }
@@ -72,6 +82,9 @@ export const ButtonContainer = styled.div`
   .delete {
     border: none;
     outline: none;
+    font-weight: 500;
+    line-height: 1.75;
+    padding: 6px 16px;
 
     width: 110px;
     margin: 0 10px 10px 0;
@@ -80,6 +93,7 @@ export const ButtonContainer = styled.div`
     border-radius: 5px;
     padding: 8px;
     font-weight: 700;
-    box-shadow: 5px 5px 5px #0009;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 `;

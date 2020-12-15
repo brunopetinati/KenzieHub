@@ -8,8 +8,7 @@ import axios from "axios";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
-const Edit = ({ page, id }) => {
-  console.log("inicio pagina", page);
+const Edit = ({ page, id, close }) => {
   const [value, setValue] = useState(1);
 
   const schema = yup.object().shape({
@@ -24,12 +23,10 @@ const Edit = ({ page, id }) => {
     resolver: yupResolver(schema),
   });
 
-  const handleSend = (data) => {
-    console.log(data);
-
+  const handleSend = async (data) => {
     const key =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc3ODg5MzcsImV4cCI6MTYwODA0ODEzNywic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.OzvYFEvabPb-eyFtFnCZToLcy1ZXJ6BoIdlHGTrUrxE";
-    const token = localStorage.getItem("authToken");
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc5ODU5MjQsImV4cCI6MTYwODI0NTEyNCwic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.tmWbGocG63S4w0D0Vf-1HapCdwCYS1nN5rb04sGx6Eo";
+    // const token = localStorage.getItem("authToken");
 
     const infoDecide = (data) => {
       let statusType = " default";
@@ -48,54 +45,34 @@ const Edit = ({ page, id }) => {
           statusType = "final";
           break;
       }
-      return page === "techs"
-        ? { title: data.title, status: statusType }
-        : data;
+      return page === "techs" ? { status: statusType } : data;
     };
 
     const addInfo = infoDecide(data);
 
-    console.log("dado add Info", addInfo);
-
     try {
-      axios.put(
-        `https://kenziehub.me/users/${page}/cf938fd7-5642-4e68-a345-2b3e1323927c`,
-        addInfo,
-        {
-          headers: {
-            Authorization: `Bearer: ${key}`,
-            "Content-type": "application/json",
-          },
-        }
-      );
+      await axios.put(`https://kenziehub.me/users/${page}/${id}`, addInfo, {
+        headers: {
+          Authorization: `Bearer: ${key}`,
+          "Content-type": "application/json",
+        },
+      });
+      await window.location.reload();
     } catch (error) {
       console.error(error);
     }
-
-    console.log(page);
+    close();
   };
 
   return (
     <>
       <ModalHeader>
-        Editar {page === "techs" ? "Tecnlogia" : "Trabalho"}{" "}
+        Editar {page === "techs" ? "Tecnlogia" : "Trabalho"}
+        <span onClick={close}>X</span>
       </ModalHeader>
       <FormContainer onSubmit={handleSubmit(handleSend)}>
         {page === "techs" ? (
           <>
-            <span>
-              <TextField
-                id="outlined-basic"
-                type="text"
-                variant="outlined"
-                name="title"
-                fullWidth
-                label="Tecnologia"
-                inputRef={register}
-                // error={errors.title}
-                // helperText={errors.title?.message}
-              />
-            </span>
             <TextField
               id="outlined-basic"
               name="status"
@@ -105,7 +82,6 @@ const Edit = ({ page, id }) => {
               error={!!errors.status}
               helperText={errors.status?.message}
             />
-
             <span>
               <Rating value={value} width={100} setValue={setValue} />
             </span>

@@ -7,5 +7,5 @@ export const Container = styled.div`
   overflow: hidden;
   background-image: url(${Breadcrumb});
   background-position: top center;
-  background-size: 1500px auto;
+  background-size: 100vw auto;
 `;

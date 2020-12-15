@@ -12,6 +12,12 @@ export const Container = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
+  h1 {
+    font-weight: 300;
+    font-size: 45px;
+    color: #444;
+  }
+
   span {
     width: 80vw;
     display: flex;

@@ -18,6 +18,7 @@ const SimpleRating = ({ value, setValue, readOnly = false }) => {
 
         <Rating
           readOnly={readOnly}
+          name="simple-controlled"
           max={3}
           size="large"
           value={value}

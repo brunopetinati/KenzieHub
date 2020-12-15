@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const TableContainer = styled.table`
   width: 80vw;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
   border-collapse: collapse;
   th,
   tr,
   td {
-    border: 1px solid #999;
+    border: 1px solid #ddd;
   }
-  #ID {
-    width: 10%;
+  th,
+  td {
+    padding: 20px;
   }
 
   #title {

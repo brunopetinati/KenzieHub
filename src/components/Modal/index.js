@@ -7,7 +7,7 @@ import Edit from "../ModalEdit";
 import { BsPlusCircleFill } from "react-icons/bs";
 import Button from "../../components/Button";
 
-const TransitionsModal = ({ children, type, page, color }) => {
+const TransitionsModal = ({ children, type, page, id }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -43,9 +43,13 @@ const TransitionsModal = ({ children, type, page, color }) => {
       >
         <Fade in={open}>
           <PaperContainer>
-            {type === "delete" && <Delete page={page} />}
-            {type === "edit" && <Edit page={page} />}
-            {type === "add" && <Add page={page} />}
+            {type === "delete" && (
+              <Delete id={id} page={page} close={handleClose} />
+            )}
+            {type === "edit" && (
+              <Edit id={id} page={page} close={handleClose} />
+            )}
+            {type === "add" && <Add page={page} close={handleClose} />}
           </PaperContainer>
         </Fade>
       </ModalContainer>
