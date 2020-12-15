@@ -16,8 +16,7 @@ export const ButtonLogin = styled(Btn)`
   font-size: 13px !important;
   border: solid 2px #4469e0 !important;
   &:hover {
-    background-color: white !important;
-    color: #4469e0 !important;
+    background-color: #3a5dce !important;
   }
 `;
 

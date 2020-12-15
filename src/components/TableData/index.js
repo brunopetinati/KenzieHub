@@ -1,21 +1,23 @@
 import Modal from "../Modal";
 
 const TableData = ({ stack, data }) => {
+  let targetPage = stack === "description" ? "works" : "techs";
+
   return (
     <>
       {data.length >= 1 ? (
-        data.map((work, index) => {
-          const trueId = index + 1;
+        data.map((work) => {
+          console.log(targetPage);
+
           return (
             <tr key={work.id}>
-              <td>{trueId}</td>
               <td>{work.title}</td>
               <td>{work[stack]}</td>
-              <td id="buttons">
-                <Modal id="edit" type="edit">
+              <td className="buttons">
+                <Modal type="edit" page={targetPage} id={work.id}>
                   EDIT
                 </Modal>
-                <Modal id="delete" type="delete">
+                <Modal type="delete" page={targetPage} id={work.id}>
                   DELETE
                 </Modal>
               </td>
@@ -32,4 +34,3 @@ const TableData = ({ stack, data }) => {
 };
 
 export default TableData;
-// {tech ? data.status : data.description}

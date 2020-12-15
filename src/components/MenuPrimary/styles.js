@@ -11,10 +11,15 @@ export const Navigate = styled(Navigation)`
   ul {
     width: 100%;
     justify-content: flex-end;
+    @media (max-width: 1115px) {
+      display: flex;
+      justify-content: center;
+    }
   }
   li a {
     position: relative;
     color: black;
+
     &:hover {
       &:after {
         width: 80%;
@@ -30,6 +35,9 @@ export const Navigate = styled(Navigation)`
       left: 50%;
       transform: translate(-50%);
       transition: all 0.3s;
+      @media (max-width: 1115px) {
+        display: none;
+      }
     }
   }
 `;
