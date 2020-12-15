@@ -1,18 +1,10 @@
 //COMPONENTS
 import ModalHeader from "../../components/ModalHeader";
 
-//STYLE
-import { CgClose } from "react-icons/cg";
-
-const ModalChangePhoto = () => {
+const ModalChangePhoto = ({ setOpen }) => {
   return (
     <>
-      <ModalHeader>
-        <div>Update Profile</div>
-        <div>
-          <CgClose />
-        </div>
-      </ModalHeader>
+      <ModalHeader title="Update Picture" setOpen={setOpen} />
       <div>
         <h1>teste</h1>
       </div>

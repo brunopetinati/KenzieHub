@@ -1,5 +1,5 @@
 const worksReducer = (state = [], action) => {
-    return state;
-}
+  return state;
+};
 
-export default worksReducer; 
+export default worksReducer;
