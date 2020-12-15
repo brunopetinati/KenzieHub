@@ -19,12 +19,14 @@ export const Title = styled.h2`
     height: 30px;
     font-size: 18.5px;
     padding: 20px;
+    margin-bottom: 30px;
   }
   @media (max-width: 455px) {
     width: 100px;
     height: 25px;
     font-size: 15px;
     padding: 15px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -36,7 +38,7 @@ export const Container = styled.div`
     margin-bottom: 5px;
     margin-top: 0px;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   ul {
     padding-left: 60px;
@@ -62,7 +64,7 @@ export const Container = styled.div`
       font-size: 10px;
     }
     h3 {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 `;
