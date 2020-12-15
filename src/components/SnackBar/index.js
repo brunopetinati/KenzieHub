@@ -6,15 +6,6 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    "& > * + *": {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
-
 const ButtonSnackbar = ({ open, severityValue, message }) => {
   const classes = useStyles();
 
@@ -23,11 +14,11 @@ const ButtonSnackbar = ({ open, severityValue, message }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <>
       <Snackbar open={open} autoHideDuration={6000}>
         {snackAlert(severityValue, message)}
       </Snackbar>
-    </div>
+    </>
   );
 };
 
