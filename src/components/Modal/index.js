@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Backdrop, Fade } from "@material-ui/core";
-import { ModalContainer, PaperContainer } from "./styles";
+import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
+import ModalChangePhoto from "../ModalChangePhoto";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
-import ModalChangePhoto from "../ModalChangePhoto";
+import { BsPlusCircleFill } from "react-icons/bs";
 import ProfileUpdate from "../ProfileUpdate";
 import ChangePassword from "../ChangePassword";
 
-const TransitionsModal = ({ children, type, setAnchorEl }) => {
+const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -21,6 +22,28 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
 
   const elementCaller = (type) => {
     switch (type) {
+      case "add":
+        return (
+          <ButtonContainer>
+            <BsPlusCircleFill onClick={handleOpen} />
+          </ButtonContainer>
+        );
+      case "edit":
+        return (
+          <ButtonContainer>
+            <button className="edit" type="button" onClick={handleOpen}>
+              {children}
+            </button>
+          </ButtonContainer>
+        );
+      case "delete":
+        return (
+          <ButtonContainer>
+            <button className="delete" type="button" onClick={handleOpen}>
+              {children}
+            </button>
+          </ButtonContainer>
+        );
       case "update":
       case "changePassword":
         return (
@@ -47,11 +70,11 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
   const componentRender = (type) => {
     switch (type) {
       case "delete":
-        return <Delete />;
+        return <Delete id={id} page={page} close={handleClose} />;
       case "edit":
-        return <Edit />;
+        return <Edit id={id} page={page} close={handleClose} />;
       case "add":
-        return <Add />;
+        return <Add page={page} close={handleClose} />;
       case "changePhoto":
         return <ModalChangePhoto setOpen={setOpen} />;
       case "update":
