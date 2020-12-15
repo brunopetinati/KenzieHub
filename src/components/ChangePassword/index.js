@@ -6,26 +6,23 @@ import Button from "../Button";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 
 //STYLE
 import { CgClose } from "react-icons/cg";
-import { Container, StyledTextField, ButtonClose } from "./style";
+import { Container, StyledTextField, ButtonClose, ErrorMessage } from "./style";
 import axios from "axios";
 
 const schema = yup.object().shape({
-  name: yup.string(),
-  email: yup.string().email(),
-  course_module: yup.string(),
-  contact: yup.string(),
-  bio: yup.string(),
-  password: yup.string(),
-  old_password: yup.string(),
+  password: yup.string().min(6, "Min 6 characters!"),
+  old_password: yup.string().required("Required!"),
 });
 
-export const ProfileUpdate = ({ setOpen }) => {
+export const ChangePassword = ({ setOpen }) => {
+  const [error, setError] = useState(false);
   const token = localStorage.getItem("authToken");
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -34,8 +31,11 @@ export const ProfileUpdate = ({ setOpen }) => {
       .put("https://kenziehub.me/profile", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(() => setOpen(false))
-      .catch((err) => console.log(err));
+      .then(() => {
+        setOpen(false);
+        setError(false);
+      })
+      .catch(() => setError("Wrong Password!"));
   };
 
   return (
@@ -48,33 +48,32 @@ export const ProfileUpdate = ({ setOpen }) => {
       </ModalHeader>
       <Container onSubmit={handleSubmit(onSubmit)}>
         <StyledTextField
-          label="Name"
+          label="Password"
           variant="outlined"
-          name="name"
+          name="password"
           inputRef={register}
         />
+        {errors.password && (
+          <ErrorMessage style={{ color: "red" }}>
+            {errors.password.message}
+          </ErrorMessage>
+        )}
         <StyledTextField
-          label="Email"
+          label="Old Password"
           variant="outlined"
-          name="email"
+          name="old_password"
           inputRef={register}
         />
-        <StyledTextField
-          label="Course Module"
-          variant="outlined"
-          name="course_module"
-          inputRef={register}
-        />
-        <StyledTextField
-          label="Bio"
-          variant="outlined"
-          name="bio"
-          inputRef={register}
-        />
+        {errors.old_password && (
+          <ErrorMessage style={{ color: "red" }}>
+            {errors.old_password.message}
+          </ErrorMessage>
+        )}
+        {error && <ErrorMessage style={{ color: "red" }}>{error}</ErrorMessage>}
         <Button type="submit">Update</Button>
       </Container>
     </>
   );
 };
 
-export default ProfileUpdate;
+export default ChangePassword;

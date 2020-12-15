@@ -61,6 +61,11 @@ const LongMenu = ({ id }) => {
             Update Profile
           </Modal>
         </MenuItem>
+        <MenuItem>
+          <Modal setAnchorEl={setAnchorEl} type="changePassword">
+            Change Password
+          </Modal>
+        </MenuItem>
       </Menu>
     </div>
   );

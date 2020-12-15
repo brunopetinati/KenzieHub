@@ -5,6 +5,7 @@ import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
 import ProfileUpdate from "../ProfileUpdate";
+import ChangePassword from "../ChangePassword";
 
 const TransitionsModal = ({ children, type, setAnchorEl }) => {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
 
   return (
     <div>
-      {type === "update" ? (
+      {type === "update" || type === "changePassword" ? (
         <label
           onClick={() => {
             handleOpen();
@@ -50,6 +51,7 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
             {type === "edit" && <Edit />}
             {type === "add" && <Add />}
             {type === "update" && <ProfileUpdate setOpen={setOpen} />}
+            {type === "changePassword" && <ChangePassword setOpen={setOpen} />}
           </PaperContainer>
         </Fade>
       </ModalContainer>
