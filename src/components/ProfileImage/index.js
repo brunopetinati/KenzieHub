@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
 import { MdAddAPhoto } from "react-icons/md";
 
+// IMAGES
+import NoAvatar from "../../assets/images/image-not-found.jpg";
+
 // HELPERS
 import { verifyUser } from "../../helpers";
 
@@ -18,7 +21,7 @@ const ProfileImage = ({ avatar, verifyUserLogged }) => {
   return (
     <Box verified={verified}>
       <Modal type="changePhoto">
-        <Avatar src={avatar} />
+        <Avatar src={avatar ? avatar : NoAvatar} />
         {verified && <MdAddAPhoto />}
       </Modal>
     </Box>

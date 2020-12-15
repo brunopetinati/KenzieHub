@@ -53,6 +53,7 @@ export const Box = styled.div`
 
 export const Avatar = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 50%;
+  object-fit: cover;
 `;

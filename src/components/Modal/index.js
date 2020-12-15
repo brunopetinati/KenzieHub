@@ -4,10 +4,11 @@ import { ModalContainer, PaperContainer } from "./styles";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
-import Upload from "../ModalPhotoUpdate";
 import ModalChangePhoto from "../ModalChangePhoto";
+import ProfileUpdate from "../ProfileUpdate";
+import ChangePassword from "../ChangePassword";
 
-const TransitionsModal = ({ children, type }) => {
+const TransitionsModal = ({ children, type, setAnchorEl }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -20,20 +21,43 @@ const TransitionsModal = ({ children, type }) => {
 
   const elementCaller = (type) => {
     switch (type) {
-      case "upload":
-        return <label onClick={handleOpen}>{children}</label>;
-      case "changePhoto":
+      case "update":
+      case "changePassword":
         return (
-          <div className="teste" onClick={handleOpen}>
+          <label
+            onClick={() => {
+              handleOpen();
+              setAnchorEl(null);
+            }}
+          >
             {children}
-          </div>
+          </label>
         );
+      case "changePhoto":
+        return <div onClick={handleOpen}>{children}</div>;
       default:
         return (
           <button type="button" onClick={handleOpen}>
             {children}
           </button>
         );
+    }
+  };
+
+  const componentRender = (type) => {
+    switch (type) {
+      case "delete":
+        return <Delete />;
+      case "edit":
+        return <Edit />;
+      case "add":
+        return <Add />;
+      case "changePhoto":
+        return <ModalChangePhoto />;
+      case "update":
+        return <ProfileUpdate setOpen={setOpen} />;
+      default:
+        return <ChangePassword setOpen={setOpen} />;
     }
   };
 
@@ -52,13 +76,7 @@ const TransitionsModal = ({ children, type }) => {
         }}
       >
         <Fade in={open}>
-          <PaperContainer>
-            {type === "delete" && <Delete />}
-            {type === "edit" && <Edit />}
-            {type === "add" && <Add />}
-            {type === "upload" && <Upload />}
-            {type === "changePhoto" && <ModalChangePhoto />}
-          </PaperContainer>
+          <PaperContainer>{componentRender(type)}</PaperContainer>
         </Fade>
       </ModalContainer>
     </div>
