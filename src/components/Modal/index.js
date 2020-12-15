@@ -4,6 +4,7 @@ import { ModalContainer, PaperContainer } from "./styles";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
 import Edit from "../ModalEdit";
+import ModalChangePhoto from "../ModalChangePhoto";
 import ProfileUpdate from "../ProfileUpdate";
 import ChangePassword from "../ChangePassword";
 
@@ -18,22 +19,51 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
     setOpen(false);
   };
 
+  const elementCaller = (type) => {
+    switch (type) {
+      case "update":
+      case "changePassword":
+        return (
+          <label
+            onClick={() => {
+              handleOpen();
+              setAnchorEl(null);
+            }}
+          >
+            {children}
+          </label>
+        );
+      case "changePhoto":
+        return <div onClick={handleOpen}>{children}</div>;
+      default:
+        return (
+          <button type="button" onClick={handleOpen}>
+            {children}
+          </button>
+        );
+    }
+  };
+
+  const componentRender = (type) => {
+    switch (type) {
+      case "delete":
+        return <Delete />;
+      case "edit":
+        return <Edit />;
+      case "add":
+        return <Add />;
+      case "changePhoto":
+        return <ModalChangePhoto setOpen={setOpen} />;
+      case "update":
+        return <ProfileUpdate setOpen={setOpen} />;
+      default:
+        return <ChangePassword setOpen={setOpen} />;
+    }
+  };
+
   return (
     <div>
-      {type === "update" || type === "changePassword" ? (
-        <label
-          onClick={() => {
-            handleOpen();
-            setAnchorEl(null);
-          }}
-        >
-          {children}
-        </label>
-      ) : (
-        <button type="button" onClick={handleOpen}>
-          {children}
-        </button>
-      )}
+      {elementCaller(type)}
       <ModalContainer
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -46,13 +76,7 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
         }}
       >
         <Fade in={open}>
-          <PaperContainer>
-            {type === "delete" && <Delete />}
-            {type === "edit" && <Edit />}
-            {type === "add" && <Add />}
-            {type === "update" && <ProfileUpdate setOpen={setOpen} />}
-            {type === "changePassword" && <ChangePassword setOpen={setOpen} />}
-          </PaperContainer>
+          <PaperContainer>{componentRender(type)}</PaperContainer>
         </Fade>
       </ModalContainer>
     </div>

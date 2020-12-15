@@ -1,23 +1,59 @@
-import Avatar from "@material-ui/core/Avatar";
-
 import styled from "styled-components";
 
-export const Image = styled(Avatar)`
-  width: 100px !important;
-  height: 100px !important;
-  margin-right: 25px;
+export const Box = styled.div`
+  > div > div {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    margin-right: 30px;
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: ${({ verified }) => (verified ? "pointer" : "default")};
 
-  @media (max-width: 945px) {
-    width: 80px !important;
-    height: 80px !important;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      &:before {
+        background-color: ${({ verified }) =>
+          verified ? "rgba(0, 0, 0, 0.6)" : "transparent"};
+      }
+
+      > svg {
+        display: ${({ verified }) => verified && "block !important"};
+      }
+    }
   }
-  @media (max-width: 455px) {
-    width: 60px !important;
-    height: 60px !important;
+
+  > div svg {
+    display: none !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #fff;
+    font-size: 2rem;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
+export const Avatar = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 `;

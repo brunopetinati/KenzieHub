@@ -80,12 +80,7 @@ export const ProfileUpdate = ({ setOpen }) => {
 
   return (
     <>
-      <ModalHeader>
-        <div>Update Profile</div>
-        <ButtonClose onClick={() => setOpen(false)}>
-          <CgClose />
-        </ButtonClose>
-      </ModalHeader>
+      <ModalHeader title="Update Profile" setOpen={setOpen} />
       <Container onSubmit={handleSubmit(onSubmit)}>
         <StyledTextField
           label="Name"
