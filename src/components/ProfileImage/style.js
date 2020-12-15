@@ -8,6 +8,15 @@ export const Box = styled.div`
     align-items: center;
     width: 120px;
     height: 120px;
+    @media (max-width: 945px) {
+      width: 100px;
+      height: 100px;
+    }
+
+    @media (max-width: 455px) {
+      width: 80px;
+      height: 80px;
+    }
     margin-right: 30px;
     border-radius: 50%;
     transition: all 0.3s;
