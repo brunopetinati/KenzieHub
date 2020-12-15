@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container, Navigation } from "../Menu/styles";
+import { Container, Navigation } from "../MenuSecondary/styles";
 
 export const ContainerPrimary = styled(Container)`
   background-color: transparent;

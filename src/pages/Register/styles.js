@@ -19,6 +19,11 @@ export const Container = styled.div`
 
     transform: rotate(26deg);
     transform-origin: 100% 0;
+    @media (max-width: 1115px) {
+      display: none;
+      width: 196px;
+      margin-right: 10%;
+    }
   }
 `;
 
@@ -28,6 +33,14 @@ export const BoxPrimary = styled.div`
   justify-content: flex-start;
   margin-bottom: 10%;
   margin-left: 5%;
+  @media (max-width: 1115px) {
+    display: none;
+  }
+  img {
+    @media (min-width: 1919px) {
+      width: 600px;
+    }
+  }
 `;
 
 export const BoxSecondary = styled(BoxPrimary)`
@@ -41,6 +54,11 @@ export const BoxSecondary = styled(BoxPrimary)`
   color: red;
   margin-top: 15%;
   margin-right: 16%;
+  @media (max-width: 1115px) {
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 30%;
+  }
 `;
 
 export const Title = styled.div`
@@ -48,5 +66,8 @@ export const Title = styled.div`
   color: black;
   font-style: normal;
   margin-bottom: 3%;
-  margin-right: 50%;
+  margin-right: 95%;
+  @media (max-width: 539px) {
+    display: none;
+  }
 `;

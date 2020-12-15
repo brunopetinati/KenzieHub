@@ -1,3 +1,4 @@
+//IMAGES
 import image from "../../assets/images/register.svg";
 
 //COMPONENTS

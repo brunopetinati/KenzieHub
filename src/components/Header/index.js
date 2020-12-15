@@ -1,7 +1,17 @@
-import Menu from "../Menu";
+import { useLocation } from "react-router-dom";
 
-const Header = ({ isAuthenticated }) => {
-  return <Menu isAuthenticated={isAuthenticated} />;
+// COMPONENTS
+import MenuPrimary from "../MenuPrimary";
+import MenuSecondary from "../MenuSecondary";
+
+const Header = () => {
+  const { pathname } = useLocation();
+
+  return pathname === "/" || pathname === "/register" ? (
+    <MenuPrimary />
+  ) : (
+    <MenuSecondary />
+  );
 };
 
 export default Header;
