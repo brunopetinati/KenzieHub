@@ -70,13 +70,13 @@ const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   const componentRender = (type) => {
     switch (type) {
       case "delete":
-        return <Delete id={id} page={page} close={handleClose} />;
+        return <Delete id={id} page={page} setOpen={setOpen} />;
       case "edit":
-        return <Edit id={id} page={page} close={handleClose} />;
+        return <Edit id={id} page={page} setOpen={setOpen} />;
       case "add":
-        return <Add page={page} close={handleClose} />;
+        return <Add page={page} setOpen={setOpen} />;
       case "changePhoto":
-        return <ModalChangePhoto />;
+        return <ModalChangePhoto setOpen={setOpen} />;
       case "update":
         return <ProfileUpdate setOpen={setOpen} />;
       default:

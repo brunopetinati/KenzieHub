@@ -4,6 +4,7 @@ export const TableContainer = styled.table`
   width: 80vw;
   border: 1px solid #ddd;
   border-collapse: collapse;
+
   th,
   tr,
   td {
@@ -12,6 +13,9 @@ export const TableContainer = styled.table`
   th,
   td {
     padding: 20px;
+  }
+  .tag {
+    display: none;
   }
 
   #title {
@@ -35,5 +39,19 @@ export const TableContainer = styled.table`
     align-items: center;
     justify-content: space-around;
     align-content: space-around;
+  }
+
+  @media only screen and (max-width: 480px) {
+    th {
+      display: none;
+    }
+    .tag {
+      display: inline;
+    }
+    td {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
   }
 `;

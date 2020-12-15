@@ -1,9 +1,12 @@
+//COMPONENT
 import Cover from "../../components/Cover";
 import Table from "../../components/Table";
-import { Container } from "./styles";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Modal from "../../components/Modal";
+
+//STYLE
+import { Container } from "./styles";
 
 const Works = () => {
   const { id } = useParams();

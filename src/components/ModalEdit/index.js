@@ -8,7 +8,7 @@ import axios from "axios";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
-const Edit = ({ page, id, close }) => {
+const Edit = ({ page, id, setOpen }) => {
   const [value, setValue] = useState(1);
 
   const schema = yup.object().shape({
@@ -36,7 +36,7 @@ const Edit = ({ page, id, close }) => {
           statusType = "Iniciante";
           break;
         case "2":
-          statusType = "Intermediario";
+          statusType = "Intermediário";
           break;
         case "3":
           statusType = "Avançado";
@@ -61,15 +61,16 @@ const Edit = ({ page, id, close }) => {
     } catch (error) {
       console.error(error);
     }
-    close();
+    setOpen(false);
   };
 
   return (
     <>
-      <ModalHeader>
-        Editar {page === "techs" ? "Tecnlogia" : "Trabalho"}
-        <span onClick={close}>X</span>
-      </ModalHeader>
+      <ModalHeader
+        title={` Editar ${page === "techs" ? "Tecnlogia" : "Trabalho"}`}
+        setOpen={setOpen}
+      />
+
       <FormContainer onSubmit={handleSubmit(handleSend)}>
         {page === "techs" ? (
           <>
