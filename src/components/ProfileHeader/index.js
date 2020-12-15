@@ -6,19 +6,17 @@ import ProfileMenu from "../../components/ProfileMenu/index";
 import { Container, Box } from "./style";
 
 const ProfileHeader = ({ data }) => {
-  const token = localStorage.getItem("authToken");
-  const userLogged = localStorage.getItem("userLogged");
-
-  console.log(userLogged);
-
   const { name, avatar_url, id } = data;
+
+  const userLogged = JSON.parse(localStorage.getItem("userLogged"));
+
   return (
     <Container>
       <Box>
         <ProfileImage avatar={avatar_url} />
         <h1>{name}</h1>
       </Box>
-      {token && <ProfileMenu id={id} />}
+      {userLogged.id === id && <ProfileMenu id={id} />}
     </Container>
   );
 };

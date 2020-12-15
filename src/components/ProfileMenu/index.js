@@ -1,17 +1,15 @@
 //COMPONENT
 import Modal from "../../components/Modal";
 
+//HOOKS
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
+
 //STYLES
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-
-//STATE
-import { useState } from "react";
-
-//HOOKS
-import { useHistory } from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 
@@ -59,7 +57,14 @@ const LongMenu = ({ id }) => {
           Update Techs
         </MenuItem>
         <MenuItem>
-          <Modal type="upload">Update Profile</Modal>
+          <Modal setAnchorEl={setAnchorEl} type="update">
+            Update Profile
+          </Modal>
+        </MenuItem>
+        <MenuItem>
+          <Modal setAnchorEl={setAnchorEl} type="changePassword">
+            Change Password
+          </Modal>
         </MenuItem>
       </Menu>
     </div>
