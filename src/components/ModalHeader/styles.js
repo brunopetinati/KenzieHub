@@ -8,7 +8,6 @@ export const HeaderContainer = styled.header`
   background-color: #4469e0;
   color: #fff;
   padding: 20px;
-
   border-radius: 7px 7px 0 0;
   letter-spacing: 2px;
 
@@ -17,26 +16,14 @@ export const HeaderContainer = styled.header`
     font-weight: 100;
   }
 
-  
+  > svg {
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+    transition: all 0.35s;
 
-  @media (max-width: 700px) {
-    h2 {
-      font-size: 25px;
+    &:hover {
+      transform: rotate(90deg);
     }
-  }
-
-  @media (max-width: 500px) {
-    h2 {
-      font-size: 20px;
-    }
-  }
-
-  @media (max-width: 455px) {
-    h2 {
-      font-size: 15px;
-    }
-  }
-
-
   }
 `;
