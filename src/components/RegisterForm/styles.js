@@ -4,10 +4,26 @@ import { Btn } from "../../components/Button/styles";
 export const Form = styled.form`
   display: flex;
   height: 100%;
-  width: 150%;
+  width: 290px;
+  margin-top: 10%;
+  margin-left: 40%;
   flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 55%;
+  justify-content: space-around;
+  @media (min-width: 1600px) {
+    margin: 0 auto;
+    margin-top: 25%;
+    margin-right: 22%;
+  }
+  @media (max-width: 1115px) {
+    margin: 0 auto;
+    height: 70%;
+    margin-top: 25%;
+  }
+
+  @media (max-width: 325px) {
+    margin-top: 40%;
+    width: 90%;
+  }
 `;
 
 export const ButtonRegister = styled(Btn)`
@@ -18,14 +34,12 @@ export const ButtonRegister = styled(Btn)`
   font-size: 13px !important;
   border: solid 2px #4469e0 !important;
   &:hover {
-    background-color: white !important;
-    color: #4469e0 !important;
+    background-color: #3a5dce !important;
   }
 `;
 
 export const Display = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-top: 7%;
+  margin-top: 3%;
 `;
