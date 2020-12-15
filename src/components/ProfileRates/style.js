@@ -5,6 +5,6 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     font-weight: bold;
-    margin-top: -15px;
+    margin-bottom: -15px;
   }
 `;
