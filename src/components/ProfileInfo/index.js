@@ -14,19 +14,19 @@ const ProfileInfo = ({ data }) => {
       <ul>
         <li>
           <VscMail />
-          {email}
+          <label>{email}</label>
         </li>
         <li>
           <FaGraduationCap />
-          {course_module}
+          <label>{course_module}</label>
         </li>
         <li>
           <CgNotes />
-          {bio}
+          <label>{bio}</label>
         </li>
         <li>
           <GrPhone />
-          {contact}
+          <label>{contact}</label>
         </li>
       </ul>
     </Container>

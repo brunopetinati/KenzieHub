@@ -1,6 +1,5 @@
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
-import Button from "../Button";
 import Snackbar from "../SnackBar";
 
 //HOOKS
@@ -10,7 +9,7 @@ import * as yup from "yup";
 import { useState } from "react";
 
 //STYLE
-import { Container, StyledTextField, ButtonClose, ErrorMessage } from "./style";
+import { Container, StyledTextField, Btn, ErrorMessage } from "./style";
 import axios from "axios";
 
 const schema = yup.object().shape({
@@ -81,7 +80,9 @@ export const ChangePassword = ({ setOpen }) => {
           </ErrorMessage>
         )}
         <Snackbar open={open} message={message} severityValue={severity} />
-        <Button type="submit">Update</Button>
+        <Btn variant="contained" type="submit">
+          Update
+        </Btn>
       </Container>
     </>
   );

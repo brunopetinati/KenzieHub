@@ -1,5 +1,15 @@
 import styled from "styled-components";
 import { TextField } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+
+export const Btn = styled(Button)`
+  color: white !important;
+  background-color: #4469e0 !important;
+
+  :hover {
+    background-color: #3a5dce !important;
+  }
+`;
 
 export const Container = styled.form`
   display: flex;
@@ -7,18 +17,6 @@ export const Container = styled.form`
   width: 60%;
   padding: 10px;
   margin-top: 2vh;
-
-  button {
-    background-color: #4469e0;
-    border: none;
-    color: white;
-  }
-
-  button:hover {
-    background-color: white;
-    border: 1px solid #4469e0;
-    color: #4469e0;
-  }
 
   @media (max-width: 945px) {
     width: 90%;
@@ -37,17 +35,17 @@ export const StyledTextField = styled(TextField)`
   }
   @media (max-width: 945px) {
     margin-bottom: 10px !important;
+    input {
+      height: 4px;
+    }
   }
 
   @media (max-width: 455px) {
     margin-bottom: 5px !important;
+    input {
+      height: 3px;
+    }
   }
-`;
-
-export const ButtonClose = styled.button`
-  background-color: inherit;
-  border: none;
-  color: white;
 `;
 
 export const ErrorMessage = styled.span`

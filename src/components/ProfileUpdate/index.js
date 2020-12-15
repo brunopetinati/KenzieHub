@@ -1,6 +1,8 @@
+// ACTIONS
+import { addData } from "../../store/Modules/Data/actions";
+
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
-import Button from "../Button";
 import Snackbar from "../SnackBar";
 
 //HOOKS
@@ -8,10 +10,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 //STYLE
-import { CgClose } from "react-icons/cg";
-import { Container, StyledTextField, ButtonClose } from "./style";
+import { Container, StyledTextField, Btn } from "./style";
 import axios from "axios";
 
 const schema = yup.object().shape({
@@ -35,6 +37,8 @@ export const ProfileUpdate = ({ setOpen }) => {
     resolver: yupResolver(schema),
   });
 
+  const dispatch = useDispatch();
+
   const checkData = (data) => {
     const { name, email, bio, contact, course_module } = data;
     if (
@@ -49,6 +53,17 @@ export const ProfileUpdate = ({ setOpen }) => {
     return false;
   };
 
+  const updateData = () => {
+    axios
+      .get("https://kenziehub.me/users?perPage=9999999")
+      .then((res) => dispatch(addData(res.data)));
+    setsnackResponse({
+      open: true,
+      severity: "success",
+      message: "Updated Successfully",
+    });
+  };
+
   const onSubmit = (data) => {
     axios
       .put("https://kenziehub.me/profile", data, {
@@ -61,11 +76,7 @@ export const ProfileUpdate = ({ setOpen }) => {
               severity: "warning",
               message: "No data has been updated",
             })
-          : setsnackResponse({
-              open: true,
-              severity: "success",
-              message: "Updated Successfully",
-            });
+          : updateData();
       })
       .catch(() => {
         setsnackResponse({
@@ -112,7 +123,9 @@ export const ProfileUpdate = ({ setOpen }) => {
           name="contact"
           inputRef={register}
         />
-        <Button type="submit">Update</Button>
+        <Btn variant="contained" type="submit">
+          Update
+        </Btn>
       </Container>
       {open && (
         <Snackbar open={open} message={message} severityValue={severity} />
