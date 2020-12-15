@@ -31,8 +31,6 @@ const CardUser = ({ findUser }) => {
 
   const chosenUser = (user) => {
     dispatch(addUser(""));
-    window.localStorage.removeItem("chosenUser");
-    window.localStorage.setItem("chosenUser", JSON.stringify(user));
     history.push(`/users/profile/${user.id}`);
   };
 

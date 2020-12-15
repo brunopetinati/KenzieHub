@@ -7,15 +7,15 @@ import { Container, Box } from "./style";
 
 const ProfileHeader = ({ data }) => {
   const token = localStorage.getItem("authToken");
-  const userLogged = localStorage.getItem("userLogged");
+  const getUserLogged = localStorage.getItem("userLogged");
 
-  console.log(userLogged);
+  const verifyUserLogged = JSON.parse(getUserLogged).id === data.id;
 
   const { name, avatar_url, id } = data;
   return (
     <Container>
       <Box>
-        <ProfileImage avatar={avatar_url} />
+        <ProfileImage avatar={avatar_url} verifyUserLogged={verifyUserLogged} />
         <h1>{name}</h1>
       </Box>
       {token && <ProfileMenu id={id} />}
