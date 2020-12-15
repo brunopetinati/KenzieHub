@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+<<<<<<< HEAD
   min-height: 65vh;
+=======
+  min-height: 70vh;
+>>>>>>> 2916a87a0910e06d8bab85e57b7bbacd24e9c654
   width: 100vw;
   max-width: 100%;
 

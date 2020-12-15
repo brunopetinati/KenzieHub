@@ -1,15 +1,19 @@
+//COMPONENT
+import { useEffect } from "react";
 import Table from "../../components/Table";
-import { Container } from "./styles";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Modal from "../../components/Modal";
 import Cover from "../../components/Cover";
 
+//STYLE
+import { Container } from "./styles";
+
 const Techs = () => {
   const { id } = useParams();
-  console.log(id);
-
   const data = useSelector((state) => state.data);
+
+  useEffect(() => {}, [data]);
 
   const getUser = data.find((user) => user.id === id);
   let userTech = getUser ? getUser.techs : [];
@@ -20,7 +24,7 @@ const Techs = () => {
       <Container>
         <h1>Tecnologias</h1>
         <Table data={userTech} title="status" />
-        <span>
+        <span className="Modal">
           <Modal type="add" page="techs">
             Add
           </Modal>

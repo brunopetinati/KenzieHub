@@ -8,7 +8,7 @@ import axios from "axios";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
-const Add = ({ page, close }) => {
+const Add = ({ page, setOpen }) => {
   const [value, setValue] = useState(1);
 
   const schema = yup.object().shape({
@@ -35,7 +35,7 @@ const Add = ({ page, close }) => {
           statusType = "Iniciante";
           break;
         case "2":
-          statusType = "Intermediario";
+          statusType = "Intermediário";
           break;
         case "3":
           statusType = "Avançado";
@@ -56,18 +56,20 @@ const Add = ({ page, close }) => {
           "Content-type": "application/json",
         },
       });
-      await window.location.reload();
+      // await window.location.reload();
     } catch (error) {
       console.error(error);
     }
-    close();
+    setOpen(false);
   };
+
   return (
     <>
-      <ModalHeader>
-        Adicionar {page === "techs" ? "Tecnlogia" : "Trabalho"}{" "}
-        <span onClick={close}>X</span>
-      </ModalHeader>
+      <ModalHeader
+        title={`Adicionar ${page === "techs" ? "Tecnlogia" : "Trabalho"}`}
+        setOpen={setOpen}
+      />
+
       <FormContainer onSubmit={handleSubmit(handleSend)}>
         {page === "techs" ? (
           <>

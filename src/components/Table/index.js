@@ -10,6 +10,7 @@ const Table = ({ title, data }) => {
       <thead>
         <tr>
           <th id="title">Title</th>
+
           <th id="Status">{capitalizeFirstLetter(title)}</th>
           <th id="actions">Actions</th>
         </tr>

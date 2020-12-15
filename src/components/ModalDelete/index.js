@@ -2,7 +2,7 @@ import { ButtonStyled } from "./styles";
 import ModalHeader from "../ModalHeader";
 import axios from "axios";
 
-const Delete = ({ page, id, close }) => {
+const Delete = ({ page, id, setOpen }) => {
   const handleDelete = async (data) => {
     const key =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc3ODg5MzcsImV4cCI6MTYwODA0ODEzNywic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.OzvYFEvabPb-eyFtFnCZToLcy1ZXJ6BoIdlHGTrUrxE";
@@ -23,9 +23,11 @@ const Delete = ({ page, id, close }) => {
 
   return (
     <>
-      <ModalHeader>
-        Remover <span onClick={close}>x</span>{" "}
-      </ModalHeader>
+      <ModalHeader
+        title={`Remover ${page === "techs" ? "Tecnologia" : "Trabalho"}`}
+        setOpen={setOpen}
+      />
+
       <h4>
         Tem certeza que deseja deletar{" "}
         {page === "techs" ? "a Tecnologia" : " o Trabalho"}?
