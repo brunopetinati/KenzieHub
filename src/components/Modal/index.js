@@ -53,7 +53,7 @@ const TransitionsModal = ({ children, type, setAnchorEl }) => {
       case "add":
         return <Add />;
       case "changePhoto":
-        return <ModalChangePhoto />;
+        return <ModalChangePhoto setOpen={setOpen} />;
       case "update":
         return <ProfileUpdate setOpen={setOpen} />;
       default:

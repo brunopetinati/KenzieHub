@@ -9,7 +9,6 @@ import * as yup from "yup";
 import { useState } from "react";
 
 //STYLE
-import { CgClose } from "react-icons/cg";
 import { Container, StyledTextField, ButtonClose, ErrorMessage } from "./style";
 import axios from "axios";
 
@@ -40,12 +39,7 @@ export const ChangePassword = ({ setOpen }) => {
 
   return (
     <>
-      <ModalHeader>
-        <div>Update Profile</div>
-        <ButtonClose onClick={() => setOpen(false)}>
-          <CgClose />
-        </ButtonClose>
-      </ModalHeader>
+      <ModalHeader title="Change Password" setOpen={setOpen} />
       <Container onSubmit={handleSubmit(onSubmit)}>
         <StyledTextField
           label="Password"
