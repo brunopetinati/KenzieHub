@@ -15,7 +15,6 @@ const Register = () => {
           <img src={image} alt="Register Now!" width="400px" />
         </BoxPrimary>
         <BoxSecondary>
-          <Title>Register</Title>
           <RegisterForm />
         </BoxSecondary>
       </Container>

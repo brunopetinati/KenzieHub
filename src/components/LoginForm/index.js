@@ -16,12 +16,12 @@ const LoginComponent = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .min(6, "É necessário ao menos 6 dígitos.")
+      .min(6, "Minimum of 6 characteres required")
       .required("Campo obrigatório"),
 
     password: yup
       .string()
-      .min(6, "É necessário ao menos 6 dígitos.")
+      .min(6, "Minimum of 6 characteres required")
       .required("Campo obrigatório"),
   });
 
@@ -61,15 +61,16 @@ const LoginComponent = () => {
       <Display>
         <TextField
           name="password"
-          label="Senha"
+          label="Password"
           variant="outlined"
           inputRef={register}
           size="small"
+          type="password"
         />
         <span>{errors.password?.message}</span>
       </Display>
       <Display>
-        <ButtonLogin type="submit">Entrar</ButtonLogin>
+        <ButtonLogin type="submit">Login</ButtonLogin>
       </Display>
     </Form>
   );

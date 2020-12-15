@@ -11,32 +11,29 @@ const RegisterForm = () => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .email("O formato deve estar em formato de Email")
-      .required("Campo obrigatório"),
+      .email("It requires email format")
+      .required("Email is required"),
     password: yup
       .string()
-      .min(6, "São necessários ao menos 6 dígitos")
-      .required("Campo obrigatório"),
+      .min(6, "Password must be at least 6 characters ")
+      .required("Required"),
     password_confirmation: yup
       .string()
-      .oneOf([yup.ref("password")], "Senhas não conferem")
-      .required("Campo obrigatório"),
+      .oneOf(
+        [yup.ref("password")],
+        "Password must be at least 6 characters and the same as above"
+      )
+      .required("Password must be the same as above"),
     name: yup
       .string()
-      .min(4, "São necessários ao menos 4 caractéres")
-      .required("Campo obrigatório"),
-    bio: yup
-      .string()
-      .min(8, "Necessário inserir pequena descrição")
-      .required("Campo obrigatório"),
-    contact: yup
-      .string()
-      .min(11, "Número de telefone inválido")
-      .required("Campo obrigatório"),
+      .min(4, "Minimum of 4 characters required")
+      .required("Required"),
+    bio: yup.string().min(8, "Bio info is required").required("Required"),
+    contact: yup.string().min(11, "Invalid phone number").required("Required"),
     course_module: yup
       .string()
-      .min(2, "Necessário inserir módulo atual do curso")
-      .required("Campo obrigatório"),
+      .min(2, "It's necessary to inform the current quarter")
+      .required("Required"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -54,7 +51,7 @@ const RegisterForm = () => {
     <Form onSubmit={handleSubmit(handleForm)}>
       <Display>
         <TextField
-          label="Nome"
+          label="Name"
           name="name"
           inputRef={register}
           variant="outlined"
@@ -64,7 +61,7 @@ const RegisterForm = () => {
       </Display>
       <Display>
         <TextField
-          label="Módulo do curso"
+          label="Course module"
           name="course_module"
           inputRef={register}
           variant="outlined"
@@ -74,7 +71,7 @@ const RegisterForm = () => {
       </Display>
       <Display>
         <TextField
-          label="Biografia"
+          label="Bio"
           name="bio"
           inputRef={register}
           variant="outlined"
@@ -84,7 +81,7 @@ const RegisterForm = () => {
       </Display>
       <Display>
         <TextField
-          label="Contato"
+          label="Contact"
           name="contact"
           inputRef={register}
           variant="outlined"
@@ -104,21 +101,23 @@ const RegisterForm = () => {
       </Display>
       <Display>
         <TextField
-          label="Senha"
+          label="Password"
           name="password"
           inputRef={register}
           variant="outlined"
           size="small"
+          type="password"
         />
         <span>{errors.password?.message}</span>
       </Display>
       <Display>
         <TextField
-          label="Confirmar senha"
+          label="Password confirmation"
           name="password_confirmation"
           inputRef={register}
           variant="outlined"
           size="small"
+          type="password"
         />
         {errors.password_confirmation?.message}
       </Display>
