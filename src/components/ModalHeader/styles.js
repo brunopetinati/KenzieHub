@@ -3,12 +3,28 @@ import styled from "styled-components";
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   background-color: #4469e0;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
 
   border-radius: 7px 7px 0 0;
-  font-weight: 700;
   letter-spacing: 2px;
+
+  h2 {
+    margin: 0;
+    font-weight: 100;
+  }
+
+  > svg {
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+    transition: all 0.35s;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
 `;
