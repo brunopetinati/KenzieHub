@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 export const Btn = styled(Button)`
   color: white !important;
   background-color: #4469e0 !important;
+  margin-bottom: 20px !important;
 
   :hover {
     background-color: #3a5dce !important;
@@ -13,10 +14,10 @@ export const Btn = styled(Button)`
 
 export const Container = styled.form`
   display: flex;
+  width: 50%;
   flex-direction: column;
-  width: 60%;
-  padding: 10px;
-  margin-top: 2vh;
+  justify-content: space-between;
+  margin-top: 20px;
 
   @media (max-width: 945px) {
     width: 90%;
@@ -50,5 +51,4 @@ export const StyledTextField = styled(TextField)`
 
 export const ErrorMessage = styled.span`
   color: red;
-  padding: 10px;
 `;
