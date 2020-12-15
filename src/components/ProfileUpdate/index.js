@@ -1,11 +1,13 @@
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
 import Button from "../Button";
+import Snackbar from "../SnackBar";
 
 //HOOKS
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 
 //STYLE
 import { CgClose } from "react-icons/cg";
@@ -14,29 +16,67 @@ import axios from "axios";
 
 const schema = yup.object().shape({
   name: yup.string(),
+  contact: yup.string(),
   email: yup.string().email(),
   course_module: yup.string(),
-  contact: yup.string(),
   bio: yup.string(),
-  password: yup.string(),
-  old_password: yup.string(),
 });
 
 export const ProfileUpdate = ({ setOpen }) => {
   const token = localStorage.getItem("authToken");
 
+  const [snackResponse, setsnackResponse] = useState({
+    open: false,
+    severity: "",
+    message: "",
+  });
+
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const checkData = (data) => {
+    const { name, email, bio, contact, course_module } = data;
+    if (
+      name === "" &&
+      email === "" &&
+      bio === "" &&
+      contact === "" &&
+      course_module === ""
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   const onSubmit = (data) => {
     axios
       .put("https://kenziehub.me/profile", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(() => setOpen(false))
-      .catch((err) => console.log(err));
+      .then(() => {
+        checkData(data)
+          ? setsnackResponse({
+              open: true,
+              severity: "warning",
+              message: "No data has been updated",
+            })
+          : setsnackResponse({
+              open: true,
+              severity: "success",
+              message: "Updated Successfully",
+            });
+      })
+      .catch(() => {
+        setsnackResponse({
+          open: true,
+          severity: "error",
+          message: "Update Error!",
+        });
+      });
   };
+
+  const { open, severity, message } = snackResponse;
 
   return (
     <>
@@ -71,8 +111,17 @@ export const ProfileUpdate = ({ setOpen }) => {
           name="bio"
           inputRef={register}
         />
+        <StyledTextField
+          label="Contact"
+          variant="outlined"
+          name="contact"
+          inputRef={register}
+        />
         <Button type="submit">Update</Button>
       </Container>
+      {open && (
+        <Snackbar open={open} message={message} severityValue={severity} />
+      )}
     </>
   );
 };

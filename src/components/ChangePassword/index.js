@@ -1,6 +1,7 @@
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
 import Button from "../Button";
+import Snackbar from "../SnackBar";
 
 //HOOKS
 import { useForm } from "react-hook-form";
@@ -19,7 +20,12 @@ const schema = yup.object().shape({
 });
 
 export const ChangePassword = ({ setOpen }) => {
-  const [error, setError] = useState(false);
+  const [snackResponse, setsnackResponse] = useState({
+    open: false,
+    severity: "",
+    message: "",
+  });
+
   const token = localStorage.getItem("authToken");
 
   const { register, handleSubmit, errors } = useForm({
@@ -32,11 +38,22 @@ export const ChangePassword = ({ setOpen }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
-        setOpen(false);
-        setError(false);
+        setsnackResponse({
+          open: true,
+          severity: "success",
+          message: "Updated Successfully",
+        });
       })
-      .catch(() => setError("Wrong Password!"));
+      .catch(() =>
+        setsnackResponse({
+          open: true,
+          severity: "error",
+          message: "Wrong Password!",
+        })
+      );
   };
+
+  const { open, severity, message } = snackResponse;
 
   return (
     <>
@@ -69,7 +86,7 @@ export const ChangePassword = ({ setOpen }) => {
             {errors.old_password.message}
           </ErrorMessage>
         )}
-        {error && <ErrorMessage style={{ color: "red" }}>{error}</ErrorMessage>}
+        <Snackbar open={open} message={message} severityValue={severity} />
         <Button type="submit">Update</Button>
       </Container>
     </>

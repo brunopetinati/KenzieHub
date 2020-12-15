@@ -14,6 +14,12 @@ export const Container = styled.form`
     color: white;
   }
 
+  button:hover {
+    background-color: white;
+    border: 1px solid #4469e0;
+    color: #4469e0;
+  }
+
   @media (max-width: 945px) {
     width: 90%;
   }
