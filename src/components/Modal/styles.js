@@ -26,7 +26,7 @@ export const PaperContainer = styled.div`
   outline: none;
 
   @media (max-width: 545px) {
-    width: 80vw;
+    width: 90%;
   }
 `;
 

@@ -3,7 +3,7 @@ import { addData } from "../../store/Modules/Data/actions";
 
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
-import Snackbar from "../SnackBar";
+import ButtonSnackbar from "../SnackBar";
 
 //HOOKS
 import { useForm } from "react-hook-form";
@@ -128,7 +128,11 @@ export const ProfileUpdate = ({ setOpen }) => {
         </Btn>
       </Container>
       {open && (
-        <Snackbar open={open} message={message} severityValue={severity} />
+        <ButtonSnackbar
+          open={open}
+          message={message}
+          severityValue={severity}
+        />
       )}
     </>
   );

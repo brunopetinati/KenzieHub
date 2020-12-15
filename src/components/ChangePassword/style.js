@@ -39,15 +39,11 @@ export const StyledTextField = styled(TextField)`
       height: 4px;
     }
   }
-
-  @media (max-width: 455px) {
-    margin-bottom: 5px !important;
-    input {
-      height: 3px;
-    }
-  }
 `;
 
 export const ErrorMessage = styled.span`
   color: red;
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 15px;
 `;

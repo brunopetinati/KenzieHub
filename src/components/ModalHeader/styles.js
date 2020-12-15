@@ -24,13 +24,7 @@ export const HeaderContainer = styled.header`
 
   @media (max-width: 500px) {
     h2 {
-      font-size: 20px;
-    }
-  }
-
-  @media (max-width: 455px) {
-    h2 {
-      font-size: 15px;
+      font-size: 22.5px;
     }
   }
 

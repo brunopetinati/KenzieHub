@@ -42,7 +42,6 @@ export const StyledTextField = styled(TextField)`
   }
 
   @media (max-width: 545px) {
-    margin-bottom: 7.5px !important;
     input {
       height: 3px;
     }
