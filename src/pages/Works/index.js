@@ -2,12 +2,21 @@ import Cover from "../../components/Cover";
 import Table from "../../components/Table";
 import { Container } from "./styles";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Modal from "../../components/Modal";
+import { addWorksThunk } from "../../store/Modules/Works/thunk";
 
 const Works = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  console.log(id);
+  dispatch(addWorksThunk(id));
+
   const data = useSelector((state) => state.data);
+  const works = useSelector((state) => state.works);
+
+  console.log(works);
+
   const getUser = data.find((user) => user.id === id);
   let userWorks = getUser ? getUser.works : [];
 

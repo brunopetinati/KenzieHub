@@ -7,8 +7,6 @@ const TableData = ({ stack, data }) => {
     <>
       {data.length >= 1 ? (
         data.map((work) => {
-          console.log(targetPage);
-
           return (
             <tr key={work.id}>
               <td>{work.title}</td>
