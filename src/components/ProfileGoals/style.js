@@ -45,11 +45,11 @@ export const Container = styled.div`
 
   p {
     margin-top: 5px;
+    font-size: 15px;
   }
 
   @media (max-width: 945px) {
     padding: 10px;
-    font-size: 20px;
     ul {
       padding-left: 40px;
     }
@@ -58,8 +58,11 @@ export const Container = styled.div`
   @media (max-width: 455px) {
     padding: 5px;
     font-size: 15px;
-    ul {
-      padding-left: 25px;
+    p {
+      font-size: 10px;
+    }
+    h3 {
+      font-size: 0.9rem;
     }
   }
 `;
