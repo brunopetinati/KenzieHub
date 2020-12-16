@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  height: 60vh;
+  min-height: 70vh;
   width: 100vw;
   max-width: 100%;
 
@@ -11,7 +11,12 @@ export const Container = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  span {
+  h1 {
+    font-weight: 300;
+    font-size: 45px;
+    color: #444;
+  }
+  .Modal {
     width: 80vw;
     display: flex;
     justify-content: flex-end;
