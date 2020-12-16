@@ -17,27 +17,29 @@ export const BoxPrimary = styled.div`
 `;
 
 export const BoxSecondary = styled(BoxPrimary)`
-  width: 15%;
+  width: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 10px;
+  font-size: 13px;
   font-style: italic;
   color: red;
-  margin-top: 6%;
   margin-right: 16%;
   @media (max-width: 1115px) {
     width: 160px;
     margin: 0 auto;
+    margin-bottom: 20%;
   }
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   font-size: 25px;
+  font-weight: normal;
   color: black;
   font-style: normal;
-  margin-top: 15%;
+  margin-top: 70%;
+  margin-bottom: 3%;
   margin-right: 110%;
   @media (max-width: 540px) {
     width: 200px;

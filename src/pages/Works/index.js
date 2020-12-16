@@ -1,18 +1,19 @@
-//COMPONENT
+import { useEffect } from "react";
 import Cover from "../../components/Cover";
 import Table from "../../components/Table";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Modal from "../../components/Modal";
-
-//STYLE
 import { Container } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import { addWorksThunk } from "../../store/Modules/Works/thunk";
 
 const Works = () => {
-  const { id } = useParams();
-  const data = useSelector((state) => state.data);
-  const getUser = data.find((user) => user.id === id);
-  let userWorks = getUser ? getUser.works : [];
+  const dispatch = useDispatch();
+
+  const works = useSelector((state) => state.works);
+
+  useEffect(() => {
+    dispatch(addWorksThunk());
+  });
 
   return (
     <>
@@ -20,7 +21,7 @@ const Works = () => {
 
       <Container>
         <h1>Works</h1>
-        <Table data={userWorks} title="description" />
+        <Table data={works} title="description" />
         <span>
           <Modal type="add" page="works">
             Add

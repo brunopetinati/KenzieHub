@@ -1,5 +1,14 @@
-const worksReducer = (state = [], action) => {
-    return state;
-}
+import { ADD_WORK } from "./actionsType";
 
-export default worksReducer; 
+const worksReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_WORK:
+      const { list } = action;
+      return list;
+
+    default:
+      return state;
+  }
+};
+
+export default worksReducer;

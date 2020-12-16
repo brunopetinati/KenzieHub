@@ -8,7 +8,6 @@ const TableData = ({ stack, data, titleCapitalized }) => {
     <>
       {data.length >= 1 ? (
         data.map(({ id, title, description, status }) => {
-          console.log("stack", stack);
           return (
             <tr key={id}>
               <td>
