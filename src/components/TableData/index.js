@@ -7,12 +7,7 @@ const TableData = ({ stack, data }) => {
   return (
     <>
       {data.length >= 1 ? (
-<<<<<<< HEAD
-        data.map((work) => {
-=======
         data.map(({ id, title, description, status }) => {
-          console.log("stack", stack);
->>>>>>> 2916a87a0910e06d8bab85e57b7bbacd24e9c654
           return (
             <tr key={id}>
               <td>

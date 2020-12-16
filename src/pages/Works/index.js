@@ -10,18 +10,18 @@ import { addWorksThunk } from "../../store/Modules/Works/thunk";
 import { Container } from "./styles";
 
 const Works = () => {
-  const { id } = useParams();
   const dispatch = useDispatch();
-  console.log(id);
+  const { id } = useParams();
+
   dispatch(addWorksThunk(id));
 
-  const data = useSelector((state) => state.data);
+  // const data = useSelector((state) => state.data);
   const works = useSelector((state) => state.works);
 
   console.log(works);
 
-  const getUser = data.find((user) => user.id === id);
-  let userWorks = getUser ? getUser.works : [];
+  // const getUser = data.find((user) => user.id === id);
+  // let userWorks = getUser ? getUser.works : [];
 
   return (
     <>
@@ -29,7 +29,7 @@ const Works = () => {
 
       <Container>
         <h1>Trabalhos</h1>
-        <Table data={userWorks} title="description" />
+        <Table data={works} title="description" />
         <span>
           <Modal type="add" page="works">
             Add

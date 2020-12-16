@@ -57,7 +57,7 @@ const Edit = ({ page, id, setOpen }) => {
           "Content-type": "application/json",
         },
       });
-      await window.location.reload();
+      // await window.location.reload();
     } catch (error) {
       console.error(error);
     }
