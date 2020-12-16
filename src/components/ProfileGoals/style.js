@@ -40,7 +40,7 @@ export const Container = styled.div`
     font-size: 1.1rem;
   }
   ul {
-    padding-left: 60px;
+    padding-left: 20px;
     margin: 0;
   }
 
@@ -51,9 +51,6 @@ export const Container = styled.div`
 
   @media (max-width: 945px) {
     padding: 10px;
-    ul {
-      padding-left: 40px;
-    }
   }
 
   @media (max-width: 455px) {
