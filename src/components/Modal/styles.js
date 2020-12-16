@@ -24,6 +24,10 @@ export const PaperContainer = styled.div`
 
   border: "2px solid #000";
   outline: none;
+
+  @media (max-width: 545px) {
+    width: 90%;
+  }
 `;
 
 export const ButtonContainer = styled.div`

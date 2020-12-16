@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 // ACTIONS
 import { addData } from "../store/Modules/Data/actions";
@@ -20,11 +21,13 @@ import Header from "../components/Header";
 const Routes = () => {
   const dispatch = useDispatch();
 
+  const data = useSelector(({ data }) => data);
+
   useEffect(() => {
     axios
       .get("https://kenziehub.me/users?perPage=9999999")
       .then((res) => dispatch(addData(res.data)));
-  }, [dispatch]);
+  }, [dispatch, data]);
 
   return (
     <>

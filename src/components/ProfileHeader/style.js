@@ -5,6 +5,9 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   font-size: 30px;
+  h1 {
+    text-transform: capitalize;
+  }
 
   @media (max-width: 945px) {
     font-size: 25px;
@@ -12,6 +15,9 @@ export const Container = styled.div`
 
   @media (max-width: 455px) {
     font-size: 20px;
+    h1 {
+      margin-left: -15px;
+    }
   }
 `;
 
