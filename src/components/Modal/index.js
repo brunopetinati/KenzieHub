@@ -1,13 +1,13 @@
 import { useState } from "react";
 // COMPONENTS
-import { Backdrop, Fade } from "@material-ui/core";
-import ModalChangePhoto from "../ModalChangePhoto";
-import Delete from "../ModalDelete";
-import Add from "../ModalAdd";
-import Edit from "../ModalEdit";
 import { BsPlusCircleFill } from "react-icons/bs";
+import Delete from "../ModalDelete";
+import Edit from "../ModalEdit";
+import Add from "../ModalAdd";
+import ModalChangePhoto from "../ModalChangePhoto";
 import ProfileUpdate from "../ProfileUpdate";
 import ChangePassword from "../ChangePassword";
+import { Backdrop, Fade } from "@material-ui/core";
 
 // STYLES
 import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";

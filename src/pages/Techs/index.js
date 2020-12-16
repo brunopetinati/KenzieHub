@@ -1,10 +1,13 @@
 import { useEffect } from "react";
-import Table from "../../components/Table";
-import Cover from "../../components/Cover";
-import Modal from "../../components/Modal";
-import { Container } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
+
+import Cover from "../../components/Cover";
+import Table from "../../components/Table";
+import Modal from "../../components/Modal";
+
 import { addTechsThunk } from "../../store/Modules/Techs/thunk";
+
+import { Container } from "./styles";
 
 const Techs = () => {
   const dispatch = useDispatch();

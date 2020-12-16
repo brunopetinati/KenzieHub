@@ -1,10 +1,13 @@
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Cover from "../../components/Cover";
 import Table from "../../components/Table";
 import Modal from "../../components/Modal";
-import { Container } from "./styles";
-import { useSelector, useDispatch } from "react-redux";
+
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
+
+import { Container } from "./styles";
 
 const Works = () => {
   const dispatch = useDispatch();

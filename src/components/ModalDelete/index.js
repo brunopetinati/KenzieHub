@@ -1,21 +1,22 @@
 import { useDispatch } from "react-redux";
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
-import { ButtonStyled } from "./styles";
+
 import ModalHeader from "../ModalHeader";
+
 import axios from "axios";
+
+import { ButtonStyled } from "./styles";
 
 const Delete = ({ page, id, setOpen }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    const key =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDgwNzkxMzgsImV4cCI6MTYwODMzODMzOCwic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.UkOuzr_QVX_fnLKLYYC8uGrSR1TVDnyukVvY0wQALQ0";
-    // const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("authToken");
     try {
       axios
         .delete(`https://kenziehub.me/users/${page}/${id}`, {
           headers: {
-            Authorization: `Bearer: ${key}`,
+            Authorization: `Bearer: ${token}`,
             "Content-type": "application/json",
           },
         })

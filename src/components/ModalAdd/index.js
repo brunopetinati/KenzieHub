@@ -1,16 +1,17 @@
-import { useDispatch } from "react-redux";
-import { addWorksThunk } from "../../store/Modules/Works/thunk";
-
 import { useState } from "react";
-import axios from "axios";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { useDispatch } from "react-redux";
+
 import ModalHeader from "../ModalHeader";
-import { useForm } from "react-hook-form";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
-// STYLES
+import { addWorksThunk } from "../../store/Modules/Works/thunk";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
+import axios from "axios";
+
 import { ButtonStyled, FormContainer } from "./styles";
 
 const Add = ({ page, setOpen }) => {
@@ -31,9 +32,7 @@ const Add = ({ page, setOpen }) => {
   });
 
   const handleSend = (data) => {
-    const key =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDgwNzkxMzgsImV4cCI6MTYwODMzODMzOCwic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.UkOuzr_QVX_fnLKLYYC8uGrSR1TVDnyukVvY0wQALQ0";
-    // const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("authToken");
 
     const infoDecide = (data) => {
       let statusType = "default";
@@ -60,7 +59,7 @@ const Add = ({ page, setOpen }) => {
       axios
         .post(`https://kenziehub.me/users/${page}`, addInfo, {
           headers: {
-            Authorization: `Bearer: ${key}`,
+            Authorization: `Bearer: ${token}`,
             "Content-type": "application/json",
           },
         })
