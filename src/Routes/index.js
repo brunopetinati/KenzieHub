@@ -21,13 +21,11 @@ const Routes = () => {
   const dispatch = useDispatch();
   const authenticated = useSelector(({ authenticated }) => authenticated);
 
-  const data = useSelector(({ data }) => data);
-
   useEffect(() => {
     axios
       .get("https://kenziehub.me/users?perPage=9999999")
       .then((res) => dispatch(addData(res.data)));
-  }, [dispatch, data]);
+  }, [dispatch]);
 
   return (
     <>
