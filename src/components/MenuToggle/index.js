@@ -8,12 +8,16 @@ import { MenuHamburguer } from "./styles";
 const MenuToggle = ({ isAuthenticated }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = !!anchorEl;
+  const history = useHistory();
 
   const handleMenu = (event) => setAnchorEl(event.currentTarget);
 
   const handleClose = () => setAnchorEl(null);
 
-  const history = useHistory();
+  const handleLogout = () => {
+    window.localStorage.clear();
+    history.push("/");
+  };
 
   return (
     <>
@@ -37,9 +41,9 @@ const MenuToggle = ({ isAuthenticated }) => {
           open={open}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
           <MenuItem onClick={() => history.push("/users")}>
-            Conheça nossos Devs
+            Find your favorite Dev
           </MenuItem>
         </Menu>
       ) : (
@@ -58,7 +62,7 @@ const MenuToggle = ({ isAuthenticated }) => {
             Register
           </MenuItem>
           <MenuItem onClick={() => history.push("/users")}>
-            Conheça nossos Devs
+            Find your favorite Dev
           </MenuItem>
         </Menu>
       )}

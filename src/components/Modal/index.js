@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import { useState } from "react";
 import { Backdrop, Fade } from "@material-ui/core";
 import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
@@ -9,8 +11,19 @@ import { BsPlusCircleFill } from "react-icons/bs";
 import ProfileUpdate from "../ProfileUpdate";
 import ChangePassword from "../ChangePassword";
 
+//HELPERS
+import { verifyUser } from "../../helpers";
+
 const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   const [open, setOpen] = useState(false);
+  const authenticated = useSelector(({ authenticated }) => authenticated);
+  const data = useSelector(({ data }) => data);
+
+  const getUserLogged = localStorage.getItem("userLogged");
+  const verifyUserLogged = data.map(
+    (user) => JSON.parse(getUserLogged).id === user.id
+  );
+  const verified = verifyUser(authenticated, verifyUserLogged);
 
   const handleOpen = () => {
     setOpen(true);
@@ -87,21 +100,23 @@ const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   return (
     <div>
       {elementCaller(type)}
-      <ModalContainer
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <PaperContainer>{componentRender(type)}</PaperContainer>
-        </Fade>
-      </ModalContainer>
+      {verified && (
+        <ModalContainer
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <PaperContainer>{componentRender(type)}</PaperContainer>
+          </Fade>
+        </ModalContainer>
+      )}
     </div>
   );
 };

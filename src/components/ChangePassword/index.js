@@ -1,6 +1,6 @@
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
-import Snackbar from "../SnackBar";
+import ButtonSnackbar from "../SnackBar";
 
 //HOOKS
 import { useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ import { Container, StyledTextField, Btn, ErrorMessage } from "./style";
 import axios from "axios";
 
 const schema = yup.object().shape({
-  password: yup.string().min(6, "Min 6 characters!"),
+  password: yup.string().min(6, "Min six characters!"),
   old_password: yup.string().required("Required!"),
 });
 
@@ -63,27 +63,19 @@ export const ChangePassword = ({ setOpen }) => {
           name="password"
           inputRef={register}
         />
-        {errors.password && (
-          <ErrorMessage style={{ color: "red" }}>
-            {errors.password.message}
-          </ErrorMessage>
-        )}
+        <ErrorMessage>{errors.password?.message}</ErrorMessage>
         <StyledTextField
           label="Old Password"
           variant="outlined"
           name="old_password"
           inputRef={register}
         />
-        {errors.old_password && (
-          <ErrorMessage style={{ color: "red" }}>
-            {errors.old_password.message}
-          </ErrorMessage>
-        )}
-        <Snackbar open={open} message={message} severityValue={severity} />
+        <ErrorMessage>{errors.old_password?.message}</ErrorMessage>
         <Btn variant="contained" type="submit">
           Update
         </Btn>
       </Container>
+      <ButtonSnackbar open={open} message={message} severityValue={severity} />
     </>
   );
 };

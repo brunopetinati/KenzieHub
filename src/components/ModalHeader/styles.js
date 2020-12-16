@@ -16,6 +16,18 @@ export const HeaderContainer = styled.header`
     font-weight: 100;
   }
 
+  @media (max-width: 700px) {
+    h2 {
+      font-size: 25px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    h2 {
+      font-size: 22.5px;
+    }
+  }
+
   > svg {
     height: 27px;
     width: 27px;

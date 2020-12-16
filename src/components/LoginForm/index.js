@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -10,19 +11,17 @@ import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
 import { TextField } from "@material-ui/core";
 import { Form, ButtonLogin, Display } from "./styles";
 
+//COMPONENTS
+import ButtonSnackBar from "../SnackBar";
+
 const LoginComponent = () => {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .min(6, "Minimum of 6 characteres required")
-      .required("Campo obrigatório"),
+    email: yup.string().min(6).required(),
 
-    password: yup
-      .string()
-      .min(6, "Minimum of 6 characteres required")
-      .required("Campo obrigatório"),
+    password: yup.string().min(6).required(),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -42,8 +41,12 @@ const LoginComponent = () => {
         );
         dispatch(setAuthenticate(true));
         history.push("/users");
+        setOpen(false);
       })
-      .catch(dispatch(setAuthenticate(false)));
+      .catch(() => {
+        dispatch(setAuthenticate(false));
+        setOpen(true);
+      });
   };
 
   return (
@@ -56,7 +59,6 @@ const LoginComponent = () => {
           inputRef={register}
           size="small"
         />
-        <span>{errors.email?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -67,11 +69,17 @@ const LoginComponent = () => {
           size="small"
           type="password"
         />
-        <span>{errors.password?.message}</span>
       </Display>
       <Display>
         <ButtonLogin type="submit">Login</ButtonLogin>
       </Display>
+      {(Object.keys(errors).length !== 0 || open) && (
+        <ButtonSnackBar
+          open={true}
+          message="Oops! Something isn't right. Try again"
+          severityValue="error"
+        />
+      )}
     </Form>
   );
 };

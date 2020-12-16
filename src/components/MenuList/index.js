@@ -1,13 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const MenuList = ({ isAuthenticated }) =>
-  isAuthenticated ? (
+const MenuList = ({ isAuthenticated }) => {
+  const history = useHistory();
+  const handleLogout = () => {
+    window.localStorage.clear();
+    history.push("/");
+  };
+
+  return isAuthenticated ? (
     <ul>
       <li>
-        <Link to="/">Logout</Link>
+        <button onClick={() => handleLogout()}>Logout</button>
       </li>
       <li>
-        <Link to="/users">Conheça nossos Devs</Link>
+        <Link to="/users">Find your favorite Dev</Link>
       </li>
     </ul>
   ) : (
@@ -19,9 +25,9 @@ const MenuList = ({ isAuthenticated }) =>
         <Link to="/register">Register</Link>
       </li>
       <li>
-        <Link to="/users">Conheça nossos Devs</Link>
+        <Link to="/users">Find your favorite Dev</Link>
       </li>
     </ul>
   );
-
+};
 export default MenuList;

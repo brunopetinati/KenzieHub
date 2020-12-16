@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
@@ -21,11 +21,13 @@ const Routes = () => {
   const dispatch = useDispatch();
   const authenticated = useSelector(({ authenticated }) => authenticated);
 
+  const data = useSelector(({ data }) => data);
+
   useEffect(() => {
     axios
       .get("https://kenziehub.me/users?perPage=9999999")
       .then((res) => dispatch(addData(res.data)));
-  }, [dispatch]);
+  }, [dispatch, data]);
 
   return (
     <>
@@ -36,11 +38,13 @@ const Routes = () => {
         <Route exact path="/users" component={Users} />
         <Route exact path="/users/profile/:id" component={Profile} />
 
-        {authenticated && (
+        {authenticated ? (
           <>
             <Route exact path="/users/techs/:id" component={Techs} />
             <Route exact path="/users/works/:id" component={Works} />
           </>
+        ) : (
+          <Redirect to="/" />
         )}
       </Switch>
     </>

@@ -12,19 +12,21 @@ export const Title = styled.h2`
   border-radius: 30px;
   color: #4469e0;
   border: 1px solid #4469e0;
-  font-size: 22.5px;
+  font-size: 1.3rem;
 
   @media (max-width: 945px) {
     width: 130px;
     height: 30px;
-    font-size: 18.5px;
+    font-size: 1.1rem;
     padding: 20px;
+    margin-bottom: 30px;
   }
   @media (max-width: 455px) {
     width: 100px;
     height: 25px;
-    font-size: 15px;
+    font-size: 1rem;
     padding: 15px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -32,19 +34,23 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  font-size: 25px;
   h3 {
-    margin-bottom: 5px;
-    margin-top: 0px;
+    margin: 0px 0px;
+    font-weight: 500;
+    font-size: 1.1rem;
   }
   ul {
     padding-left: 60px;
-    margin-top: 0px;
+    margin: 0;
+  }
+
+  p {
+    margin-top: 5px;
+    font-size: 0.9rem;
   }
 
   @media (max-width: 945px) {
     padding: 10px;
-    font-size: 20px;
     ul {
       padding-left: 40px;
     }
@@ -53,8 +59,9 @@ export const Container = styled.div`
   @media (max-width: 455px) {
     padding: 5px;
     font-size: 15px;
-    ul {
-      padding-left: 25px;
+
+    h3 {
+      font-size: 1rem;
     }
   }
 `;
