@@ -1,29 +1,26 @@
-//COMPONENT
 import { useEffect } from "react";
 import Table from "../../components/Table";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Modal from "../../components/Modal";
 import Cover from "../../components/Cover";
-
-//STYLE
+import Modal from "../../components/Modal";
 import { Container } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import { addTechsThunk } from "../../store/Modules/Techs/thunk";
 
 const Techs = () => {
-  const { id } = useParams();
-  const data = useSelector((state) => state.data);
+  const dispatch = useDispatch();
 
-  useEffect(() => {}, [data]);
+  const techs = useSelector((state) => state.techs);
 
-  const getUser = data.find((user) => user.id === id);
-  let userTech = getUser ? getUser.techs : [];
+  useEffect(() => {
+    dispatch(addTechsThunk());
+  });
 
   return (
     <>
       <Cover />
       <Container>
         <h1>Tecnologias</h1>
-        <Table data={userTech} title="status" />
+        <Table data={techs} title="status" />
         <span className="Modal">
           <Modal type="add" page="techs">
             Add

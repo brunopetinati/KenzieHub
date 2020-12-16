@@ -1,3 +1,7 @@
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addWorksThunk } from "../../store/Modules/Works/thunk";
+
 import { useState } from "react";
 import { ButtonStyled, FormContainer } from "./styles";
 import ModalHeader from "../ModalHeader";
@@ -9,6 +13,9 @@ import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
 const Add = ({ page, setOpen }) => {
+  const params = useParams();
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState(1);
 
   const schema = yup.object().shape({
@@ -23,9 +30,9 @@ const Add = ({ page, setOpen }) => {
     resolver: yupResolver(schema),
   });
 
-  const handleSend = async (data) => {
+  const handleSend = (data) => {
     const key =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc5ODU5MjQsImV4cCI6MTYwODI0NTEyNCwic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.tmWbGocG63S4w0D0Vf-1HapCdwCYS1nN5rb04sGx6Eo";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDgwNzkxMzgsImV4cCI6MTYwODMzODMzOCwic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.UkOuzr_QVX_fnLKLYYC8uGrSR1TVDnyukVvY0wQALQ0";
     // const token = localStorage.getItem("authToken");
 
     const infoDecide = (data) => {
@@ -50,13 +57,14 @@ const Add = ({ page, setOpen }) => {
     };
     const addInfo = infoDecide(data);
     try {
-      await axios.post(`https://kenziehub.me/users/${page}`, addInfo, {
-        headers: {
-          Authorization: `Bearer: ${key}`,
-          "Content-type": "application/json",
-        },
-      });
-      // await window.location.reload();
+      axios
+        .post(`https://kenziehub.me/users/${page}`, addInfo, {
+          headers: {
+            Authorization: `Bearer: ${key}`,
+            "Content-type": "application/json",
+          },
+        })
+        .then((res) => dispatch(addWorksThunk()));
     } catch (error) {
       console.error(error);
     }
