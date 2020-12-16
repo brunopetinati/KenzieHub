@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Rating from "@material-ui/lab/Rating";
 import { Typography, Box } from "@material-ui/core";
+
 import { RatingContainer } from "./styles";
 
 const SimpleRating = ({ value, setValue, readOnly = false }) => {

@@ -1,26 +1,16 @@
 //COMPONENT
-import Rating from "@material-ui/lab/Rating";
+import RatingReadOnly from "../RatingReadOnly";
 
 //STYLE
 import { Container } from "./style";
 
 const ProfileRates = ({ list }) => {
-  const rate = (element) => {
-    if (element === "Avançado") {
-      return <Rating value={3} max={3} readOnly />;
-    }
-    if (element === "Intermediário") {
-      return <Rating value={2} max={3} readOnly />;
-    }
-    return <Rating value={1} max={3} readOnly />;
-  };
   return (
     <Container>
       <ul>
         {list.map(({ title, status }, index) => (
           <li key={index}>
-            <label>{title}</label>
-            {rate(status)}
+            {title} - <RatingReadOnly element={status} />
           </li>
         ))}
       </ul>

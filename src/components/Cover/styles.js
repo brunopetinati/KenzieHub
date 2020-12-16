@@ -6,6 +6,7 @@ export const BreadCrumb = styled.div`
   height: 30vh;
   overflow: hidden;
   background-image: url(${CoverImage});
-  background-position: top center;
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: 100vw auto;
 `;

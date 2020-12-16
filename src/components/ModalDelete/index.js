@@ -1,34 +1,42 @@
-import { ButtonStyled } from "./styles";
+import { useDispatch } from "react-redux";
+import { addWorksThunk } from "../../store/Modules/Works/thunk";
+
 import ModalHeader from "../ModalHeader";
+
 import axios from "axios";
 
-const Delete = ({ page, id, close }) => {
-  const handleDelete = async (data) => {
-    const key =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc3ODg5MzcsImV4cCI6MTYwODA0ODEzNywic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.OzvYFEvabPb-eyFtFnCZToLcy1ZXJ6BoIdlHGTrUrxE";
-    // const token = localStorage.getItem("authToken");
+import { ButtonStyled } from "./styles";
 
+const Delete = ({ page, id, setOpen }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    const token = localStorage.getItem("authToken");
     try {
-      await axios.delete(`https://kenziehub.me/users/${page}/${id}`, {
-        headers: {
-          Authorization: `Bearer: ${key}`,
-          "Content-type": "application/json",
-        },
-      });
-      await window.location.reload();
+      axios
+        .delete(`https://kenziehub.me/users/${page}/${id}`, {
+          headers: {
+            Authorization: `Bearer: ${token}`,
+            "Content-type": "application/json",
+          },
+        })
+        .then((res) => dispatch(addWorksThunk()));
     } catch (error) {
       console.error(error);
     }
+    setOpen(false);
   };
 
   return (
     <>
-      <ModalHeader>
-        Remover <span onClick={close}>x</span>{" "}
-      </ModalHeader>
+      <ModalHeader
+        title={`Remove ${page === "techs" ? "Tech" : "Work"}`}
+        setOpen={setOpen}
+      />
+
       <h4>
-        Tem certeza que deseja deletar{" "}
-        {page === "techs" ? "a Tecnologia" : " o Trabalho"}?
+        Are you sure you want to delete{" "}
+        {page === "techs" ? "the Tech" : " the Work"}?
       </h4>
       <ButtonStyled onClick={handleDelete}>Delete</ButtonStyled>
     </>

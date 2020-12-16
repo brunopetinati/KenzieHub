@@ -1,14 +1,22 @@
 import { useState } from "react";
-import { ButtonStyled, FormContainer } from "./styles";
+import { useDispatch } from "react-redux";
+
 import ModalHeader from "../ModalHeader";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import axios from "axios";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
-const Add = ({ page, close }) => {
+import { addWorksThunk } from "../../store/Modules/Works/thunk";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
+import axios from "axios";
+
+import { ButtonStyled, FormContainer } from "./styles";
+
+const Add = ({ page, setOpen }) => {
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState(1);
 
   const schema = yup.object().shape({
@@ -23,10 +31,8 @@ const Add = ({ page, close }) => {
     resolver: yupResolver(schema),
   });
 
-  const handleSend = async (data) => {
-    const key =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDc5ODU5MjQsImV4cCI6MTYwODI0NTEyNCwic3ViIjoiMDQ3ZTU3MTgtMDdhZS00NWUwLWEyNTYtMWZhOWEwMTg2OTg1In0.tmWbGocG63S4w0D0Vf-1HapCdwCYS1nN5rb04sGx6Eo";
-    // const token = localStorage.getItem("authToken");
+  const handleSend = (data) => {
+    const token = localStorage.getItem("authToken");
 
     const infoDecide = (data) => {
       let statusType = "default";
@@ -35,7 +41,7 @@ const Add = ({ page, close }) => {
           statusType = "Iniciante";
           break;
         case "2":
-          statusType = "Intermediario";
+          statusType = "Intermediário";
           break;
         case "3":
           statusType = "Avançado";
@@ -50,24 +56,27 @@ const Add = ({ page, close }) => {
     };
     const addInfo = infoDecide(data);
     try {
-      await axios.post(`https://kenziehub.me/users/${page}`, addInfo, {
-        headers: {
-          Authorization: `Bearer: ${key}`,
-          "Content-type": "application/json",
-        },
-      });
-      await window.location.reload();
+      axios
+        .post(`https://kenziehub.me/users/${page}`, addInfo, {
+          headers: {
+            Authorization: `Bearer: ${token}`,
+            "Content-type": "application/json",
+          },
+        })
+        .then((res) => dispatch(addWorksThunk()));
     } catch (error) {
       console.error(error);
     }
-    close();
+    setOpen(false);
   };
+
   return (
     <>
-      <ModalHeader>
-        Adicionar {page === "techs" ? "Tecnlogia" : "Trabalho"}{" "}
-        <span onClick={close}>X</span>
-      </ModalHeader>
+      <ModalHeader
+        title={`Add ${page === "techs" ? "Tech" : "Work"}`}
+        setOpen={setOpen}
+      />
+
       <FormContainer onSubmit={handleSubmit(handleSend)}>
         {page === "techs" ? (
           <>
@@ -117,7 +126,7 @@ const Add = ({ page, close }) => {
             <span>
               <TextField
                 id="outlined-basic"
-                label="Url Projeto"
+                label="The Project Url "
                 variant="outlined"
                 name="deploy_url"
                 fullWidth
@@ -131,7 +140,7 @@ const Add = ({ page, close }) => {
                 id="outlined-basic"
                 variant="outlined"
                 name="description"
-                label="Descrição"
+                label="Description"
                 inputRef={register}
                 fullWidth
                 rows={4}
@@ -142,7 +151,7 @@ const Add = ({ page, close }) => {
             </span>
           </>
         )}
-        <ButtonStyled type="submit">Adicionar</ButtonStyled>
+        <ButtonStyled type="submit">Add</ButtonStyled>
       </FormContainer>
     </>
   );
