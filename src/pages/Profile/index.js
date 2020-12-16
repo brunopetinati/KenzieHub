@@ -18,7 +18,12 @@ const Profile = () => {
 
   const { id } = useParams();
 
-  const userLogged = JSON.parse(localStorage.getItem("userLogged"));
+  const userLogged = () => {
+    if (JSON.parse(localStorage.getItem("userLogged")) === null) {
+      return true;
+    }
+    return JSON.parse(localStorage.getItem("userLogged")).id !== id;
+  };
 
   const usersData = useSelector((state) => state.data);
 
@@ -36,7 +41,7 @@ const Profile = () => {
         <SecondaryContainer elevation={3}>
           <ProfileHeader data={user} />
           <ProfileInfo data={user} />
-          {id !== userLogged.id && <ProfileGoals data={user} />}
+          {userLogged() && <ProfileGoals data={user} />}
         </SecondaryContainer>
       </PrimaryContainer>
     </>
