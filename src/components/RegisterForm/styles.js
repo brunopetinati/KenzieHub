@@ -5,23 +5,20 @@ export const Form = styled.form`
   display: flex;
   height: 100%;
   width: 290px;
-  margin-top: 10%;
   margin-left: 40%;
   flex-direction: column;
   justify-content: space-around;
   @media (min-width: 1600px) {
     margin: 0 auto;
-    margin-top: 25%;
+
     margin-right: 22%;
   }
   @media (max-width: 1115px) {
     margin: 0 auto;
     height: 70%;
-    margin-top: 25%;
   }
 
   @media (max-width: 325px) {
-    margin-top: 40%;
     width: 90%;
   }
 `;

@@ -7,6 +7,9 @@ import axios from "axios";
 import { Form, ButtonRegister, Display } from "./styles";
 import { TextField } from "@material-ui/core";
 
+//COMPONENTS
+import ButtonSnackBar from "../SnackBar";
+
 const RegisterForm = () => {
   const schema = yup.object().shape({
     email: yup
@@ -47,6 +50,18 @@ const RegisterForm = () => {
       .then((res) => console.log(res));
   };
 
+  const showMessage = () => {
+    if (Object.keys(errors).length !== 0) {
+      return (
+        <ButtonSnackBar
+          open={true}
+          message="Please enter valid format or fulfill missing fields"
+          severityValue="error"
+        />
+      );
+    }
+  };
+
   return (
     <Form onSubmit={handleSubmit(handleForm)}>
       <Display>
@@ -57,7 +72,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.name?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -67,7 +81,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.course_module?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -77,7 +90,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.bio?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -87,7 +99,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.contact?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -97,7 +108,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.email?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -108,7 +118,6 @@ const RegisterForm = () => {
           size="small"
           type="password"
         />
-        <span>{errors.password?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -119,11 +128,11 @@ const RegisterForm = () => {
           size="small"
           type="password"
         />
-        {errors.password_confirmation?.message}
       </Display>
       <Display>
         <ButtonRegister type="submit">submit</ButtonRegister>
       </Display>
+      {showMessage()}
     </Form>
   );
 };

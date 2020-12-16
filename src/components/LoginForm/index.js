@@ -10,6 +10,9 @@ import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
 import { TextField } from "@material-ui/core";
 import { Form, ButtonLogin, Display } from "./styles";
 
+//COMPONENTS
+import ButtonSnackBar from "../SnackBar";
+
 const LoginComponent = () => {
   const dispatch = useDispatch();
 
@@ -46,6 +49,18 @@ const LoginComponent = () => {
       .catch(dispatch(setAuthenticate(false)));
   };
 
+  const showMessage = () => {
+    if (Object.keys(errors).length !== 0) {
+      return (
+        <ButtonSnackBar
+          open={true}
+          message="Please enter valid email and password"
+          severityValue="error"
+        />
+      );
+    }
+  };
+
   return (
     <Form onSubmit={handleSubmit(handleForm)}>
       <Display>
@@ -56,7 +71,6 @@ const LoginComponent = () => {
           inputRef={register}
           size="small"
         />
-        <span>{errors.email?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -67,11 +81,11 @@ const LoginComponent = () => {
           size="small"
           type="password"
         />
-        <span>{errors.password?.message}</span>
       </Display>
       <Display>
         <ButtonLogin type="submit">Login</ButtonLogin>
       </Display>
+      {showMessage()}
     </Form>
   );
 };
