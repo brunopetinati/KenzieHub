@@ -22,7 +22,7 @@ const Techs = () => {
     <>
       <Cover />
       <Container>
-        <h1>Tecnologias</h1>
+        <h1>Techs</h1>
         <Table data={userTech} title="status" />
         <span className="Modal">
           <Modal type="add" page="techs">

@@ -47,11 +47,15 @@ export const TableContainer = styled.table`
     }
     .tag {
       display: inline;
+      font-weight: 700;
     }
     td {
       display: flex;
       flex-direction: column;
       padding: 10px;
+    }
+    .buttons {
+      flex-direction: row;
     }
   }
 `;

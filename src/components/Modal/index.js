@@ -1,6 +1,6 @@
 import { useState } from "react";
+// COMPONENTS
 import { Backdrop, Fade } from "@material-ui/core";
-import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
 import ModalChangePhoto from "../ModalChangePhoto";
 import Delete from "../ModalDelete";
 import Add from "../ModalAdd";
@@ -8,6 +8,9 @@ import Edit from "../ModalEdit";
 import { BsPlusCircleFill } from "react-icons/bs";
 import ProfileUpdate from "../ProfileUpdate";
 import ChangePassword from "../ChangePassword";
+
+// STYLES
+import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
 
 const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   const [open, setOpen] = useState(false);

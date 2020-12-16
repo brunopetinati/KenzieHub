@@ -1,7 +1,7 @@
 import Modal from "../Modal";
 import RatingReadOnly from "../RatingReadOnly";
 
-const TableData = ({ stack, data }) => {
+const TableData = ({ stack, data, titleCapitalized }) => {
   let targetPage = stack === "description" ? "works" : "techs";
 
   return (
@@ -12,11 +12,11 @@ const TableData = ({ stack, data }) => {
           return (
             <tr key={id}>
               <td>
-                <span className="tag">Titutlo: </span>
+                <span className="tag">Title: </span>
                 {title}
               </td>
               <td>
-                <span className="tag">Descrição</span>
+                <span className="tag">{titleCapitalized}</span>
                 {stack === "status" ? (
                   <RatingReadOnly element={status} />
                 ) : (

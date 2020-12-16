@@ -1,6 +1,9 @@
-import { ButtonStyled } from "./styles";
+// COMPONENTS
 import ModalHeader from "../ModalHeader";
 import axios from "axios";
+
+// STYLES
+import { ButtonStyled } from "./styles";
 
 const Delete = ({ page, id, setOpen }) => {
   const handleDelete = async (data) => {
@@ -24,13 +27,13 @@ const Delete = ({ page, id, setOpen }) => {
   return (
     <>
       <ModalHeader
-        title={`Remover ${page === "techs" ? "Tecnologia" : "Trabalho"}`}
+        title={`Remove ${page === "techs" ? "Tech" : "Work"}`}
         setOpen={setOpen}
       />
 
       <h4>
-        Tem certeza que deseja deletar{" "}
-        {page === "techs" ? "a Tecnologia" : " o Trabalho"}?
+        Are you sure you want to delete{" "}
+        {page === "techs" ? "the Tech" : " the Work"}?
       </h4>
       <ButtonStyled onClick={handleDelete}>Delete</ButtonStyled>
     </>

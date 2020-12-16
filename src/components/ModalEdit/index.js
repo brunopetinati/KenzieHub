@@ -1,5 +1,5 @@
+// COMPONENTS
 import { useState } from "react";
-import { ButtonStyled, FormContainer } from "./styles";
 import ModalHeader from "../ModalHeader";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
+// STYLES
+import { ButtonStyled, FormContainer } from "./styles";
 
 const Edit = ({ page, id, setOpen }) => {
   const [value, setValue] = useState(1);
@@ -67,7 +69,7 @@ const Edit = ({ page, id, setOpen }) => {
   return (
     <>
       <ModalHeader
-        title={` Editar ${page === "techs" ? "Tecnlogia" : "Trabalho"}`}
+        title={` Edit ${page === "techs" ? "Tech" : "work"}`}
         setOpen={setOpen}
       />
 
@@ -96,7 +98,7 @@ const Edit = ({ page, id, setOpen }) => {
                 variant="outlined"
                 name="title"
                 fullWidth
-                label="Trabalho"
+                label="Work"
                 inputRef={register}
                 error={errors.title}
                 helperText={errors.title?.message}
@@ -106,7 +108,7 @@ const Edit = ({ page, id, setOpen }) => {
             <span>
               <TextField
                 id="outlined-basic"
-                label="Url do Projeto"
+                label=" The Project Url "
                 variant="outlined"
                 name="deploy_url"
                 fullWidth
@@ -119,7 +121,7 @@ const Edit = ({ page, id, setOpen }) => {
               <TextField
                 name="description"
                 id="outlined-basic"
-                label="Descrição"
+                label="Description"
                 variant="outlined"
                 fullWidth
                 inputRef={register}
@@ -131,7 +133,7 @@ const Edit = ({ page, id, setOpen }) => {
             </span>
           </>
         )}
-        <ButtonStyled type="submit">Atualizar</ButtonStyled>
+        <ButtonStyled type="submit">Update</ButtonStyled>
       </FormContainer>
     </>
   );

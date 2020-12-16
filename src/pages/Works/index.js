@@ -19,7 +19,7 @@ const Works = () => {
       <Cover />
 
       <Container>
-        <h1>Trabalhos</h1>
+        <h1>Works</h1>
         <Table data={userWorks} title="description" />
         <span>
           <Modal type="add" page="works">

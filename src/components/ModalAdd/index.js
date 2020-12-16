@@ -1,12 +1,15 @@
+// COMPONENTS
 import { useState } from "react";
-import { ButtonStyled, FormContainer } from "./styles";
-import ModalHeader from "../ModalHeader";
+import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import ModalHeader from "../ModalHeader";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
+
+// STYLES
+import { ButtonStyled, FormContainer } from "./styles";
 
 const Add = ({ page, setOpen }) => {
   const [value, setValue] = useState(1);
@@ -66,7 +69,7 @@ const Add = ({ page, setOpen }) => {
   return (
     <>
       <ModalHeader
-        title={`Adicionar ${page === "techs" ? "Tecnlogia" : "Trabalho"}`}
+        title={`Add ${page === "techs" ? "Tech" : "Work"}`}
         setOpen={setOpen}
       />
 
@@ -119,7 +122,7 @@ const Add = ({ page, setOpen }) => {
             <span>
               <TextField
                 id="outlined-basic"
-                label="Url Projeto"
+                label="The Project Url "
                 variant="outlined"
                 name="deploy_url"
                 fullWidth
@@ -133,7 +136,7 @@ const Add = ({ page, setOpen }) => {
                 id="outlined-basic"
                 variant="outlined"
                 name="description"
-                label="Descrição"
+                label="Description"
                 inputRef={register}
                 fullWidth
                 rows={4}
@@ -144,7 +147,7 @@ const Add = ({ page, setOpen }) => {
             </span>
           </>
         )}
-        <ButtonStyled type="submit">Adicionar</ButtonStyled>
+        <ButtonStyled type="submit">Add</ButtonStyled>
       </FormContainer>
     </>
   );

@@ -24,12 +24,17 @@ export const PaperContainer = styled.div`
 
   border: "2px solid #000";
   outline: none;
+  @media only screen and (max-width: 480px) {
+    width: 95vw;
+    border-radius: none;
+  }
 `;
 
 export const ButtonContainer = styled.div`
   svg {
     color: #4469e0;
     background-color: #fff;
+    margin-top: 10px;
     border-radius: 50%;
     font-weight: 500;
     line-height: 1.75;
@@ -97,5 +102,11 @@ export const ButtonContainer = styled.div`
     font-weight: 700;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
       0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+  @media only screen and (max-width: 480px) {
+    .edit,
+    .delete {
+      width: 90px;
+    }
   }
 `;
