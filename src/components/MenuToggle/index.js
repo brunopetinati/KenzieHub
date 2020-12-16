@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+// ACTIONS
+import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
 
 // STYLES
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
@@ -9,6 +13,7 @@ const MenuToggle = ({ isAuthenticated }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = !!anchorEl;
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleMenu = (event) => setAnchorEl(event.currentTarget);
 
@@ -16,6 +21,7 @@ const MenuToggle = ({ isAuthenticated }) => {
 
   const handleLogout = () => {
     window.localStorage.clear();
+    dispatch(setAuthenticate(false));
     history.push("/");
   };
 

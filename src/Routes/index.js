@@ -5,6 +5,7 @@ import axios from "axios";
 
 // ACTIONS
 import { addData } from "../store/Modules/Data/actions";
+import { setAuthenticate } from "../store/Modules/Authenticated/actions";
 
 // PAGES
 import Login from "../pages/Login";
@@ -26,6 +27,11 @@ const Routes = () => {
       .get("https://kenziehub.me/users?perPage=9999999")
       .then((res) => dispatch(addData(res.data)));
   }, [dispatch]);
+
+  useEffect(() => {
+    const token = window.localStorage.getItem("authToken");
+    token !== null && !authenticated && dispatch(setAuthenticate(true));
+  }, [authenticated, dispatch]);
 
   return (
     <>
