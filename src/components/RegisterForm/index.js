@@ -12,31 +12,16 @@ import ButtonSnackBar from "../SnackBar";
 
 const RegisterForm = () => {
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email("It requires email format")
-      .required("Email is required"),
-    password: yup
-      .string()
-      .min(6, "Password must be at least 6 characters ")
-      .required("Required"),
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required(),
     password_confirmation: yup
       .string()
-      .oneOf(
-        [yup.ref("password")],
-        "Password must be at least 6 characters and the same as above"
-      )
-      .required("Password must be the same as above"),
-    name: yup
-      .string()
-      .min(4, "Minimum of 4 characters required")
-      .required("Required"),
-    bio: yup.string().min(8, "Bio info is required").required("Required"),
-    contact: yup.string().min(11, "Invalid phone number").required("Required"),
-    course_module: yup
-      .string()
-      .min(2, "It's necessary to inform the current quarter")
-      .required("Required"),
+      .oneOf([yup.ref("password")])
+      .required(),
+    name: yup.string().min(4).required(),
+    bio: yup.string().min(8).required(),
+    contact: yup.string().min(11).required(),
+    course_module: yup.string().min(2).required(),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -55,7 +40,7 @@ const RegisterForm = () => {
       return (
         <ButtonSnackBar
           open={true}
-          message="Please enter valid format or fulfill missing fields"
+          message="Oops! Something isn't right. Try again"
           severityValue="error"
         />
       );

@@ -17,15 +17,9 @@ const LoginComponent = () => {
   const dispatch = useDispatch();
 
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .min(6, "Minimum of 6 characteres required")
-      .required("Campo obrigatório"),
+    email: yup.string().min(6).required(),
 
-    password: yup
-      .string()
-      .min(6, "Minimum of 6 characteres required")
-      .required("Campo obrigatório"),
+    password: yup.string().min(6).required(),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -54,7 +48,7 @@ const LoginComponent = () => {
       return (
         <ButtonSnackBar
           open={true}
-          message="Please enter valid email and password"
+          message="Oops! Something isn't right. Try again"
           severityValue="error"
         />
       );
