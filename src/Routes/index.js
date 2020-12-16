@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 // ACTIONS
@@ -19,6 +19,7 @@ import Header from "../components/Header";
 
 const Routes = () => {
   const dispatch = useDispatch();
+  const authenticated = useSelector(({ authenticated }) => authenticated);
 
   useEffect(() => {
     axios
@@ -33,11 +34,14 @@ const Routes = () => {
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/users" component={Users} />
-
-        {/* LOGGED */}
         <Route exact path="/users/profile/:id" component={Profile} />
-        <Route exact path="/users/techs/:id" component={Techs} />
-        <Route exact path="/users/works/:id" component={Works} />
+
+        {authenticated && (
+          <>
+            <Route exact path="/users/techs/:id" component={Techs} />
+            <Route exact path="/users/works/:id" component={Works} />
+          </>
+        )}
       </Switch>
     </>
   );
