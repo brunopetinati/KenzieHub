@@ -6,7 +6,7 @@ export const Container = styled.div`
   overflow: hidden;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   &:after {
     content: "";
     position: absolute;
@@ -44,30 +44,30 @@ export const BoxPrimary = styled.div`
 `;
 
 export const BoxSecondary = styled(BoxPrimary)`
-  width: 15%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 10px;
+  justify-content: flex-start;
+  font-size: 13px;
   font-style: italic;
+  margin-top: 5%;
   color: red;
-  margin-top: 15%;
-  margin-right: 16%;
   @media (max-width: 1115px) {
-    width: 150px;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 30%;
   }
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   font-size: 25px;
+  font-weight: normal;
   color: black;
   font-style: normal;
+  margin-top: 70%;
   margin-bottom: 3%;
-  margin-right: 95%;
-  @media (max-width: 539px) {
-    display: none;
+  margin-right: 110%;
+  @media (max-width: 540px) {
+    width: 200px;
+    margin-right: 10%;
   }
 `;

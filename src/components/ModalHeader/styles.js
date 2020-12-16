@@ -8,7 +8,6 @@ export const HeaderContainer = styled.header`
   background-color: #4469e0;
   color: #fff;
   padding: 20px;
-
   border-radius: 7px 7px 0 0;
   letter-spacing: 2px;
 
