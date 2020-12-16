@@ -23,6 +23,10 @@ export const Container = styled.div`
 
   @media (max-width: 455px) {
     padding: 5px;
-    font-size: 10px;
+    font-size: 0.9rem;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
   }
 `;

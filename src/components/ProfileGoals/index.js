@@ -13,8 +13,6 @@ const ProfileGoals = ({ data }) => {
         <ul key={index}>
           <li>
             <h3>{title}</h3>
-          </li>
-          <li>
             <p>{description}</p>
           </li>
         </ul>
