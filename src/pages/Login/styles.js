@@ -22,9 +22,6 @@ export const BoxSecondary = styled(BoxPrimary)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 13px;
-  font-style: italic;
-  color: red;
   margin-right: 16%;
   @media (max-width: 1115px) {
     width: 160px;
@@ -43,6 +40,6 @@ export const Title = styled.h1`
   margin-right: 110%;
   @media (max-width: 540px) {
     width: 200px;
-    margin-right: 10%;
+    margin-right: 20%;
   }
 `;

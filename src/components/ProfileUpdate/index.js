@@ -1,16 +1,12 @@
-// ACTIONS
-import { addData } from "../../store/Modules/Data/actions";
-
 //COMPONENTS
 import ModalHeader from "../ModalHeader";
-import Snackbar from "../SnackBar";
+import ButtonSnackbar from "../SnackBar";
 
 //HOOKS
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 //STYLE
 import { Container, StyledTextField, Btn } from "./style";
@@ -37,8 +33,6 @@ export const ProfileUpdate = ({ setOpen }) => {
     resolver: yupResolver(schema),
   });
 
-  const dispatch = useDispatch();
-
   const checkData = (data) => {
     const { name, email, bio, contact, course_module } = data;
     if (
@@ -53,17 +47,6 @@ export const ProfileUpdate = ({ setOpen }) => {
     return false;
   };
 
-  const updateData = () => {
-    axios
-      .get("https://kenziehub.me/users?perPage=9999999")
-      .then((res) => dispatch(addData(res.data)));
-    setsnackResponse({
-      open: true,
-      severity: "success",
-      message: "Updated Successfully",
-    });
-  };
-
   const onSubmit = (data) => {
     axios
       .put("https://kenziehub.me/profile", data, {
@@ -76,7 +59,11 @@ export const ProfileUpdate = ({ setOpen }) => {
               severity: "warning",
               message: "No data has been updated",
             })
-          : updateData();
+          : setsnackResponse({
+              open: true,
+              severity: "success",
+              message: "Updated Successfully",
+            });
       })
       .catch(() => {
         setsnackResponse({
@@ -128,7 +115,11 @@ export const ProfileUpdate = ({ setOpen }) => {
         </Btn>
       </Container>
       {open && (
-        <Snackbar open={open} message={message} severityValue={severity} />
+        <ButtonSnackbar
+          open={open}
+          message={message}
+          severityValue={severity}
+        />
       )}
     </>
   );

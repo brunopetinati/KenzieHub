@@ -10,19 +10,16 @@ import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
 import { TextField } from "@material-ui/core";
 import { Form, ButtonLogin, Display } from "./styles";
 
+//COMPONENTS
+import ButtonSnackBar from "../SnackBar";
+
 const LoginComponent = () => {
   const dispatch = useDispatch();
 
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .min(6, "Minimum of 6 characteres required")
-      .required("Campo obrigatório"),
+    email: yup.string().min(6).required(),
 
-    password: yup
-      .string()
-      .min(6, "Minimum of 6 characteres required")
-      .required("Campo obrigatório"),
+    password: yup.string().min(6).required(),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -46,6 +43,18 @@ const LoginComponent = () => {
       .catch(dispatch(setAuthenticate(false)));
   };
 
+  const showMessage = () => {
+    if (Object.keys(errors).length !== 0) {
+      return (
+        <ButtonSnackBar
+          open={true}
+          message="Oops! Something isn't right. Try again"
+          severityValue="error"
+        />
+      );
+    }
+  };
+
   return (
     <Form onSubmit={handleSubmit(handleForm)}>
       <Display>
@@ -56,7 +65,6 @@ const LoginComponent = () => {
           inputRef={register}
           size="small"
         />
-        <span>{errors.email?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -67,11 +75,11 @@ const LoginComponent = () => {
           size="small"
           type="password"
         />
-        <span>{errors.password?.message}</span>
       </Display>
       <Display>
         <ButtonLogin type="submit">Login</ButtonLogin>
       </Display>
+      {showMessage()}
     </Form>
   );
 };
