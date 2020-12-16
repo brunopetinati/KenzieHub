@@ -7,33 +7,21 @@ import axios from "axios";
 import { Form, ButtonRegister, Display } from "./styles";
 import { TextField } from "@material-ui/core";
 
+//COMPONENTS
+import ButtonSnackBar from "../SnackBar";
+
 const RegisterForm = () => {
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email("It requires email format")
-      .required("Email is required"),
-    password: yup
-      .string()
-      .min(6, "Password must be at least 6 characters ")
-      .required("Required"),
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required(),
     password_confirmation: yup
       .string()
-      .oneOf(
-        [yup.ref("password")],
-        "Password must be at least 6 characters and the same as above"
-      )
-      .required("Password must be the same as above"),
-    name: yup
-      .string()
-      .min(4, "Minimum of 4 characters required")
-      .required("Required"),
-    bio: yup.string().min(8, "Bio info is required").required("Required"),
-    contact: yup.string().min(11, "Invalid phone number").required("Required"),
-    course_module: yup
-      .string()
-      .min(2, "It's necessary to inform the current quarter")
-      .required("Required"),
+      .oneOf([yup.ref("password")])
+      .required(),
+    name: yup.string().min(4).required(),
+    bio: yup.string().min(8).required(),
+    contact: yup.string().min(11).required(),
+    course_module: yup.string().min(2).required(),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -47,6 +35,18 @@ const RegisterForm = () => {
       .then((res) => console.log(res));
   };
 
+  const showMessage = () => {
+    if (Object.keys(errors).length !== 0) {
+      return (
+        <ButtonSnackBar
+          open={true}
+          message="Oops! Something isn't right. Try again"
+          severityValue="error"
+        />
+      );
+    }
+  };
+
   return (
     <Form onSubmit={handleSubmit(handleForm)}>
       <Display>
@@ -57,7 +57,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.name?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -67,7 +66,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.course_module?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -77,7 +75,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.bio?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -87,7 +84,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.contact?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -97,7 +93,6 @@ const RegisterForm = () => {
           variant="outlined"
           size="small"
         />
-        <span>{errors.email?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -108,7 +103,6 @@ const RegisterForm = () => {
           size="small"
           type="password"
         />
-        <span>{errors.password?.message}</span>
       </Display>
       <Display>
         <TextField
@@ -119,11 +113,11 @@ const RegisterForm = () => {
           size="small"
           type="password"
         />
-        {errors.password_confirmation?.message}
       </Display>
       <Display>
         <ButtonRegister type="submit">submit</ButtonRegister>
       </Display>
+      {showMessage()}
     </Form>
   );
 };
