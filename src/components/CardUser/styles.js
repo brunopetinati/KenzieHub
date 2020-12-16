@@ -79,6 +79,7 @@ export const CardImage = styled.img`
   height: 250px;
   width: 100%;
   object-fit: cover;
+  object-position: center top;
 
   @media (max-width: 1500px) {
     height: 220px;

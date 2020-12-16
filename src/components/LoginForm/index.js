@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -14,6 +15,7 @@ import { Form, ButtonLogin, Display } from "./styles";
 import ButtonSnackBar from "../SnackBar";
 
 const LoginComponent = () => {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const schema = yup.object().shape({
@@ -39,20 +41,12 @@ const LoginComponent = () => {
         );
         dispatch(setAuthenticate(true));
         history.push("/users");
+        setOpen(false);
       })
-      .catch(dispatch(setAuthenticate(false)));
-  };
-
-  const showMessage = () => {
-    if (Object.keys(errors).length !== 0) {
-      return (
-        <ButtonSnackBar
-          open={true}
-          message="Oops! Something isn't right. Try again"
-          severityValue="error"
-        />
-      );
-    }
+      .catch(() => {
+        dispatch(setAuthenticate(false));
+        setOpen(true);
+      });
   };
 
   return (
@@ -79,7 +73,13 @@ const LoginComponent = () => {
       <Display>
         <ButtonLogin type="submit">Login</ButtonLogin>
       </Display>
-      {showMessage()}
+      {(Object.keys(errors).length !== 0 || open) && (
+        <ButtonSnackBar
+          open={true}
+          message="Oops! Something isn't right. Try again"
+          severityValue="error"
+        />
+      )}
     </Form>
   );
 };

@@ -15,7 +15,7 @@ const MenuPrimary = () => {
             <Link to="/register">Register</Link>
           </li>
           <li>
-            <Link to="/users">Conheça nossos Devs</Link>
+            <Link to="/users">Find your favorite Dev</Link>
           </li>
         </ul>
       </Navigate>
