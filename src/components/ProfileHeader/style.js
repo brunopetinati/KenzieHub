@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100%;
   font-size: 30px;
   h1 {
-    display: flex;
+    text-transform: capitalize;
   }
 
   @media (max-width: 945px) {
@@ -15,6 +15,9 @@ export const Container = styled.div`
 
   @media (max-width: 455px) {
     font-size: 20px;
+    h1 {
+      margin-left: -15px;
+    }
   }
 `;
 

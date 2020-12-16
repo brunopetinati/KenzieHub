@@ -31,19 +31,9 @@ export const StyledTextField = styled(TextField)`
   margin-bottom: 15px !important;
   input {
     display: flex;
-    align-content: center !important;
-    height: 5px;
+    height: 10px;
   }
   @media (max-width: 945px) {
     margin-bottom: 10px !important;
-    input {
-      height: 4px;
-    }
-  }
-
-  @media (max-width: 545px) {
-    input {
-      height: 3px;
-    }
   }
 `;

@@ -71,15 +71,11 @@ export const ChangePassword = ({ setOpen }) => {
           inputRef={register}
         />
         <ErrorMessage>{errors.old_password?.message}</ErrorMessage>
-        <ButtonSnackbar
-          open={open}
-          message={message}
-          severityValue={severity}
-        />
         <Btn variant="contained" type="submit">
           Update
         </Btn>
       </Container>
+      <ButtonSnackbar open={open} message={message} severityValue={severity} />
     </>
   );
 };

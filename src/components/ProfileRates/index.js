@@ -19,7 +19,8 @@ const ProfileRates = ({ list }) => {
       <ul>
         {list.map(({ title, status }, index) => (
           <li key={index}>
-            {title} - {rate(status)}
+            <label>{title}</label>
+            {rate(status)}
           </li>
         ))}
       </ul>

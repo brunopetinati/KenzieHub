@@ -31,13 +31,10 @@ export const Container = styled.form`
 export const StyledTextField = styled(TextField)`
   margin-bottom: 15px !important;
   input {
-    height: 5px;
+    height: 10px;
   }
   @media (max-width: 945px) {
     margin-bottom: 10px !important;
-    input {
-      height: 4px;
-    }
   }
 `;
 

@@ -5,7 +5,15 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     font-weight: 500;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  label {
+    margin-right: 10px;
+  }
+
+  span {
+    margin-bottom: 1px;
   }
 `;
