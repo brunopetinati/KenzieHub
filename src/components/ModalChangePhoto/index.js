@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch } from "react-redux";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -7,26 +9,45 @@ import axios from "axios";
 import ModalHeader from "../ModalHeader";
 import ButtonSnackbar from "../SnackBar";
 
+// ACTIONS
+import { addData } from "../../store/Modules/Data/actions";
+
 // STYLES
 import { FiSend } from "react-icons/fi";
 import Button from "@material-ui/core/Button";
 import { Form } from "./styles";
 
 const ModalChangePhoto = ({ setOpen }) => {
-  const schema = yup.object().shape({
-    avatar: yup
-      .mixed()
-      .required()
-      .test(
-        "fileSize",
-        "Image not found, insert your image and try again",
-        (value) => (value.length === 0 ? false : true)
-      ),
+  const [snackResponse, setsnackResponse] = useState({
+    open: false,
+    severity: "",
+    message: "",
   });
 
-  const { handleSubmit, register, errors } = useForm({
+  const schema = yup.object().shape({
+    avatar: yup.mixed().required(),
+  });
+
+  const { handleSubmit, register } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const dispatch = useDispatch();
+
+  const updateData = (severity) => {
+    axios
+      .get("https://kenziehub.me/users?perPage=9999999")
+      .then((res) => dispatch(addData(res.data)));
+
+    setsnackResponse({
+      open: true,
+      severity: severity,
+      message:
+        severity === "success"
+          ? "Image updated successfully"
+          : "Oops! Something isn't right. Try again",
+    });
+  };
 
   const handleForm = (data) => {
     const newData = new FormData();
@@ -40,23 +61,13 @@ const ModalChangePhoto = ({ setOpen }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => {
-        console.log("deu bom", response.data);
+      .then(() => {
+        updateData("success");
       })
-      .catch((e) => console.error("deu ruim", e));
+      .catch(() => updateData("error"));
   };
 
-  const showMessage = () => {
-    return (
-      errors.avatar && (
-        <ButtonSnackbar
-          open={true}
-          message={errors.avatar.message}
-          severityValue={"error"}
-        />
-      )
-    );
-  };
+  const { open, message, severity } = snackResponse;
 
   return (
     <>
@@ -70,8 +81,14 @@ const ModalChangePhoto = ({ setOpen }) => {
         <Button type="submit">
           <FiSend />
         </Button>
-        {showMessage()}
       </Form>
+      {open && (
+        <ButtonSnackbar
+          open={open}
+          message={message}
+          severityValue={severity}
+        />
+      )}
     </>
   );
 };

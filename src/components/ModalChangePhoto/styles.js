@@ -6,6 +6,10 @@ export const Form = styled.form`
   width: 60%;
   justify-content: center;
 
+  @media (max-width: 800px) {
+    width: 90%;
+  }
+
   label > input {
     display: none;
   }
