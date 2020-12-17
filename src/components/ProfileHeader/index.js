@@ -8,18 +8,31 @@ import { Container, Box } from "./style";
 const ProfileHeader = ({ data }) => {
   const getUserLogged = localStorage.getItem("userLogged");
 
-  const verifyUserLogged = JSON.parse(getUserLogged).id === data.id;
-  const { name, avatar_url, id } = data;
+  const { name, avatar_url } = data;
 
-  const userLogged = JSON.parse(localStorage.getItem("userLogged"));
+  const verifyUserLogged = () => {
+    if (JSON.parse(getUserLogged) !== null) {
+      return JSON.parse(getUserLogged).id === data.id;
+    }
+    return false;
+  };
+
+  const userLogged = () => {
+    if (JSON.parse(localStorage.getItem("userLogged")) !== null) {
+      return JSON.parse(localStorage.getItem("userLogged")).id === data.id;
+    }
+  };
 
   return (
     <Container>
       <Box>
-        <ProfileImage avatar={avatar_url} verifyUserLogged={verifyUserLogged} />
+        <ProfileImage
+          avatar={avatar_url}
+          verifyUserLogged={verifyUserLogged()}
+        />
         <h1>{name}</h1>
       </Box>
-      {userLogged.id === id && <ProfileMenu id={id} />}
+      {userLogged() && <ProfileMenu id={data.id} />}
     </Container>
   );
 };

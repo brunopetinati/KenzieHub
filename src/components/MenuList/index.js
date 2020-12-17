@@ -1,13 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-const MenuList = ({ isAuthenticated }) =>
-  isAuthenticated ? (
+// ACTIONS
+import { setAuthenticate } from "../../store/Modules/Authenticated/actions";
+
+const MenuList = ({ isAuthenticated }) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    window.localStorage.clear();
+    dispatch(setAuthenticate(false));
+    history.push("/");
+  };
+
+  return isAuthenticated ? (
     <ul>
       <li>
-        <Link to="/">Logout</Link>
+        <button onClick={() => handleLogout()}>Logout</button>
       </li>
       <li>
-        <Link to="/users">Conheça nossos Devs</Link>
+        <Link to="/users">Find your favorite Dev</Link>
       </li>
     </ul>
   ) : (
@@ -19,9 +32,9 @@ const MenuList = ({ isAuthenticated }) =>
         <Link to="/register">Register</Link>
       </li>
       <li>
-        <Link to="/users">Conheça nossos Devs</Link>
+        <Link to="/users">Find your favorite Dev</Link>
       </li>
     </ul>
   );
-
+};
 export default MenuList;

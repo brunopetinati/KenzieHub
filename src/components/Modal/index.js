@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import { useState } from "react";
 // COMPONENTS
 import { BsPlusCircleFill } from "react-icons/bs";
@@ -15,8 +17,27 @@ import { Backdrop, Fade } from "@material-ui/core";
 // STYLES
 import { ModalContainer, PaperContainer, ButtonContainer } from "./styles";
 
+//HELPERS
+import { verifyUser } from "../../helpers";
+import { useEffect } from "react";
+
 const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   const [open, setOpen] = useState(false);
+  const [verify, setVerify] = useState(false);
+  const authenticated = useSelector(({ authenticated }) => authenticated);
+  const data = useSelector(({ data }) => data);
+
+  const getUserLogged = localStorage.getItem("userLogged");
+
+  useEffect(() => {
+    if (getUserLogged !== null) {
+      const verifyUserLogged = data.map(
+        (user) => JSON.parse(getUserLogged).id === user.id
+      );
+      const verified = verifyUser(authenticated, verifyUserLogged);
+      verified && setVerify(true);
+    }
+  }, [authenticated, data, getUserLogged]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -95,21 +116,23 @@ const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
   return (
     <div>
       {elementCaller(type)}
-      <ModalContainer
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <PaperContainer>{componentRender(type)}</PaperContainer>
-        </Fade>
-      </ModalContainer>
+      {verify && (
+        <ModalContainer
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <PaperContainer>{componentRender(type)}</PaperContainer>
+          </Fade>
+        </ModalContainer>
+      )}
     </div>
   );
 };

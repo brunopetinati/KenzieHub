@@ -16,7 +16,7 @@ const MenuSearchBar = () => {
       <Search isActive={user.length !== 0 ? true : false}>
         <input
           type="text"
-          placeholder="Encontre seu Dev favorito"
+          placeholder="Search your favorite Dev"
           onChange={(e) => dispatch(addUser(e.target.value.toLowerCase()))}
           value={user}
         />

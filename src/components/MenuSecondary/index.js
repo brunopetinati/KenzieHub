@@ -21,25 +21,14 @@ const MenuSecondary = () => {
 
   return (
     <Container>
-      {authenticated ? (
-        <Navigation>
-          {matches ? (
-            <MenuToggle isAuthenticated={authenticated} />
-          ) : (
-            <MenuList isAuthenticated={authenticated} />
-          )}
-          {pathname === "/users" && <MenuSearchBar />}
-        </Navigation>
-      ) : (
-        <Navigation>
-          {matches ? (
-            <MenuToggle isAuthenticated={authenticated} />
-          ) : (
-            <MenuList isAuthenticated={authenticated} />
-          )}
-          {pathname === "/users" && <MenuSearchBar />}
-        </Navigation>
-      )}
+      <Navigation>
+        {matches ? (
+          <MenuToggle isAuthenticated={authenticated} />
+        ) : (
+          <MenuList isAuthenticated={authenticated} />
+        )}
+        {pathname === "/users" && <MenuSearchBar />}
+      </Navigation>
     </Container>
   );
 };

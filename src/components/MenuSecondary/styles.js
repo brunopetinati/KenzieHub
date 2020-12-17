@@ -33,9 +33,21 @@ export const Navigation = styled.nav`
     list-style: none;
   }
 
-  li a {
+  li a,
+  li button {
     text-decoration: none;
     margin-right: 10px;
     color: #fff;
+  }
+
+  li button {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;
