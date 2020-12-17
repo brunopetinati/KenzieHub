@@ -38,19 +38,6 @@ const Edit = ({ page, id, setOpen }) => {
     resolver: yupResolver(schema),
   });
 
-  const checkData = (data) => {
-    const { title, status, description, deploy_url } = data;
-    if (
-      title === "" &&
-      status === "" &&
-      description === "" &&
-      deploy_url === ""
-    ) {
-      return true;
-    }
-    return false;
-  };
-
   const updateData = () => {
     axios
       .get("https://kenziehub.me/users?perPage=9999999")
