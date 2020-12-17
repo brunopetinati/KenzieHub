@@ -99,7 +99,7 @@ export const Title = styled.h1`
 
   @media (max-width: 1600px) {
     width: 300px;
-    margin: 10px 6% 10px auto;
+    margin: 10px 2% 10px auto;
   }
 
   @media (max-width: 1115px) {
