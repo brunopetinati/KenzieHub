@@ -1,19 +1,26 @@
 //IMAGES
-import image from "../../assets/images/login.svg";
+import imageDesktop from "../../assets/images/login.svg";
+import imageMobile from "../../assets/images/login-mobile.svg";
 
 //COMPONENTS
 import LoginComponent from "../../components/LoginForm";
 
 //STYLES
-import { Container } from "../Register/styles";
-import { BoxPrimary, BoxSecondary, Title } from "./styles";
+
+import { BoxPrimary, BoxSecondary, Title, Container } from "./styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const Login = () => {
+  const matches = useMediaQuery("(max-width:1115px)");
   return (
     <>
       <Container>
         <BoxPrimary>
-          <img src={image} alt="Log yourself in!" width="400px" />
+          {matches ? (
+            <img src={imageMobile} alt="Log yourself in!" />
+          ) : (
+            <img src={imageDesktop} alt="Log yourself in!" />
+          )}
         </BoxPrimary>
         <BoxSecondary>
           <Title>Login</Title>
