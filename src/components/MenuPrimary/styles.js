@@ -5,6 +5,10 @@ export const ContainerPrimary = styled(Container)`
   background-color: transparent;
   box-shadow: none;
   position: fixed;
+
+  @media (max-width: 992px) {
+    position: relative;
+  }
 `;
 
 export const Navigate = styled(Navigation)`

@@ -30,11 +30,15 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 120px auto 70px;
   }
 
   @media (max-width: 768px) {
     height: auto;
-    padding: 150px 0;
+  }
+
+  @media (max-width: 500px) {
+    margin: 80px auto 70px;
   }
 `;
 
@@ -54,7 +58,7 @@ export const BoxPrimary = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 50%;
+    width: 55%;
   }
 `;
 
@@ -87,6 +91,10 @@ export const Title = styled.h1`
     margin-top: 12%;
     display: flex;
     margin-left: 48%;
+  }
+
+  @media (min-width: 1601px) {
+    margin-left: 58%;
   }
 
   @media (max-width: 1600px) {
