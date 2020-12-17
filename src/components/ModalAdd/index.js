@@ -5,6 +5,8 @@ import ModalHeader from "../ModalHeader";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 
+import { addData } from "../../store/Modules/Data/actions";
+
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -30,6 +32,12 @@ const Add = ({ page, setOpen }) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const updateData = () => {
+    axios
+      .get("https://kenziehub.me/users?perPage=9999999")
+      .then((res) => dispatch(addData(res.data)));
+  };
 
   const handleSend = (data) => {
     const token = localStorage.getItem("authToken");
@@ -63,7 +71,8 @@ const Add = ({ page, setOpen }) => {
             "Content-type": "application/json",
           },
         })
-        .then((res) => dispatch(addWorksThunk()));
+        .then((res) => dispatch(addWorksThunk()))
+        .then((res) => updateData());
     } catch (error) {
       console.error(error);
     }

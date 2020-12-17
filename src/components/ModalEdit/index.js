@@ -6,6 +6,7 @@ import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
 import Snackbar from "../SnackBar";
 
+import { addData } from "../../store/Modules/Data/actions";
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -50,6 +51,12 @@ const Edit = ({ page, id, setOpen }) => {
     return false;
   };
 
+  const updateData = () => {
+    axios
+      .get("https://kenziehub.me/users?perPage=9999999")
+      .then((res) => dispatch(addData(res.data)));
+  };
+
   const handleSend = (data) => {
     const token = localStorage.getItem("authToken");
 
@@ -83,20 +90,10 @@ const Edit = ({ page, id, setOpen }) => {
             "Content-type": "application/json",
           },
         })
+        .then((res) => dispatch(addWorksThunk()))
         .then(() => {
-          checkData(addInfo)
-            ? setsnackResponse({
-                open: true,
-                severity: "warning",
-                message: "No data has been updated",
-              })
-            : setsnackResponse({
-                open: true,
-                severity: "success",
-                message: "Updated Successfully",
-              });
-        })
-        .then((res) => dispatch(addWorksThunk()));
+          updateData();
+        });
     } catch (error) {
       console.error(error);
       setsnackResponse({
