@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 // COMPONENTS
 import { BsPlusCircleFill } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
+import { AiOutlineDelete } from "react-icons/ai";
+
 import Delete from "../ModalDelete";
 import Edit from "../ModalEdit";
 import Add from "../ModalAdd";
@@ -55,6 +58,7 @@ const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
       case "edit":
         return (
           <ButtonContainer>
+            <FiEdit className="editIcons" onClick={handleOpen} />
             <button className="edit" type="button" onClick={handleOpen}>
               {children}
             </button>
@@ -63,6 +67,7 @@ const TransitionsModal = ({ children, type, setAnchorEl, page, id }) => {
       case "delete":
         return (
           <ButtonContainer>
+            <AiOutlineDelete className="deleteIcons" onClick={handleOpen} />
             <button className="delete" type="button" onClick={handleOpen}>
               {children}
             </button>

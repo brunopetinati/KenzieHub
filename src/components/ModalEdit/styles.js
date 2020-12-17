@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled.button`
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin-bottom: 30px;
   border: none;
   outline: none;
   font-weight: 500;
@@ -28,6 +27,9 @@ export const ButtonStyled = styled.button`
 export const FormContainer = styled.form`
   width: 100%;
   padding: 10px;
+  margin: 0 auto;
+  margin-top: 30px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,5 +38,7 @@ export const FormContainer = styled.form`
   span {
     margin-bottom: 15px;
     width: 80%;
+  }
+  .Rating {
   }
 `;

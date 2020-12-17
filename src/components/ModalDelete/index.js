@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
 
 import ModalHeader from "../ModalHeader";
-
+import SnackBar from "../SnackBar";
 import axios from "axios";
 
-import { ButtonStyled } from "./styles";
+import { ButtonStyled, Message } from "./styles";
 
 const Delete = ({ page, id, setOpen }) => {
+  const [showSnack, setShowSnack] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -20,7 +22,10 @@ const Delete = ({ page, id, setOpen }) => {
             "Content-type": "application/json",
           },
         })
-        .then((res) => dispatch(addWorksThunk()));
+        .then((res) => dispatch(addWorksThunk()))
+        .then(() => {
+          setShowSnack(true);
+        });
     } catch (error) {
       console.error(error);
     }
@@ -34,11 +39,13 @@ const Delete = ({ page, id, setOpen }) => {
         setOpen={setOpen}
       />
 
-      <h4>
+      <Message>
         Are you sure you want to delete{" "}
         {page === "techs" ? "the Tech" : " the Work"}?
-      </h4>
+      </Message>
+
       <ButtonStyled onClick={handleDelete}>Delete</ButtonStyled>
+      <SnackBar open={showSnack} severityValue="success" message="Deleted" />
     </>
   );
 };

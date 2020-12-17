@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled.button`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   margin-top: 15px;
   border: none;
   outline: none;
@@ -27,6 +27,7 @@ export const ButtonStyled = styled.button`
 
 export const FormContainer = styled.form`
   width: 100%;
+  margin-top: 20px;
   padding: 10px;
   display: flex;
   flex-direction: column;
