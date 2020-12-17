@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled.button`
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   margin-top: 15px;
   border: none;
   outline: none;
@@ -23,4 +23,10 @@ export const ButtonStyled = styled.button`
     background-color: #0b335c;
     box-shadow: 0 0 0;
   }
+`;
+
+export const Message = styled.h4`
+  font-weight: 400;
+  font-size: 1.3rem;
+  padding: 20px;
 `;

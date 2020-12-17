@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import ModalHeader from "../ModalHeader";
 import Rating from "../Rating";
 import TextField from "@material-ui/core/TextField";
+import Snackbar from "../SnackBar";
 
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,6 +19,11 @@ const Edit = ({ page, id, setOpen }) => {
   const dispatch = useDispatch();
 
   const [value, setValue] = useState(1);
+  const [snackResponse, setsnackResponse] = useState({
+    open: false,
+    severity: "",
+    message: "",
+  });
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -30,6 +36,19 @@ const Edit = ({ page, id, setOpen }) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const checkData = (data) => {
+    const { title, status, description, deploy_url } = data;
+    if (
+      title === "" &&
+      status === "" &&
+      description === "" &&
+      deploy_url === ""
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   const handleSend = (data) => {
     const token = localStorage.getItem("authToken");
@@ -64,13 +83,32 @@ const Edit = ({ page, id, setOpen }) => {
             "Content-type": "application/json",
           },
         })
+        .then(() => {
+          checkData(addInfo)
+            ? setsnackResponse({
+                open: true,
+                severity: "warning",
+                message: "No data has been updated",
+              })
+            : setsnackResponse({
+                open: true,
+                severity: "success",
+                message: "Updated Successfully",
+              });
+        })
         .then((res) => dispatch(addWorksThunk()));
     } catch (error) {
       console.error(error);
+      setsnackResponse({
+        open: true,
+        severity: "error",
+        message: "Update Error!",
+      });
     }
     setOpen(false);
   };
-
+  const { open, severity, message } = snackResponse;
+  console.log(snackResponse);
   return (
     <>
       <ModalHeader
@@ -90,7 +128,7 @@ const Edit = ({ page, id, setOpen }) => {
               error={!!errors.status}
               helperText={errors.status?.message}
             />
-            <span>
+            <span className="Rating">
               <Rating value={value} width={100} setValue={setValue} />
             </span>
           </>
@@ -140,6 +178,9 @@ const Edit = ({ page, id, setOpen }) => {
         )}
         <ButtonStyled type="submit">Update</ButtonStyled>
       </FormContainer>
+      {open && (
+        <Snackbar open={open} message={message} severityValue={severity} />
+      )}
     </>
   );
 };

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const TableContainer = styled.table`
-  width: 80vw;
+  width: 90vw;
+  max-width: 1200px;
   border: 1px solid #ddd;
   border-collapse: collapse;
 
@@ -25,11 +26,13 @@ export const TableContainer = styled.table`
   #actions {
     width: 30%;
   }
+  #status {
+    width: 50%;
+  }
 
   td {
     padding: 10px;
-    text-align: left;
-    vertical-align: center;
+    text-align: center;
   }
 
   .buttons {
@@ -42,7 +45,7 @@ export const TableContainer = styled.table`
   }
 
   @media only screen and (max-width: 480px) {
-    th {
+    /* th {
       display: none;
     }
     .tag {
@@ -56,6 +59,6 @@ export const TableContainer = styled.table`
     }
     .buttons {
       flex-direction: row;
-    }
+    } */
   }
 `;
