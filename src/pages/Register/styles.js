@@ -88,19 +88,16 @@ export const Title = styled.h1`
   color: black;
   font-style: normal;
   margin-left: 40%;
-  @media (min-width: 1600px) {
-    margin-top: 12%;
-    display: flex;
-    margin-left: 48%;
-  }
 
   @media (min-width: 1601px) {
-    margin-left: 58%;
+    margin-top: 12%;
+    display: flex;
+    margin-left: 60%;
   }
 
   @media (max-width: 1600px) {
     width: 300px;
-    margin: 10px 2% 10px auto;
+    margin: 10px -2% 10px auto;
   }
 
   @media (max-width: 1115px) {
