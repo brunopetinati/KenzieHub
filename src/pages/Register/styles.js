@@ -54,7 +54,9 @@ export const BoxPrimary = styled.div`
     margin: 0;
     width: 30%;
     img {
-      width: 100%;
+      width: 140%;
+      margin-left: 45%;
+      margin-bottom: 15%;
     }
   }
 
@@ -75,6 +77,7 @@ export const BoxSecondary = styled(BoxPrimary)`
 
   @media (max-width: 1500px) {
     justify-content: center;
+    margin-bottom: 10%;
   }
 
   @media (max-width: 1115px) {
