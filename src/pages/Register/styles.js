@@ -93,6 +93,10 @@ export const Title = styled.h1`
     margin-left: 48%;
   }
 
+  @media (min-width: 1601px) {
+    margin-left: 58%;
+  }
+
   @media (max-width: 1600px) {
     width: 300px;
     margin: 10px 6% 10px auto;
