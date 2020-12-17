@@ -1,16 +1,20 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { addWorksThunk } from "../../store/Modules/Works/thunk";
+import { addData } from "../../store/Modules/Data/actions";
 
 import ModalHeader from "../ModalHeader";
-import SnackBar from "../SnackBar";
 import axios from "axios";
 
 import { ButtonStyled, Message } from "./styles";
 
 const Delete = ({ page, id, setOpen }) => {
-  const [showSnack, setShowSnack] = useState(false);
   const dispatch = useDispatch();
+
+  const updateData = () => {
+    axios
+      .get("https://kenziehub.me/users?perPage=9999999")
+      .then((res) => dispatch(addData(res.data)));
+  };
 
   const handleDelete = () => {
     const token = localStorage.getItem("authToken");
@@ -24,7 +28,7 @@ const Delete = ({ page, id, setOpen }) => {
         })
         .then((res) => dispatch(addWorksThunk()))
         .then(() => {
-          setShowSnack(true);
+          updateData();
         });
     } catch (error) {
       console.error(error);
@@ -45,7 +49,6 @@ const Delete = ({ page, id, setOpen }) => {
       </Message>
 
       <ButtonStyled onClick={handleDelete}>Delete</ButtonStyled>
-      <SnackBar open={showSnack} severityValue="success" message="Deleted" />
     </>
   );
 };
