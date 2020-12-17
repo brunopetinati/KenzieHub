@@ -13,13 +13,20 @@ export const Form = styled.form`
 
     margin-right: 22%;
   }
-  @media (max-width: 1115px) {
-    margin: 0 auto;
-    height: 70%;
+
+  @media (max-width: 1500px) {
+    width: 400px;
+    margin: 10px 10% 10px auto;
+    height: 480px;
   }
 
-  @media (max-width: 325px) {
-    width: 90%;
+  @media (max-width: 1115px) {
+    width: 40%;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 70%;
   }
 `;
 
