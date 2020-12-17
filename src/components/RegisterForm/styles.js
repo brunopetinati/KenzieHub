@@ -28,6 +28,10 @@ export const Form = styled.form`
   @media (max-width: 768px) {
     width: 70%;
   }
+
+  @media (max-width: 400px) {
+    width: 80%;
+  }
 `;
 
 export const ButtonRegister = styled(Btn)`
