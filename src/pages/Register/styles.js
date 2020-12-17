@@ -5,94 +5,107 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-`;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50px;
+    height: 300%;
+    width: 70%;
+    background-color: #4469e0;
+    z-index: -1;
 
-export const RotateDiv = styled.div`
-  position: absolute;
-  background: #1172d7;
-  height: 1100px;
-  width: 1900px;
-  top: -460px;
-  left: -1170px;
-  transform: rotate(25deg);
-`;
-
-export const HeaderButton1 = styled.div`
-  background: #fff0;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  left: 1060px;
-  outline: none;
-  top: 0px;
-  font-size: 15px;
-  border-bottom: solid black 2px;
-  padding: 1px 0px;
-  margin: 1px 6px;
-  :hover {
-    padding: 1px 6px;
-    margin: 1px 0px;
-    border-bottom: solid black 2px;
-    transition: 0.4s;
+    transform: rotate(26deg);
+    transform-origin: 100% 0;
+    @media (max-width: 1115px) {
+      display: none;
+      width: 196px;
+      margin-right: 10%;
+    }
   }
-`;
-export const HeaderButton2 = styled.button`
-  background: #fff0;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  left: 1120px;
-  outline: none;
-  top: 0px;
-  font-size: 15px;
-  border-bottom: solid black 2px;
-  padding: 1px 0px;
-  margin: 1px 6px;
-  :hover {
-    padding: 1px 6px;
-    margin: 1px 0px;
-    border-bottom: solid black 2px;
-    transition: 0.4s;
+
+  @media (max-width: 1115px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 120px auto 70px;
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
+
+  @media (max-width: 500px) {
+    margin: 80px auto 70px;
   }
 `;
 
-export const Title = styled.div`
-  position: absolute;
-  left: 880px;
-  top: 150px;
-  text-align: center;
-  color: #383d3d;
+export const BoxPrimary = styled.div`
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10%;
+  margin-left: 5%;
+
+  @media (max-width: 1500px) {
+    margin: 0;
+    width: 30%;
+    img {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 55%;
+  }
+`;
+
+export const BoxSecondary = styled(BoxPrimary)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 11%;
+  @media (max-width: 1115px) {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1500px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 1115px) {
+    align-items: center;
+  }
+`;
+
+export const Title = styled.h1`
+  font-size: 25px;
+  font-weight: normal;
+  color: black;
   font-style: normal;
-  font-size: 32px;
-  letter-spacing: 0px;
-`;
-
-export const Form = styled.div`
-  position: absolute;
-  background: white;
-  width: 300px;
-  height: 450px;
-  left: 820px;
-  top: 230px;
-  text-align: center;
-  color: red;
-  font-size: 12px;
-  font-style: italic;
-  input {
-    margin: 3px;
-    padding: 2px;
+  margin-left: 40%;
+  @media (min-width: 1600px) {
+    margin-top: 12%;
+    display: flex;
+    margin-left: 48%;
   }
-`;
 
-export const SmallMargin = styled.div`
-  margin-top: 1px;
-  margin-bottom: 1px;
-`;
+  @media (min-width: 1601px) {
+    margin-left: 58%;
+  }
 
-export const SeeImage = styled.img`
-  position: absolute;
-  right: 130px;
-  top: 350px;
-  width: 450px;
-  transform: rotate(-25deg);
+  @media (max-width: 1600px) {
+    width: 300px;
+    margin: 10px 2% 10px auto;
+  }
+
+  @media (max-width: 1115px) {
+    width: 100%;
+    margin: 40px 0;
+    text-align: center;
+  }
 `;

@@ -1,18 +1,24 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  width: 100wh;
-  height: 100vh;
-  background-color: #ccc;
-  color: white;
+  min-height: 70vh;
+  width: 100vw;
+  max-width: 100%;
 
-  h2 {
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+
+  h1 {
+    font-weight: 300;
+    font-size: 45px;
+    color: #444;
   }
-`;
-
-export const Banner = styled.div`
-  width: 100wh;
-  height: 20vh;
-  color: #999;
-  @media (max-width: 760px) {
+  .Modal {
+    width: 80vw;
+    display: flex;
+    justify-content: flex-end;
   }
 `;
