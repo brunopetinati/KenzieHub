@@ -54,12 +54,19 @@ export const BoxPrimary = styled.div`
     margin: 0;
     width: 30%;
     img {
-      width: 100%;
+      width: 140%;
+      margin-left: 45%;
+      margin-bottom: 15%;
     }
   }
 
   @media (max-width: 768px) {
     width: 55%;
+    margin: 0 auto;
+    img {
+      width: 80%;
+      margin-left: 15%;
+    }
   }
 `;
 
